@@ -17,9 +17,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _pageCode = 1;
-  var titles;
+  var titles = [];
   bool loading = false;
-
+  
   @override
   build(context) {
     var length = titles?.length ?? 0;
@@ -32,14 +32,7 @@ class _HomePageState extends State<HomePage> {
           } else if (index > length) {
             return null;
           }
-          return Container(
-            decoration: BoxDecoration(
-                border:
-                    Border(bottom: BorderSide(color: Colors.grey.shade300))),
-            child: ListTile(
-                key: ValueKey<String>(titles[index]),
-                title: Text(titles[index])),
-          );
+          return Text(titles[index]);
         },
       ),
     ));
@@ -50,19 +43,18 @@ class _HomePageState extends State<HomePage> {
       return null;
     }
     loading = true;
-    var resp = await http
-        .get('https://www.cmtzz.cn/api/v1/interviews?page=$_pageCode');
-    var newsList = json.decode(resp.body)['data']['list'];
-    setState(() {
-      print(_pageCode);
-      _pageCode++;
-      if (newsList is List) {
-        if (titles == null) {
-          titles = <String>[];
-        }
-        newsList.forEach((dynamic e) => titles.add(e['title'] as String));
-      }
-      loading = false;
-    });
+    try {
+      var resp = await http
+          .get('https://www.cmtzz.cn/api/v1/interviews?page=$_pageCode');
+      var newsList = json.decode(resp.body)['data']['list'];
+      setState(() {
+        print(_pageCode);
+        _pageCode++;
+        newsList.forEach((dynamic e) => titles.add(e['title']));
+        loading = false;
+      });
+    } catch (e) {
+      print(e.toString());
+    }
   }
 }
