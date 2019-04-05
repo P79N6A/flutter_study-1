@@ -2,7 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-void main() => runApp(DemoApp());
+main() => runApp(DemoApp());
 
 class DemoApp extends StatelessWidget {
   @override
@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   int _pageCode = 1;
   var titles = [];
   bool loading = false;
-  
+
   @override
   build(context) {
     var length = titles?.length ?? 0;
@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
           } else if (index > length) {
             return null;
           }
-          return Text(titles[index]);
+          return Image.network(titles[index]);
         },
       ),
     ));
@@ -50,7 +50,7 @@ class _HomePageState extends State<HomePage> {
       setState(() {
         print(_pageCode);
         _pageCode++;
-        newsList.forEach((dynamic e) => titles.add(e['title']));
+        newsList.forEach((dynamic e) => titles.add(e['cover']));
         loading = false;
       });
     } catch (e) {
