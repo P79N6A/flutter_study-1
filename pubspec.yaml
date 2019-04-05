@@ -9,8 +9,6 @@ dependencies:
   cupertino_icons: # 苹果主题图标
   http: # 网络请求
   dio:  # 网络请求
-  flutter_statusbar_manager:  # 状态栏修改
-  flutter_local_notifications: # 状态栏推送
 
 dev_dependencies:
   flutter_test:
