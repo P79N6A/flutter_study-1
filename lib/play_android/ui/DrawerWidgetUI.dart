@@ -63,14 +63,14 @@ class DrawerDemoState extends State<DrawerDemo> {
                 }),
             accountEmail: null,
             currentAccountPicture: CircleAvatar(
-              backgroundImage: AssetImage('images/avatar.jpg'),
+              backgroundImage: AssetImage('assets/image/avatar.jpg'),
             ),
             decoration: BoxDecoration(
               color: Colors.grey[800],
               image: DecorationImage(
                 image: AssetImage(GlobalConfig.dark
-                    ? 'images/bg_dark.png'
-                    : 'images/bg_light.jpg'),
+                    ? 'assets/image/bg_dark.png'
+                    : 'assets/image/bg_light.jpg'),
                 fit: BoxFit.cover,
                 colorFilter: ColorFilter.mode(
                     Colors.grey[800].withOpacity(0.6), BlendMode.hardLight),

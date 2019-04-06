@@ -21,8 +21,8 @@ class HeroHeader implements SliverPersistentHeaderDelegate {
     return Stack(
       fit: StackFit.expand,
       children: [
-        Image.asset(
-          'assets/image/ronnie-mayo-361348-unsplash.jpg',
+        Image.network(
+          'https://images.unsplash.com/photo-1504406242839-6e462b3ccb91?ixlib=rb-1.2.1&auto=format&fit=crop&w=1520&q=80',
           fit: BoxFit.cover,
         ),
         Container(
@@ -77,14 +77,14 @@ class HeroPage extends StatelessWidget implements HasLayoutGroup {
   final VoidCallback onLayoutToggle;
 
   final List<String> assetNames = [
-    'assets/image/brady-bellini-212790-unsplash.jpg',
-    'assets/image/stefan-stefancik-105587-unsplash.jpg',
-    'assets/image/simon-fitall-530083-unsplash.jpg',
-    'assets/image/anton-repponen-99530-unsplash.jpg',
-    'assets/image/kevin-cochran-524957-unsplash.jpg',
-    'assets/image/samsommer-72299-unsplash.jpg',
-    'assets/image/simon-matzinger-320332-unsplash.jpg',
-    'assets/image/meng-ji-102492-unsplash.jpg',
+    'https://images.unsplash.com/photo-1487856374269-301dc48a3c31?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
+    'https://images.unsplash.com/photo-1466940219795-c670f475e59f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=652&q=80',
+    'https://images.unsplash.com/photo-1516821371801-280cf8069a4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=900&q=80',
+    'https://images.unsplash.com/photo-1465156799763-2c087c332922?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+    'https://images.unsplash.com/photo-1516569333566-9d463ccffd20?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80',
+    'https://images.unsplash.com/photo-1457459686225-c7db79d4e59f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=635&q=80',
+    'https://images.unsplash.com/photo-1500964757637-c85e8a162699?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1378&q=80',
+    'https://images.unsplash.com/photo-1465935607384-d6a9087be24a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1349&q=80',
   ];
 
   @override
@@ -120,7 +120,7 @@ class HeroPage extends StatelessWidget implements HasLayoutGroup {
                 return Container(
                   alignment: Alignment.center,
                   padding: _edgeInsetsForIndex(index),
-                  child: Image.asset(
+                  child: Image.network(
                     assetNames[index % assetNames.length],
                   ),
                 );
