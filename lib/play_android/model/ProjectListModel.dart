@@ -6,7 +6,7 @@ class ProjectTreeListModel {
   String errorMsg;
   ProjectTreeListData data;
 
-  ProjectTreeListModel.fromParams({this.errorCode, this.errorMsg, this.data});
+  // ProjectTreeListModel.fromParams({this.errorCode, this.errorMsg, this.data});
 
   factory ProjectTreeListModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? new ProjectTreeListModel.fromJson(json.decode(jsonStr)) : new ProjectTreeListModel.fromJson(jsonStr);
 
@@ -32,7 +32,7 @@ class ProjectTreeListData {
   bool over;
   List<ProjectTreeListDatas> datas;
 
-  ProjectTreeListData.fromParams({this.curPage, this.offset, this.pageCount, this.size, this.total, this.over, this.datas});
+  // ProjectTreeListData.fromParams({this.curPage, this.offset, this.pageCount, this.size, this.total, this.over, this.datas});
 
   ProjectTreeListData.fromJson(jsonRes) {
     curPage = jsonRes['curPage'];
@@ -80,7 +80,7 @@ class ProjectTreeListDatas {
   String title;
   List<ProjectTreeListTag> tags;
 
-  ProjectTreeListDatas.fromParams({this.chapterId, this.courseId, this.id, this.publishTime, this.superChapterId, this.type, this.userId, this.visible, this.zan, this.collect, this.fresh, this.apkLink, this.author, this.chapterName, this.desc, this.envelopePic, this.link, this.niceDate, this.origin, this.projectLink, this.superChapterName, this.title, this.tags});
+  // ProjectTreeListDatas.fromParams({this.chapterId, this.courseId, this.id, this.publishTime, this.superChapterId, this.type, this.userId, this.visible, this.zan, this.collect, this.fresh, this.apkLink, this.author, this.chapterName, this.desc, this.envelopePic, this.link, this.niceDate, this.origin, this.projectLink, this.superChapterName, this.title, this.tags});
 
   ProjectTreeListDatas.fromJson(jsonRes) {
     chapterId = jsonRes['chapterId'];
@@ -123,7 +123,7 @@ class ProjectTreeListTag {
   String name;
   String url;
 
-  ProjectTreeListTag.fromParams({this.name, this.url});
+  // ProjectTreeListTag.fromParams({this.name, this.url});
 
   ProjectTreeListTag.fromJson(jsonRes) {
     name = jsonRes['name'];

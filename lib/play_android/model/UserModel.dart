@@ -6,7 +6,7 @@ class UserModel {
   String errorMsg;
   UserData data;
 
-  UserModel.fromParams({this.errorCode, this.errorMsg, this.data});
+  // UserModel.fromParams({this.errorCode, this.errorMsg, this.data});
 
   factory UserModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? new UserModel.fromJson(json.decode(jsonStr)) : new UserModel.fromJson(jsonStr);
   
@@ -34,7 +34,7 @@ class UserData {
   List<dynamic> chapterTops;
   List<int> collectIds;
 
-  UserData.fromParams({this.id, this.type, this.email, this.icon, this.password, this.token, this.username, this.chapterTops, this.collectIds});
+  // UserData.fromParams({this.id, this.type, this.email, this.icon, this.password, this.token, this.username, this.chapterTops, this.collectIds});
   
   UserData.fromJson(jsonRes) {
     id = jsonRes['id'];

@@ -6,7 +6,7 @@ class HotWordModel {
   String errorMsg;
   List<HotWordData> data;
 
-  HotWordModel.fromParams({this.errorCode, this.errorMsg, this.data});
+  // HotWordModel.fromParams({this.errorCode, this.errorMsg, this.data});
 
   factory HotWordModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? new HotWordModel.fromJson(json.decode(jsonStr)) : new HotWordModel.fromJson(jsonStr);
 
@@ -34,7 +34,7 @@ class HotWordData {
   String link;
   String name;
 
-  HotWordData.fromParams({this.id, this.order, this.visible, this.link, this.name});
+  // HotWordData.fromParams({this.id, this.order, this.visible, this.link, this.name});
 
   HotWordData.fromJson(jsonRes) {
     id = jsonRes['id'];

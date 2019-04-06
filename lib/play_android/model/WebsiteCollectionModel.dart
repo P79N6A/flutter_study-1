@@ -6,7 +6,7 @@ class WebsiteCollectionModel {
   String errorMsg;
   List<WebsiteCollectionData> data;
 
-  WebsiteCollectionModel.fromParams({this.errorCode, this.errorMsg, this.data});
+  // WebsiteCollectionModel.fromParams({this.errorCode, this.errorMsg, this.data});
 
   factory WebsiteCollectionModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? new WebsiteCollectionModel.fromJson(json.decode(jsonStr)) : new WebsiteCollectionModel.fromJson(jsonStr);
   
@@ -37,7 +37,7 @@ class WebsiteCollectionData {
   String link;
   String name;
 
-  WebsiteCollectionData.fromParams({this.id, this.order, this.userId, this.visible, this.desc, this.icon, this.link, this.name});
+  // WebsiteCollectionData.fromParams({this.id, this.order, this.userId, this.visible, this.desc, this.icon, this.link, this.name});
   
   WebsiteCollectionData.fromJson(jsonRes) {
     id = jsonRes['id'];

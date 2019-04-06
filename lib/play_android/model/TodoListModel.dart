@@ -6,7 +6,7 @@ class TodoListModel {
   String errorMsg;
   TodoListData data;
 
-  TodoListModel.fromParams({this.errorCode, this.errorMsg, this.data});
+  // TodoListModel.fromParams({this.errorCode, this.errorMsg, this.data});
 
   factory TodoListModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? new TodoListModel.fromJson(json.decode(jsonStr)) : new TodoListModel.fromJson(jsonStr);
   
@@ -28,7 +28,7 @@ class TodoListData {
   List<TodoListDatas> doneList;
   List<TodoListDatas> todoList;
 
-  TodoListData.fromParams({this.type, this.doneList, this.todoList});
+  // TodoListData.fromParams({this.type, this.doneList, this.todoList});
   
   TodoListData.fromJson(jsonRes) {
     type = jsonRes['type'];
@@ -56,7 +56,7 @@ class TodoListDatas {
   int date;
   List<TodoData> todoList;
 
-  TodoListDatas.fromParams({this.date, this.todoList});
+  // TodoListDatas.fromParams({this.date, this.todoList});
   
   TodoListDatas.fromJson(jsonRes) {
     date = jsonRes['date'];
@@ -93,7 +93,7 @@ class TodoData {
   String dateStr;
   String title;
 
-  TodoData.fromParams({this.completeDate, this.date, this.id, this.priority, this.status, this.type, this.userId, this.completeDateStr, this.content, this.dateStr, this.title});
+  // TodoData.fromParams({this.completeDate, this.date, this.id, this.priority, this.status, this.type, this.userId, this.completeDateStr, this.content, this.dateStr, this.title});
   
   TodoData.fromJson(jsonRes) {
     completeDate = jsonRes['completeDate'];

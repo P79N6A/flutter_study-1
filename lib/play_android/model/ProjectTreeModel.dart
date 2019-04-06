@@ -6,7 +6,7 @@ class ProjectTreeModel {
   String errorMsg;
   List<ProjectTreeData> data;
 
-  ProjectTreeModel.fromParams({this.errorCode, this.errorMsg, this.data});
+  // ProjectTreeModel.fromParams({this.errorCode, this.errorMsg, this.data});
 
   factory ProjectTreeModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? new ProjectTreeModel.fromJson(json.decode(jsonStr)) : new ProjectTreeModel.fromJson(jsonStr);
 
@@ -37,7 +37,7 @@ class ProjectTreeData {
   String name;
   List<dynamic> children;
 
-  ProjectTreeData.fromParams({this.courseId, this.id, this.order, this.parentChapterId, this.visible, this.userControlSetTop, this.name, this.children});
+  // ProjectTreeData.fromParams({this.courseId, this.id, this.order, this.parentChapterId, this.visible, this.userControlSetTop, this.name, this.children});
 
   ProjectTreeData.fromJson(jsonRes) {
     courseId = jsonRes['courseId'];

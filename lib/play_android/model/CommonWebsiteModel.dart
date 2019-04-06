@@ -6,7 +6,7 @@ class CommonWebsiteModel {
   String errorMsg;
   List<CommonWebsiteData> data;
 
-  CommonWebsiteModel.fromParams({this.errorCode, this.errorMsg, this.data});
+  // CommonWebsiteModel.fromParams({this.errorCode, this.errorMsg, this.data});
 
   factory CommonWebsiteModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? new CommonWebsiteModel.fromJson(json.decode(jsonStr)) : new CommonWebsiteModel.fromJson(jsonStr);
 
@@ -35,7 +35,7 @@ class CommonWebsiteData {
   String link;
   String name;
 
-  CommonWebsiteData.fromParams({this.id, this.order, this.visible, this.icon, this.link, this.name});
+  // CommonWebsiteData.fromParams({this.id, this.order, this.visible, this.icon, this.link, this.name});
 
   CommonWebsiteData.fromJson(jsonRes) {
     id = jsonRes['id'];

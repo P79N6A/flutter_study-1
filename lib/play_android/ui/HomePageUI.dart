@@ -35,7 +35,6 @@ class HomePageUIState extends State<HomePageUI>
   Future<Null> getData() async {
     _page = 0;
     print("$_page");
-
     CommonService().getArticleList((ArticleModel _articleModel) {
       setState(() => _datas = _articleModel.data.datas);
     }, _page);
@@ -46,9 +45,7 @@ class HomePageUIState extends State<HomePageUI>
     print("$_page");
 
     CommonService().getArticleList((ArticleModel _articleModel) {
-      setState(() {
-        _datas.addAll(_articleModel.data.datas);
-      });
+      setState(() => _datas.addAll(_articleModel.data.datas));
     }, _page);
   }
 
@@ -58,12 +55,8 @@ class HomePageUIState extends State<HomePageUI>
           onRefresh: getData,
           child: ListView.separated(
             itemBuilder: _renderRow,
-            separatorBuilder: (context, int index) {
-              return Container(
-                height: 0.5,
-                color: Colors.black26,
-              );
-            },
+            separatorBuilder: (context, index) =>
+                Container(height: 0.5, color: Colors.black26),
             itemCount: _datas.length + 2,
             controller: _scrollController,
           ),
@@ -138,9 +131,8 @@ class HomePageUIState extends State<HomePageUI>
   }
 
   onSearchClick() async {
-    await Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-      return SearchPageUI(null);
-    }));
+    await Navigator.of(context)
+        .push(MaterialPageRoute(builder: (context) => SearchPageUI(null)));
   }
 
   /// 加载更多时显示的组件,给用户提示

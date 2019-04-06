@@ -6,7 +6,7 @@ class WxArticleContentModel {
   String errorMsg;
   WxArticleContentData data;
 
-  WxArticleContentModel.fromParams({this.errorCode, this.errorMsg, this.data});
+  // WxArticleContentModel.fromParams({this.errorCode, this.errorMsg, this.data});
 
   factory WxArticleContentModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? new WxArticleContentModel.fromJson(json.decode(jsonStr)) : new WxArticleContentModel.fromJson(jsonStr);
 
@@ -32,7 +32,7 @@ class WxArticleContentData {
   bool over;
   List<WxArticleContentDatas> datas;
 
-  WxArticleContentData.fromParams({this.curPage, this.offset, this.pageCount, this.size, this.total, this.over, this.datas});
+  // WxArticleContentData.fromParams({this.curPage, this.offset, this.pageCount, this.size, this.total, this.over, this.datas});
 
   WxArticleContentData.fromJson(jsonRes) {
     curPage = jsonRes['curPage'];
@@ -80,7 +80,7 @@ class WxArticleContentDatas {
   String title;
   List<WxArticleContentTags> tags;
 
-  WxArticleContentDatas.fromParams({this.chapterId, this.courseId, this.id, this.publishTime, this.superChapterId, this.type, this.userId, this.visible, this.zan, this.collect, this.fresh, this.apkLink, this.author, this.chapterName, this.desc, this.envelopePic, this.link, this.niceDate, this.origin, this.projectLink, this.superChapterName, this.title, this.tags});
+  // WxArticleContentDatas.fromParams({this.chapterId, this.courseId, this.id, this.publishTime, this.superChapterId, this.type, this.userId, this.visible, this.zan, this.collect, this.fresh, this.apkLink, this.author, this.chapterName, this.desc, this.envelopePic, this.link, this.niceDate, this.origin, this.projectLink, this.superChapterName, this.title, this.tags});
 
   WxArticleContentDatas.fromJson(jsonRes) {
     chapterId = jsonRes['chapterId'];
@@ -123,7 +123,7 @@ class WxArticleContentTags {
   String name;
   String url;
 
-  WxArticleContentTags.fromParams({this.name, this.url});
+  // WxArticleContentTags.fromParams({this.name, this.url});
 
   WxArticleContentTags.fromJson(jsonRes) {
     name = jsonRes['name'];

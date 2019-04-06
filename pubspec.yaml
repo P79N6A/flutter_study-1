@@ -18,12 +18,15 @@ dependencies:
   event_bus: 
   flutter_slidable:
   carousel_pro: # 轮播图框架
+  sqflite:  # sqlite缓存
+  transparent_image:  
 dev_dependencies:
   flutter_test:
     sdk: flutter
 flutter:
   uses-material-design: true
   assets:
+  # 图片资源
   - assets/image/logo.png
   - assets/image/powered_by.png
   - assets/image/icon_list.png
@@ -34,14 +37,11 @@ flutter:
   - assets/image/scene5.png
   - assets/image/scene6.png
   - assets/image/avatar.jpg
-  - assets/image/bg_light.jpg
-  - assets/image/bg_dark.png
-  - assets/image/burger1.jpg
-  - assets/image/burger2.jpg
-  - assets/image/burger3.jpg
-  - assets/image/burger4.jpg
-
-    # 2D动画资源
+  - assets/image/splash.png
+  - assets/image/avatar.png
+  - assets/image/login.png
+  - assets/image/logo_zhihu.png
+  # 2D动画资源
   - assets/animation/Animals.flr
   - assets/animation/circular.flr
   - assets/animation/Filip.flr
@@ -49,3 +49,5 @@ flutter:
   - assets/animation/robot.png
   - assets/animation/OldMan.nima
   - assets/animation/Hop.nima
+  # Json资源
+  - assets/data/barchart.json

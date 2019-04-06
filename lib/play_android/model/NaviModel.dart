@@ -6,7 +6,7 @@ class NaviModel {
   String errorMsg;
   List<NaviData> data;
 
-  NaviModel.fromParams({this.errorCode, this.errorMsg, this.data});
+  // NaviModel.fromParams({this.errorCode, this.errorMsg, this.data});
 
   factory NaviModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? new NaviModel.fromJson(json.decode(jsonStr)) : new NaviModel.fromJson(jsonStr);
 
@@ -32,7 +32,7 @@ class NaviData {
   String name;
   List<NaviArticle> articles;
 
-  NaviData.fromParams({this.cid, this.name, this.articles});
+  // NaviData.fromParams({this.cid, this.name, this.articles});
 
   NaviData.fromJson(jsonRes) {
     cid = jsonRes['cid'];

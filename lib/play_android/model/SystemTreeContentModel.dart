@@ -6,7 +6,7 @@ class SystemTreeContentModel {
   String errorMsg;
   SystemTreeContentData data;
 
-  SystemTreeContentModel.fromParams({this.errorCode, this.errorMsg, this.data});
+  // SystemTreeContentModel.fromParams({this.errorCode, this.errorMsg, this.data});
 
   factory SystemTreeContentModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? new SystemTreeContentModel.fromJson(json.decode(jsonStr)) : new SystemTreeContentModel.fromJson(jsonStr);
 
@@ -32,7 +32,7 @@ class SystemTreeContentData {
   bool over;
   List<SystemTreeContentChild> datas;
 
-  SystemTreeContentData.fromParams({this.curPage, this.offset, this.pageCount, this.size, this.total, this.over, this.datas});
+  // SystemTreeContentData.fromParams({this.curPage, this.offset, this.pageCount, this.size, this.total, this.over, this.datas});
 
   SystemTreeContentData.fromJson(jsonRes) {
     curPage = jsonRes['curPage'];
@@ -80,7 +80,7 @@ class SystemTreeContentChild {
   String title;
   List<dynamic> tags;
 
-  SystemTreeContentChild.fromParams({this.chapterId, this.courseId, this.id, this.publishTime, this.superChapterId, this.type, this.userId, this.visible, this.zan, this.collect, this.fresh, this.apkLink, this.author, this.chapterName, this.desc, this.envelopePic, this.link, this.niceDate, this.origin, this.projectLink, this.superChapterName, this.title, this.tags});
+  // SystemTreeContentChild.fromParams({this.chapterId, this.courseId, this.id, this.publishTime, this.superChapterId, this.type, this.userId, this.visible, this.zan, this.collect, this.fresh, this.apkLink, this.author, this.chapterName, this.desc, this.envelopePic, this.link, this.niceDate, this.origin, this.projectLink, this.superChapterName, this.title, this.tags});
 
   SystemTreeContentChild.fromJson(jsonRes) {
     chapterId = jsonRes['chapterId'];

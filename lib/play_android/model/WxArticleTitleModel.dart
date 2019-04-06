@@ -6,7 +6,7 @@ class WxArticleTitleModel {
   String errorMsg;
   List<WxArticleTitleData> data;
 
-  WxArticleTitleModel.fromParams({this.errorCode, this.errorMsg, this.data});
+  // WxArticleTitleModel.fromParams({this.errorCode, this.errorMsg, this.data});
 
   factory WxArticleTitleModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? new WxArticleTitleModel.fromJson(json.decode(jsonStr)) : new WxArticleTitleModel.fromJson(jsonStr);
 
@@ -37,7 +37,7 @@ class WxArticleTitleData {
   String name;
   List<dynamic> children;
 
-  WxArticleTitleData.fromParams({this.courseId, this.id, this.order, this.parentChapterId, this.visible, this.userControlSetTop, this.name, this.children});
+  // WxArticleTitleData.fromParams({this.courseId, this.id, this.order, this.parentChapterId, this.visible, this.userControlSetTop, this.name, this.children});
 
   WxArticleTitleData.fromJson(jsonRes) {
     courseId = jsonRes['courseId'];

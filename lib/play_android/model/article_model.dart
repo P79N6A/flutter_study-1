@@ -1,27 +1,13 @@
-import 'dart:convert' show json;
-
 class ArticleModel {
   int errorCode;
   String errorMsg;
   Data data;
-
-  ArticleModel.fromParams({this.errorCode, this.errorMsg, this.data});
-
-  factory ArticleModel(jsonStr) => jsonStr == null
-      ? null
-      : jsonStr is String
-          ? ArticleModel.fromJson(json.decode(jsonStr))
-          : ArticleModel.fromJson(jsonStr);
+  factory ArticleModel(jsonStr) => ArticleModel.fromJson(jsonStr);
 
   ArticleModel.fromJson(jsonRes) {
     errorCode = jsonRes['errorCode'];
     errorMsg = jsonRes['errorMsg'];
-    data = jsonRes['data'] == null ? null : Data.fromJson(jsonRes['data']);
-  }
-
-  @override
-  String toString() {
-    return '{"errorCode": $errorCode,"errorMsg": ${errorMsg != null ? '${json.encode(errorMsg)}' : 'null'},"data": $data}';
+    data = Data.fromJson(jsonRes['data']);
   }
 }
 
@@ -33,16 +19,6 @@ class Data {
   int total;
   bool over;
   List<Article> datas;
-
-  Data.fromParams(
-      {this.curPage,
-      this.offset,
-      this.pageCount,
-      this.size,
-      this.total,
-      this.over,
-      this.datas});
-
   Data.fromJson(jsonRes) {
     curPage = jsonRes['curPage'];
     offset = jsonRes['offset'];
@@ -51,15 +27,9 @@ class Data {
     total = jsonRes['total'];
     over = jsonRes['over'];
     datas = jsonRes['datas'] == null ? null : [];
-
     for (var datasItem in datas == null ? [] : jsonRes['datas']) {
       datas.add(datasItem == null ? null : Article.fromJson(datasItem));
     }
-  }
-
-  @override
-  String toString() {
-    return '{"curPage": $curPage,"offset": $offset,"pageCount": $pageCount,"size": $size,"total": $total,"over": $over,"datas": $datas}';
   }
 }
 
@@ -87,31 +57,6 @@ class Article {
   String superChapterName;
   String title;
   List<Tag> tags;
-
-  Article.fromParams(
-      {this.chapterId,
-      this.courseId,
-      this.id,
-      this.publishTime,
-      this.superChapterId,
-      this.type,
-      this.userId,
-      this.visible,
-      this.zan,
-      this.collect,
-      this.fresh,
-      this.apkLink,
-      this.author,
-      this.chapterName,
-      this.desc,
-      this.envelopePic,
-      this.link,
-      this.niceDate,
-      this.origin,
-      this.projectLink,
-      this.superChapterName,
-      this.title,
-      this.tags});
 
   Article.fromJson(jsonRes) {
     chapterId = jsonRes['chapterId'];
@@ -142,26 +87,14 @@ class Article {
       tags.add(tagsItem == null ? null : Tag.fromJson(tagsItem));
     }
   }
-
-  @override
-  String toString() {
-    return '{"chapterId": $chapterId,"courseId": $courseId,"id": $id,"publishTime": $publishTime,"superChapterId": $superChapterId,"type": $type,"userId": $userId,"visible": $visible,"zan": $zan,"collect": $collect,"fresh": $fresh,"apkLink": ${apkLink != null ? '${json.encode(apkLink)}' : 'null'},"author": ${author != null ? '${json.encode(author)}' : 'null'},"chapterName": ${chapterName != null ? '${json.encode(chapterName)}' : 'null'},"desc": ${desc != null ? '${json.encode(desc)}' : 'null'},"envelopePic": ${envelopePic != null ? '${json.encode(envelopePic)}' : 'null'},"link": ${link != null ? '${json.encode(link)}' : 'null'},"niceDate": ${niceDate != null ? '${json.encode(niceDate)}' : 'null'},"origin": ${origin != null ? '${json.encode(origin)}' : 'null'},"projectLink": ${projectLink != null ? '${json.encode(projectLink)}' : 'null'},"superChapterName": ${superChapterName != null ? '${json.encode(superChapterName)}' : 'null'},"title": ${title != null ? '${json.encode(title)}' : 'null'},"tags": $tags}';
-  }
 }
 
 class Tag {
   String name;
   String url;
 
-  Tag.fromParams({this.name, this.url});
-
   Tag.fromJson(jsonRes) {
     name = jsonRes['name'];
     url = jsonRes['url'];
-  }
-
-  @override
-  String toString() {
-    return '{"name": ${name != null ? '${json.encode(name)}' : 'null'},"url": ${url != null ? '${json.encode(url)}' : 'null'}}';
   }
 }

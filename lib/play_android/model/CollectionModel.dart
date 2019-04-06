@@ -6,7 +6,7 @@ class CollectionModel {
   String errorMsg;
   CollectionData data;
 
-  CollectionModel.fromParams({this.errorCode, this.errorMsg, this.data});
+  // CollectionModel.fromParams({this.errorCode, this.errorMsg, this.data});
 
   factory CollectionModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? new CollectionModel.fromJson(json.decode(jsonStr)) : new CollectionModel.fromJson(jsonStr);
   
@@ -32,7 +32,7 @@ class CollectionData {
   bool over;
   List<Collection> datas;
 
-  CollectionData.fromParams({this.curPage, this.offset, this.pageCount, this.size, this.total, this.over, this.datas});
+ // CollectionData.fromParams({this.curPage, this.offset, this.pageCount, this.size, this.total, this.over, this.datas});
   
   CollectionData.fromJson(jsonRes) {
     curPage = jsonRes['curPage'];
@@ -73,7 +73,7 @@ class Collection {
   String origin;
   String title;
 
-  Collection.fromParams({this.chapterId, this.courseId, this.id, this.originId, this.publishTime, this.userId, this.visible, this.zan, this.author, this.chapterName, this.desc, this.envelopePic, this.link, this.niceDate, this.origin, this.title});
+  // Collection.fromParams({this.chapterId, this.courseId, this.id, this.originId, this.publishTime, this.userId, this.visible, this.zan, this.author, this.chapterName, this.desc, this.envelopePic, this.link, this.niceDate, this.origin, this.title});
   
   Collection.fromJson(jsonRes) {
     chapterId = jsonRes['chapterId'];

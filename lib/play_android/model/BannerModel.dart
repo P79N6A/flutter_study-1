@@ -5,8 +5,8 @@ class BannerModel {
   int errorCode;
   String errorMsg;
   List<BannerData> data;
-
-  BannerModel.fromParams({this.errorCode, this.errorMsg, this.data});
+/* 
+  BannerModel.fromParams({this.errorCode, this.errorMsg, this.data}); */
 
   factory BannerModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? new BannerModel.fromJson(json.decode(jsonStr)) : new BannerModel.fromJson(jsonStr);
 
@@ -37,7 +37,7 @@ class BannerData {
   String title;
   String url;
 
-  BannerData.fromParams({this.id, this.isVisible, this.order, this.type, this.desc, this.imagePath, this.title, this.url});
+  // BannerData.fromParams({this.id, this.isVisible, this.order, this.type, this.desc, this.imagePath, this.title, this.url});
 
   BannerData.fromJson(jsonRes) {
     id = jsonRes['id'];

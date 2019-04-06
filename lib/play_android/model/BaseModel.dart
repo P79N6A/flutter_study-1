@@ -5,7 +5,7 @@ class BaseModel {
   int errorCode;
   String errorMsg;
 
-  BaseModel.fromParams({ this.errorCode, this.errorMsg});
+  // BaseModel.fromParams({ this.errorCode, this.errorMsg});
 
   factory BaseModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? new BaseModel.fromJson(json.decode(jsonStr)) : new BaseModel.fromJson(jsonStr);
   

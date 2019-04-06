@@ -6,7 +6,7 @@ class SystemTreeModel {
   String errorMsg;
   List<SystemTreeData> data;
 
-  SystemTreeModel.fromParams({this.errorCode, this.errorMsg, this.data});
+  // SystemTreeModel.fromParams({this.errorCode, this.errorMsg, this.data});
 
   factory SystemTreeModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? new SystemTreeModel.fromJson(json.decode(jsonStr)) : new SystemTreeModel.fromJson(jsonStr);
 
@@ -37,7 +37,7 @@ class SystemTreeData {
   String name;
   List<SystemTreeChild> children;
 
-  SystemTreeData.fromParams({this.courseId, this.id, this.order, this.parentChapterId, this.visible, this.userControlSetTop, this.name, this.children});
+  // SystemTreeData.fromParams({this.courseId, this.id, this.order, this.parentChapterId, this.visible, this.userControlSetTop, this.name, this.children});
 
   SystemTreeData.fromJson(jsonRes) {
     courseId = jsonRes['courseId'];
@@ -71,7 +71,7 @@ class SystemTreeChild {
   String name;
   List<dynamic> children;
 
-  SystemTreeChild.fromParams({this.courseId, this.id, this.order, this.parentChapterId, this.visible, this.userControlSetTop, this.name, this.children});
+  // SystemTreeChild.fromParams({this.courseId, this.id, this.order, this.parentChapterId, this.visible, this.userControlSetTop, this.name, this.children});
 
   SystemTreeChild.fromJson(jsonRes) {
     courseId = jsonRes['courseId'];
