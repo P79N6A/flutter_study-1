@@ -9,7 +9,7 @@ class StackPage extends StatefulWidget implements HasLayoutGroup {
   final VoidCallback onLayoutToggle;
 
   @override
-  _StackPageState createState() => new _StackPageState();
+  _StackPageState createState() =>  _StackPageState();
 }
 
 class _StackPageState extends State<StackPage> {

@@ -6,13 +6,13 @@ class ExampleTwo extends StatefulWidget {
   final String title;
 
   @override
-  _ExampleTwoState createState() => new _ExampleTwoState();
+  _ExampleTwoState createState() =>  _ExampleTwoState();
 }
 
 class _ExampleTwoState extends State<ExampleTwo> {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return  Scaffold(
       body: _buildMainContent(),
     );
   }

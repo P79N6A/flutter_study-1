@@ -46,11 +46,11 @@ class _HomePageState extends State<HomePage> {
     try {
       var resp = await http
           .get('https://www.cmtzz.cn/api/v1/interviews?page=$_pageCode');
-      var newsList = json.decode(resp.body)['data']['list'];
+      var sList = json.decode(resp.body)['data']['list'];
       setState(() {
         print(_pageCode);
         _pageCode++;
-        newsList.forEach((dynamic e) => titles.add(e['cover']));
+        sList.forEach((dynamic e) => titles.add(e['cover']));
         loading = false;
       });
     } catch (e) {

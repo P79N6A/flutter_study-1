@@ -6,7 +6,7 @@ class Home extends StatefulWidget {
   Home({Key key, this.title}) : super(key: key);
 
   @override
-  _HomeState createState() => new _HomeState();
+  _HomeState createState() =>  _HomeState();
 }
 
 class _HomeState extends State<Home> {

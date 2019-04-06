@@ -22,7 +22,7 @@ class HeroHeader implements SliverPersistentHeaderDelegate {
       fit: StackFit.expand,
       children: [
         Image.asset(
-          'assets/ronnie-mayo-361348-unsplash.jpg',
+          'assets/image/ronnie-mayo-361348-unsplash.jpg',
           fit: BoxFit.cover,
         ),
         Container(
@@ -65,9 +65,7 @@ class HeroHeader implements SliverPersistentHeaderDelegate {
   }
 
   @override
-  bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) {
-    return true;
-  }
+  bool shouldRebuild(SliverPersistentHeaderDelegate oldDelegate) => true;
 
   @override
   FloatingHeaderSnapConfiguration get snapConfiguration => null;
@@ -79,14 +77,14 @@ class HeroPage extends StatelessWidget implements HasLayoutGroup {
   final VoidCallback onLayoutToggle;
 
   final List<String> assetNames = [
-    'assets/brady-bellini-212790-unsplash.jpg',
-    'assets/stefan-stefancik-105587-unsplash.jpg',
-    'assets/simon-fitall-530083-unsplash.jpg',
-    'assets/anton-repponen-99530-unsplash.jpg',
-    'assets/kevin-cochran-524957-unsplash.jpg',
-    'assets/samsommer-72299-unsplash.jpg',
-    'assets/simon-matzinger-320332-unsplash.jpg',
-    'assets/meng-ji-102492-unsplash.jpg',
+    'assets/image/brady-bellini-212790-unsplash.jpg',
+    'assets/image/stefan-stefancik-105587-unsplash.jpg',
+    'assets/image/simon-fitall-530083-unsplash.jpg',
+    'assets/image/anton-repponen-99530-unsplash.jpg',
+    'assets/image/kevin-cochran-524957-unsplash.jpg',
+    'assets/image/samsommer-72299-unsplash.jpg',
+    'assets/image/simon-matzinger-320332-unsplash.jpg',
+    'assets/image/meng-ji-102492-unsplash.jpg',
   ];
 
   @override

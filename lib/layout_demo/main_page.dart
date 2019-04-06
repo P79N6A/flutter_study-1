@@ -15,7 +15,7 @@ class MainPage extends StatefulWidget {
   MainPage({Key key}) : super(key: key);
 
   @override
-  _MainPageState createState() => new _MainPageState();
+  _MainPageState createState() =>  _MainPageState();
 }
 
 class _MainPageState extends State<MainPage> {

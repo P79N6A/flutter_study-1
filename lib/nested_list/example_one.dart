@@ -5,15 +5,15 @@ class ExampleOne extends StatefulWidget {
   ExampleOne({Key key, this.title}) : super(key: key);
 
   @override
-  _ExampleOneState createState() => new _ExampleOneState();
+  _ExampleOneState createState() =>  _ExampleOneState();
 }
 
 class _ExampleOneState extends State<ExampleOne> {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text(widget.title),
+    return  Scaffold(
+      appBar:  AppBar(
+        title:  Text(widget.title),
       ),
       body: ListView.builder(
         itemBuilder: (context, index) {
