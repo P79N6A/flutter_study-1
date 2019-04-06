@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../model/ArticleModel.dart';
+import 'package:flutter_study/play_android/model/article_model.dart';
 import 'WebViewPageUI.dart';
 import '../utils/timeline_util.dart';
 import '../api/common_service.dart';

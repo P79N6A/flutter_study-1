@@ -4,8 +4,8 @@ import '../../api/common_service.dart';
 import '../../model/UserModel.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:dio/dio.dart';
-import '../../common/User.dart';
-import '../../common/Application.dart';
+import '../../common/user.dart';
+import '../../common/application.dart';
 import '../../event/login_event.dart';
 
 class LoginPageUI extends StatefulWidget {

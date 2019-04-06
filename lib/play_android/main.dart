@@ -9,12 +9,12 @@ import './ui/DrawerWidgetUI.dart';
 import 'GlobalConfig.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'event/theme_change_event.dart';
-import 'common/Application.dart';
+import 'common/application.dart';
 import './ui/SearchPageUI.dart';
 import 'package:event_bus/event_bus.dart';
-import './common/User.dart';
+import './common/user.dart';
 
-void main() async {
+main() async {
   bool themeIndex = await getTheme();
   getLoginInfo();
   runApp(MyApp(themeIndex));
@@ -48,37 +48,35 @@ class MyAppState extends State<MyApp> {
   ThemeData themeData;
 
   @override
-  void initState() {
+  initState() {
     super.initState();
     Application.eventBus = EventBus();
     themeData = GlobalConfig.getThemeData(widget.themeIndex);
     this.registerThemeEvent();
   }
 
-  void registerThemeEvent() {
+  registerThemeEvent() {
     Application.eventBus
         .on<ThemeChangeEvent>()
         .listen((ThemeChangeEvent onData) => this.changeTheme(onData));
   }
 
-  void changeTheme(ThemeChangeEvent onData) {
+  changeTheme(ThemeChangeEvent onData) {
     setState(() {
       themeData = GlobalConfig.getThemeData(onData.dark);
     });
   }
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "玩Android",
-      debugShowCheckedModeBanner: false,
-      home: Home(),
-      theme: themeData,
-    );
-  }
+  build(context) => MaterialApp(
+        title: "玩Android",
+        debugShowCheckedModeBanner: false,
+        home: Home(),
+        theme: themeData,
+      );
 
   @override
-  void dispose() {
+  dispose() {
     super.dispose();
     Application.eventBus.destroy();
   }
@@ -87,7 +85,7 @@ class MyAppState extends State<MyApp> {
 class Home extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return new HomeState();
+    return HomeState();
   }
 }
 
@@ -106,7 +104,7 @@ class HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   bool _showDrawer = true;
 
   @override
-  void initState() {
+  initState() {
     super.initState();
     _pageList = [
       HomePageUI(),
@@ -117,9 +115,9 @@ class HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
     ];
   }
 
-  void _handleTabChanged(int newValue) {
+  _handleTabChanged(value) {
     setState(() {
-      _index = newValue;
+      _index = value;
       if (_index == 0 || _index == 1 || _index == 3) {
         _showAppbar = true;
       } else {
@@ -134,18 +132,16 @@ class HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
     });
   }
 
-  Widget _appBarWidget(BuildContext context) {
-    return AppBar(
+  _appBarWidget(context) => AppBar(
         title: Text(_titleList[_index]),
         elevation: 0.4,
         actions: _actionsWidget());
-  }
 
   List<Widget> _actionsWidget() {
     if (_showDrawer) {
       return [
-        new IconButton(
-            icon: new Icon(Icons.search),
+        IconButton(
+            icon: Icon(Icons.search),
             onPressed: () {
               onSearchClick();
             })
@@ -156,7 +152,7 @@ class HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
   }
 
   @override
-  Widget build(BuildContext context) {
+  build(context) {
     return WillPopScope(
       onWillPop: _onWillPop,
       child: DefaultTabController(
@@ -176,31 +172,30 @@ class HomeState extends State<Home> with AutomaticKeepAliveClientMixin {
     );
   }
 
-
   Future<bool> _onWillPop() {
     return showDialog(
-      context: context,
-      builder: (context) => new AlertDialog(
-        title: new Text('提示'),
-        content: new Text('确定退出应用吗？'),
-        actions: <Widget>[
-          new FlatButton(
-            onPressed: () => Navigator.of(context).pop(false),
-            child: new Text('再看一会'),
-          ),
-          new FlatButton(
-            onPressed: () => Navigator.of(context).pop(true),
-            child: new Text('退出'),
-          ),
-        ],
-      ),
-    ) ?? false;
+          context: context,
+          builder: (context) => AlertDialog(
+                title: Text('提示'),
+                content: Text('确定退出应用吗？'),
+                actions: <Widget>[
+                  FlatButton(
+                    onPressed: () => Navigator.of(context).pop(false),
+                    child: Text('再看一会'),
+                  ),
+                  FlatButton(
+                    onPressed: () => Navigator.of(context).pop(true),
+                    child: Text('退出'),
+                  ),
+                ],
+              ),
+        ) ??
+        false;
   }
 
-
-  void onSearchClick() async {
-    await Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
-      return new SearchPageUI(null);
+  onSearchClick() async {
+    await Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+      return SearchPageUI(null);
     }));
   }
 

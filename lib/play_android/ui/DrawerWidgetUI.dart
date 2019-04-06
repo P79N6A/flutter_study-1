@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import '../GlobalConfig.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../common/Application.dart';
+import '../common/application.dart';
 import '../event/theme_change_event.dart';
 import 'AboutAppPageUI.dart';
 import 'MyCollectionPageUI.dart';
@@ -9,7 +9,7 @@ import 'WebsiteCollectionPageUI.dart';
 import './account/LoginPageUI.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'TodoPageUI.dart';
-import '../common/User.dart';
+import '../common/user.dart';
 import '../event/login_event.dart';
 
 class DrawerDemo extends StatefulWidget {

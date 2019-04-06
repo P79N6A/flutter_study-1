@@ -6,12 +6,12 @@ import '../api/common_service.dart';
 class NaviPageUI extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return new NaviPageUIState();
+    return NaviPageUIState();
   }
 }
 
 class NaviPageUIState extends State<NaviPageUI> {
-  List<NaviData> _naviTitles = new List();
+  List<NaviData> _naviTitles = List();
 
   @override
   void initState() {
@@ -83,9 +83,9 @@ class NaviPageUIState extends State<NaviPageUI> {
     List<Widget> tiles = []; //先建一个数组用于存放循环生成的widget
     Widget content; //单独一个widget组件，用于返回需要生成的内容widget
     for (var item in children) {
-      tiles.add(new InkWell(
-        child: new Chip(
-          label: new Text(item.title),
+      tiles.add(InkWell(
+        child: Chip(
+          label: Text(item.title),
         ),
         onTap: () {
           _onItemClick(item);
@@ -103,8 +103,8 @@ class NaviPageUIState extends State<NaviPageUI> {
   }
 
   void _onItemClick(NaviArticle itemData) async {
-    await Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
-      return new WebViewPageUI(
+    await Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+      return WebViewPageUI(
         title: itemData.title,
         url: itemData.link,
       );
