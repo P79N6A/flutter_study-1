@@ -13,10 +13,15 @@ dependencies:
   nima:  # 2D尼玛动画
   shared_preferences:  # 表单缓存
   fluttertoast:   # 吐司字幕
+  flutter_swiper:   # 滑动换屏
+  flutter_webview_plugin: 
+  event_bus: 
+  flutter_slidable:
 dev_dependencies:
   flutter_test:
     sdk: flutter
 flutter:
+  uses-material-design: true
   assets:
   # 图片资源
   # https://unsplash.com/photos/EN2PucB2yhA
@@ -46,6 +51,9 @@ flutter:
   - assets/image/scene4.png
   - assets/image/scene5.png
   - assets/image/scene6.png
+  - assets/image/bg_dark.png
+  - assets/image/avatar.jpg
+  - assets/image/bg_light.jpg
     # 2D动画资源
   - assets/animation/Animals.flr
   - assets/animation/circular.flr
@@ -54,4 +62,3 @@ flutter:
   - assets/animation/robot.png
   - assets/animation/OldMan.nima
   - assets/animation/Hop.nima
-  uses-material-design: true
