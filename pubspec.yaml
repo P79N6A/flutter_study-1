@@ -20,6 +20,8 @@ dependencies:
   carousel_pro: # 轮播图框架
   sqflite:  # sqlite缓存
   transparent_image:  
+  url_launcher:
+  rxdart:
 dev_dependencies:
   flutter_test:
     sdk: flutter
