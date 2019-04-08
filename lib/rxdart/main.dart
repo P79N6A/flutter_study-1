@@ -1,4 +1,3 @@
-import './model/SearchModel.dart';
 import './model/item_model.dart';
 import 'package:flutter/material.dart';
 import 'bloc_provider.dart';
@@ -40,14 +39,10 @@ class HomePageState extends State<HomePage> {
   buildData() => _blocProvider.streamBuilder<SearchModel>(
       success: (data) => buildList(data),
       error: (msg) => Container(
-            child: Center(
-              child: Text(msg),
-            ),
+            child: Center(child: Text(msg)),
           ),
       empty: () => Container(
-            child: Center(
-              child: Text("暂无数据"),
-            ),
+            child: Center(child: Text("暂无数据")),
           ),
       loading: () => Container(
             child: Center(

@@ -1,5 +1,5 @@
+import './model/item_model.dart';
 import './api/const.dart';
-import './model/SearchModel.dart';
 import 'package:flutter/widgets.dart';
 import 'package:rxdart/rxdart.dart';
 import './api/api.dart';
@@ -38,8 +38,7 @@ class BlocProvider {
     Function empty,
     Function loading,
     Function finished,
-  }) {
-    return StreamBuilder(
+  }) => StreamBuilder(
         stream: stream(),
         initialData: initalData,
         builder: (context, AsyncSnapshot<T> snapshot) {
@@ -59,7 +58,6 @@ class BlocProvider {
             if (loading != null) return loading();
           }
         });
-  }
 
   static BlocProvider instance() => BlocProvider();
 }

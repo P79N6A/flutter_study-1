@@ -6,13 +6,10 @@ class HomeBanner extends StatefulWidget {
   final List<StoryModel> bannerStories;
   final OnTapBannerItem onTap;
 
-  HomeBanner(this.bannerStories, this.onTap, {Key key})
-      :super(key: key);
+  HomeBanner(this.bannerStories, this.onTap, {Key key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() {
-    return _BannerState();
-  }
+  createState() => _BannerState();
 }
 
 class _BannerState extends State<HomeBanner> {
@@ -27,8 +24,7 @@ class _BannerState extends State<HomeBanner> {
     controller = PageController(initialPage: realIndex);
     timer = Timer.periodic(Duration(seconds: 5), (timer) {
       controller.animateToPage(realIndex + 1,
-          duration: Duration(milliseconds: 300),
-          curve: Curves.linear);
+          duration: Duration(milliseconds: 300), curve: Curves.linear);
     });
   }
 
@@ -43,31 +39,29 @@ class _BannerState extends State<HomeBanner> {
   Widget build(BuildContext context) {
     return Container(
       height: 226.0,
-      child: Stack(
-          alignment: Alignment.bottomCenter,
-          children: <Widget>[
-            PageView(
-              controller: controller,
-              onPageChanged: _onPageChanged,
-              children: _buildItems(),),
-            _buildIndicator(),
-          ]),
+      child: Stack(alignment: Alignment.bottomCenter, children: <Widget>[
+        PageView(
+          controller: controller,
+          onPageChanged: _onPageChanged,
+          children: _buildItems,
+        ),
+        _buildIndicator(),
+      ]),
     );
   }
 
-  List<Widget> _buildItems() {
+  List<Widget> get _buildItems {
     List<Widget> items = [];
     if (widget.bannerStories.length > 0) {
       // 头部添加一个尾部Item，模拟循环
       items.add(
           _buildItem(widget.bannerStories[widget.bannerStories.length - 1]));
       // 正常添加Item
-      items.addAll(
-          widget.bannerStories.map((story) => _buildItem(story)).toList(
-              growable: false));
+      items.addAll(widget.bannerStories
+          .map((story) => _buildItem(story))
+          .toList(growable: false));
       // 尾部
-      items.add(
-          _buildItem(widget.bannerStories[0]));
+      items.add(_buildItem(widget.bannerStories[0]));
     }
     return items;
   }
@@ -84,7 +78,9 @@ class _BannerState extends State<HomeBanner> {
         children: <Widget>[
           Image.network(story.image, fit: BoxFit.cover),
           _buildItemTitle(story.title),
-        ],),);
+        ],
+      ),
+    );
   }
 
   Widget _buildItemTitle(String title) {
@@ -100,7 +96,10 @@ class _BannerState extends State<HomeBanner> {
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 22.0, horizontal: 16.0),
         child: Text(
-          title, style: TextStyle(color: Colors.white, fontSize: 22.0),),),
+          title,
+          style: TextStyle(color: Colors.white, fontSize: 22.0),
+        ),
+      ),
     );
   }
 
@@ -116,8 +115,7 @@ class _BannerState extends State<HomeBanner> {
               color: i == virtualIndex ? Colors.white : Colors.grey)));
     }
     return Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: indicators);
+        mainAxisAlignment: MainAxisAlignment.center, children: indicators);
   }
 
   _onPageChanged(int index) {

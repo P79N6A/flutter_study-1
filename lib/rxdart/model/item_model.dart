@@ -1,19 +1,37 @@
+class SearchModel {
+  final totalCount;
+  final incompleteResults;
+  final items;
+
+  SearchModel({this.totalCount, this.incompleteResults, this.items});
+
+  static SearchModel fromJson(Map<String, dynamic> json) => SearchModel(
+        totalCount: json['total_count'],
+        incompleteResults: json['incomplete_results'],
+        /* 
+        items:
+            (json['items'] as List).map((i) => ItemModel.fromJson(i)).toList(), */
+        items:
+            (json['items'] as List).map((i) => ItemModel.fromJson(i)).toList(),
+      );
+}
+
 class ItemModel {
-  int id;
-  String name;
-  String full_name;
-  bool private;
-  String url;
-  String description;
-  int size;
-  String language;
-  int forks;
-  int watchers;
+  final id;
+  final name;
+  final fullName;
+  final private;
+  final url;
+  final description;
+  final size;
+  final language;
+  final forks;
+  final watchers;
 
   ItemModel(
       {this.id,
       this.name,
-      this.full_name,
+      this.fullName,
       this.private,
       this.url,
       this.description,
@@ -25,7 +43,7 @@ class ItemModel {
   static ItemModel fromJson(Map<String, dynamic> json) => ItemModel(
         id: json['id'],
         name: json['name'],
-        full_name: json['full_name'],
+        fullName: json['full_name'],
         private: json['private'],
         url: json['url'],
         description: json['description'],
