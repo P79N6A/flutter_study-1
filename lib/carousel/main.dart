@@ -22,9 +22,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
-  build(context) => Scaffold(
-          body: CarouselBanner(storyModels: carouselSet, onTap: null)
-      );
+  build(context) =>
+      Scaffold(body: CarouselBanner(storyModels: carouselSet, onTap: null));
 
   Future<Null> _loadData() async {
     var url = 'https://news-at.zhihu.com/api/4/news/latest';

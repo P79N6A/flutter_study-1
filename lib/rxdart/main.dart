@@ -1,14 +1,9 @@
-import './model/item_model.dart';
 import 'package:flutter/material.dart';
-import 'bloc_provider.dart';
+import 'package:flutter_study/rxdart/model/search_model.dart';
+import './generator/bloc_provider.dart';
 
-main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  build(context) =>
-      MaterialApp(debugShowCheckedModeBanner: false, home: HomePage());
-}
+main() =>
+    runApp(MaterialApp(debugShowCheckedModeBanner: false, home: HomePage()));
 
 class HomePage extends StatefulWidget {
   @override
@@ -17,7 +12,6 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   var _blocProvider = BlocProvider.instance();
-
   @override
   initState() {
     super.initState();
@@ -30,101 +24,39 @@ class HomePageState extends State<HomePage> {
     super.dispose();
   }
 
-  finished() {}
-
   @override
-  build(context) =>
-      Scaffold(appBar: AppBar(title: Text("Bloc Sample")), body: buildData());
+  build(context) => Scaffold(
+      appBar: AppBar(title: Text('Business Logic Compounent')),
+      body: _blocProvider.streamBuilder<SearchModel>(
+          success: (data) => buildList(data),
+          error: (msg) => Center(child: Text(msg)),
+          empty: () => Center(child: Text("暂无数据")),
+          loading: () => Center(child: CircularProgressIndicator()),
+          finished: () {}));
 
-  buildData() => _blocProvider.streamBuilder<SearchModel>(
-      success: (data) => buildList(data),
-      error: (msg) => Container(
-            child: Center(child: Text(msg)),
-          ),
-      empty: () => Container(
-            child: Center(child: Text("暂无数据")),
-          ),
-      loading: () => Container(
-            child: Center(
-              child: CircularProgressIndicator(),
-            ),
-          ),
-      finished: finished);
-
-  buildList(SearchModel data) => ListView.builder(
+  buildList(data) => ListView.builder(
+        shrinkWrap: true,
+        physics: BouncingScrollPhysics(),
         itemCount: data.items.length,
         itemBuilder: (context, index) {
-          ItemModel itemModel = data.items[index];
-          return InkWell(
-            onTap: () {},
-            child: Card(
-              margin: EdgeInsets.only(
-                left: 15.0,
-                top: 15.0,
-                right: 15.0,
-              ),
-              color: Colors.white,
+          var item = data.items[index];
+          return Card(
+            child: Container(
+              padding: EdgeInsets.all(16.0),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      left: 15.0,
-                      right: 15.0,
-                      top: 10.0,
-                    ),
-                    child: Text(itemModel.name,
-                        style: TextStyle(
-                          color: Color(0xff333333),
-                          fontSize: 18.0,
-                        )),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      top: 10.0,
-                      left: 15.0,
-                      right: 15.0,
-                    ),
-                    child: Text(
-                      itemModel.description,
-                      style: TextStyle(
-                        color: Color(0xff9b9b9b),
-                        fontSize: 14.0,
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      top: 10.0,
-                      bottom: 10.0,
-                    ),
-                    child: Row(
-                      children: <Widget>[
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            left: 15.0,
-                          ),
-                          child: Text("大小:${itemModel.size}",
-                              style: TextStyle(
-                                color: Color(0xff9b9b9b),
-                                fontSize: 14.0,
-                              )),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(
-                            left: 15.0,
-                          ),
-                          child: Text("分支:${itemModel.forks}",
-                              style: TextStyle(
-                                color: Color(0xff9b9b9b),
-                                fontSize: 14.0,
-                              )),
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('编号：${item.id}'),
+                    Text('全名：${item.fullName}'),
+                    Text('描述：${item.description}'),
+                    Text('分支：${item.forks}'),
+                    Text('语言：${item.language}'),
+                    Text('大小：${item.size}'),
+                    Text('浏览：${item.watchers}'),
+                    Text('私有：${item.private}'),
+                    Text('散码：${item.hashCode}'),
+                    Text('类型：${item.runtimeType}')
+                  ]),
             ),
           );
         },
