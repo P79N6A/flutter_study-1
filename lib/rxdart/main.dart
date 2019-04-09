@@ -26,16 +26,15 @@ class HomePageState extends State<HomePage> {
 
   @override
   build(context) => Scaffold(
-      appBar: AppBar(title: Text('Business Logic Compounent')),
+      appBar: AppBar(title: Text('Business Logic Component')),
       body: _blocProvider.streamBuilder<SearchModel>(
           success: (data) => buildList(data),
           error: (msg) => Center(child: Text(msg)),
-          empty: () => Center(child: Text("暂无数据")),
+          empty: () => Center(child: Text('暂无数据')),
           loading: () => Center(child: CircularProgressIndicator()),
           finished: () {}));
 
   buildList(data) => ListView.builder(
-        shrinkWrap: true,
         physics: BouncingScrollPhysics(),
         itemCount: data.items.length,
         itemBuilder: (context, index) {

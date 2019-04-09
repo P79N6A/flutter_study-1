@@ -5,10 +5,10 @@ class SearchModel {
 
   SearchModel({this.totalCount, this.incompleteResults, this.items});
   static fromJson(json) => SearchModel(
-      totalCount: json['total_count'],
-      incompleteResults: json['incomplete_results'],
-      items:
-          (json['items'] as List).map((i) => ItemModel.formJson(i)).toList());
+        totalCount: json['total_count'],
+        incompleteResults: json['incomplete_results'],
+        items: json['items'].map((i) => ItemModel.fromJson(i)).toList(),
+      );
 }
 
 class ItemModel {
@@ -21,6 +21,7 @@ class ItemModel {
   final size;
   final language;
   final forks;
+  final stargazersCount;
   final watchers;
 
   ItemModel(
@@ -33,16 +34,17 @@ class ItemModel {
       this.size,
       this.language,
       this.forks,
+      this.stargazersCount,
       this.watchers});
-  static formJson(json) => ItemModel(
+  static fromJson(json) => ItemModel(
       id: json['id'],
       name: json['name'],
       fullName: json['full_name'],
       private: json['private'],
-      url: json['url'],
       description: json['description'],
       size: json['size'],
       language: json['language'],
       forks: json['forks'],
+      stargazersCount: json['stargazers_count'],
       watchers: json['watchers']);
 }

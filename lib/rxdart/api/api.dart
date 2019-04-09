@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 
-const SEARCH_URL = "https://api.github.com/search/repositories?q=flutter";
+const SEARCH_URL = 'https://api.github.com/search/repositories?q=flutter';
 
 class Api {
   fetchUrl(url, success, error, empty) async {

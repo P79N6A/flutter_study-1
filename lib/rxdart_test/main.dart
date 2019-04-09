@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import './generator/bloc_provider.dart';
-import './model/search_model.dart';
+import 'package:flutter_study/rxdart_test/generator/bloc_provider.dart';
+import 'package:flutter_study/rxdart_test/model/search_model.dart';
 
 main() =>
     runApp(MaterialApp(debugShowCheckedModeBanner: false, home: HomePage()));
@@ -19,37 +19,43 @@ class _HomePageState extends State<HomePage> {
   }
 
   @override
-  void dispose() {
+  dispose() {
     _blocProvider.dispose();
     super.dispose();
   }
 
   @override
   build(context) => Scaffold(
-        body: _blocProvider.streamBuilder<SearchModel>(
-            success: (data) => _buildList(data),
-            error: (msg) => Text(msg),
-            empty: () => Text('暂无数据'),
-            loading: () => CircularProgressIndicator(),
-            finished: () {}),
-      );
+      appBar: AppBar(title: Text('Business Logic Component')),
+      body: _blocProvider.streamBuilder<SearchModel>(
+          success: (data) => _buildList(data),
+          error: (msg) => Center(child: Text(msg)),
+          empty: () => Center(child: Text('暂无数据')),
+          loading: () => Center(child: CircularProgressIndicator()),
+          finished: () {}));
 
-  _buildList(SearchModel data) => ListView.builder(
+  _buildList(data) => ListView.builder(
+        physics: BouncingScrollPhysics(),
         itemCount: data.items.length,
         itemBuilder: (context, index) {
-          ItemModel itemModel = data.items[index];
-          return InkWell(
-            child: Card(
-              margin: EdgeInsets.all(16.0),
-              color: Colors.white,
+          var item = data.items[index];
+          return Card(
+            child: Container(
+              padding: EdgeInsets.all(16.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(itemModel.name),
-                  Text(itemModel.description),
-                  Text('${itemModel.size}'),
-                  Text('${itemModel.forks}'),
-                  Text(itemModel.language),
+                  Text('编号：${item.id}'),
+                  Text('全名：${item.fullName}'),
+                  Text('描述：${item.description}'),
+                  Text('星数：${item.stargazersCount}'),
+                  Text('分支：${item.forks}'),
+                  Text('语言：${item.language}'),
+                  Text('大小：${item.size}'),
+                  Text('浏览：${item.watchers}'),
+                  Text('私有：${item.private}'),
+                  Text('散码：${item.hashCode}'),
+                  Text('类型：${item.runtimeType}')
                 ],
               ),
             ),

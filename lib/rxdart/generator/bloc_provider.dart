@@ -1,14 +1,12 @@
-import 'package:flutter/widgets.dart';
 import '../api/api.dart';
 import '../model/search_model.dart';
+import 'package:flutter/widgets.dart';
 import 'package:rxdart/rxdart.dart';
 
 class BlocProvider {
   final _api = Api();
   final _empty = "_empty_";
   final _fetcher = PublishSubject<SearchModel>(); // 实体类获取器
-  stream() => _fetcher.stream;
-  dispose() => _fetcher.close();
   fetchQueryList() async =>
       fetchUrl(SEARCH_URL, (map) => SearchModel.fromJson(map));
   fetchUrl(url, handleData) async {
@@ -43,4 +41,6 @@ class BlocProvider {
             }
           });
   static instance() => BlocProvider();
+  stream() => _fetcher.stream;
+  dispose() => _fetcher.close();
 }

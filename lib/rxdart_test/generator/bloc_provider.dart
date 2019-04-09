@@ -7,9 +7,6 @@ class BlocProvider {
   final _api = Api();
   final _empty = '_empty_';
   final _fetcher = PublishSubject<SearchModel>();
-  stream() => _fetcher.stream;
-  dispose() => _fetcher.close();
-
   fetchQueryList() async =>
       fetchUrl(SEARCH_URL, (map) => SearchModel.fromJson(map));
 
@@ -32,11 +29,13 @@ class BlocProvider {
               if (snapshot.error == _empty) {
                 return empty();
               } else {
-                return error();
+                return error(snapshot.error);
               }
             } else {
               return loading();
             }
           });
   static instance() => BlocProvider();
+  stream() => _fetcher.stream;
+  dispose() => _fetcher.close();
 }
