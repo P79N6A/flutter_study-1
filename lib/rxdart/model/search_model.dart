@@ -21,6 +21,7 @@ class ItemModel {
   final size;
   final language;
   final forks;
+  final stargazersCount;
   final watchers;
 
   ItemModel(
@@ -33,6 +34,7 @@ class ItemModel {
       this.size,
       this.language,
       this.forks,
+      this.stargazersCount,
       this.watchers});
   static fromJson(json) => ItemModel(
       id: json['id'],
@@ -44,5 +46,6 @@ class ItemModel {
       size: json['size'],
       language: json['language'],
       forks: json['forks'],
+      stargazersCount: json['stargazers_count'],
       watchers: json['watchers']);
 }

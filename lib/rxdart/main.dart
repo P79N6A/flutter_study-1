@@ -49,6 +49,7 @@ class HomePageState extends State<HomePage> {
                     Text('编号：${item.id}'),
                     Text('全名：${item.fullName}'),
                     Text('描述：${item.description}'),
+                    Text('星数：${item.stargazersCount}'),
                     Text('分支：${item.forks}'),
                     Text('语言：${item.language}'),
                     Text('大小：${item.size}'),
