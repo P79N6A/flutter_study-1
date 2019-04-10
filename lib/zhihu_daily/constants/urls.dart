@@ -5,5 +5,5 @@ class Urls {
   static const String NEWS_LAST = _HOST + '/news/latest';
   static const String NEWS_BEFORE = _HOST + '/news/before/';
   static const String NEWS_EXTRA_INFO = _HOST + '/story-extra/';
-  static const String NEWS_DETAIL_WEB = 'http://daily.zhihu.com/story/';
+  static const String NEWS_DETAIL_WEB = 'https://daily.zhihu.com/story/';
 }

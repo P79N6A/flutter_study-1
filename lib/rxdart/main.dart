@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study/rxdart/api/api_provider.dart';
 import 'package:flutter_study/rxdart/model/search_model.dart';
-import './generator/bloc_provider.dart';
 
 main() =>
     runApp(MaterialApp(debugShowCheckedModeBanner: false, home: HomePage()));
@@ -11,11 +11,11 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
-  var _blocProvider = BlocProvider.instance();
+  var _blocProvider = ApiProvider.instance();
   @override
   initState() {
     super.initState();
-    _blocProvider.fetchQueryList();
+    _blocProvider.fetchRankList(SEARCH_URL);
   }
 
   @override

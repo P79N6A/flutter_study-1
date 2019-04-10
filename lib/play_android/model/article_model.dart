@@ -1,7 +1,7 @@
 class ArticleModel {
-  int errorCode;
-  String errorMsg;
-  Data data;
+  var errorCode;
+  var errorMsg;
+  var data;
   factory ArticleModel(jsonStr) => ArticleModel.fromJson(jsonStr);
 
   ArticleModel.fromJson(jsonRes) {
@@ -12,13 +12,13 @@ class ArticleModel {
 }
 
 class Data {
-  int curPage;
-  int offset;
-  int pageCount;
-  int size;
-  int total;
-  bool over;
-  List<Article> datas;
+  var curPage;
+  var offset;
+  var pageCount;
+  var size;
+  var total;
+  var over;
+  var datas;
   Data.fromJson(jsonRes) {
     curPage = jsonRes['curPage'];
     offset = jsonRes['offset'];
@@ -26,38 +26,36 @@ class Data {
     size = jsonRes['size'];
     total = jsonRes['total'];
     over = jsonRes['over'];
-    datas = jsonRes['datas'] == null ? null : [];
-    for (var datasItem in datas == null ? [] : jsonRes['datas']) {
-      datas.add(datasItem == null ? null : Article.fromJson(datasItem));
+    datas = [];
+    for (var datasItem in jsonRes['datas']) {
+      datas.add(Article.fromJson(datasItem));
     }
   }
 }
 
 class Article {
-  int chapterId;
-  int courseId;
-  int id;
-  int publishTime;
-  int superChapterId;
-  int type;
-  int userId;
-  int visible;
-  int zan;
-  bool collect;
-  bool fresh;
-  String apkLink;
-  String author;
-  String chapterName;
-  String desc;
-  String envelopePic;
-  String link;
-  String niceDate;
-  String origin;
-  String projectLink;
-  String superChapterName;
-  String title;
-  List<Tag> tags;
-
+  var chapterId;
+  var courseId;
+  var id;
+  var publishTime;
+  var superChapterId;
+  var type;
+  var userId;
+  var visible;
+  var zan;
+  var collect;
+  var fresh;
+  var apkLink;
+  var author;
+  var chapterName;
+  var desc;
+  var envelopePic;
+  var link;
+  var niceDate;
+  var origin;
+  var projectLink;
+  var superChapterName;
+  var title;
   Article.fromJson(jsonRes) {
     chapterId = jsonRes['chapterId'];
     courseId = jsonRes['courseId'];
@@ -81,20 +79,5 @@ class Article {
     projectLink = jsonRes['projectLink'];
     superChapterName = jsonRes['superChapterName'];
     title = jsonRes['title'];
-    tags = jsonRes['tags'] == null ? null : [];
-
-    for (var tagsItem in tags == null ? [] : jsonRes['tags']) {
-      tags.add(tagsItem == null ? null : Tag.fromJson(tagsItem));
-    }
-  }
-}
-
-class Tag {
-  String name;
-  String url;
-
-  Tag.fromJson(jsonRes) {
-    name = jsonRes['name'];
-    url = jsonRes['url'];
   }
 }

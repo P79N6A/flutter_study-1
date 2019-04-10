@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study/play_android/model/article_model.dart';
 import '../utils/timeline_util.dart';
 import '../utils/route_util.dart';
 import '../widget/BannerWidgetUI.dart';
@@ -15,7 +14,7 @@ class HomePageUI extends StatefulWidget {
 
 class HomePageUIState extends State<HomePageUI>
     with AutomaticKeepAliveClientMixin {
-  List<Article> _datas = List();
+  var _datas = List();
   var _scrollController = ScrollController(); // listview的控制器
   var _page = 0; // 加载的页数
 
@@ -35,7 +34,7 @@ class HomePageUIState extends State<HomePageUI>
   Future<Null> getData() async {
     _page = 0;
     print("$_page");
-    CommonService().getArticleList((ArticleModel _articleModel) {
+    CommonService().getArticleList((_articleModel) {
       setState(() => _datas = _articleModel.data.datas);
     }, _page);
   }
@@ -44,7 +43,7 @@ class HomePageUIState extends State<HomePageUI>
     _page++;
     print("$_page");
 
-    CommonService().getArticleList((ArticleModel _articleModel) {
+    CommonService().getArticleList((_articleModel) {
       setState(() => _datas.addAll(_articleModel.data.datas));
     }, _page);
   }

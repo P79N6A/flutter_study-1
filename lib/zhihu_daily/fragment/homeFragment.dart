@@ -168,9 +168,7 @@ class _FragmentState extends State<HomeFragment> {
       _showLoadError();
     }
 
-    setState(() {
-      showLoading = false;
-    });
+    setState(() => showLoading = false);
   }
 
   _loadMore() async {
@@ -179,6 +177,7 @@ class _FragmentState extends State<HomeFragment> {
     try {
       if (response.statusCode == 200) {
         Map<String, dynamic> result = json.decode(response.body);
+        print('\n首页：${response.body}\n');
         if (result['date'] != null) {
           List<StoryModel> models = [];
           if (result['stories'] != null) {
