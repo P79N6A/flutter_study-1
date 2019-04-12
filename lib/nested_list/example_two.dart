@@ -24,7 +24,7 @@ class _ExampleTwoState extends State<ExampleTwo> {
           pinned: true,
           expandedHeight: 256.0,
           flexibleSpace: FlexibleSpaceBar(
-            title: Text('Title'),
+            title: Text('测试标题'),
           ),
         ),
         SliverList(

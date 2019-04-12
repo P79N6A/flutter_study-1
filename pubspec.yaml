@@ -22,6 +22,8 @@ dependencies:
   transparent_image:  
   url_launcher:
   rxdart:
+  flutter_spinkit: 
+  font_awesome_flutter:
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -126,7 +126,7 @@ class HomePageUIState extends State<HomePageUI>
         ),
       );
     }
-    return _getMoreWidget();
+    return _getMoreWidget();  
   }
 
   onSearchClick() async {

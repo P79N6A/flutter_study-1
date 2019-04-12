@@ -22,7 +22,7 @@ class _HomeState extends State<Home> {
           Align(
             alignment: Alignment.center,
             child: RaisedButton(
-              child: Text('Example One'),
+              child: Text('示例一'),
               onPressed: () {
                 Navigator.of(context).pushNamed('exampleOne');
               },
@@ -32,12 +32,19 @@ class _HomeState extends State<Home> {
           Align(
             alignment: Alignment.center,
             child: RaisedButton(
-              child: Text('Example Two'),
+              child: Text('示例二'),
               onPressed: () {
                 Navigator.of(context).pushNamed('exampleTwo');
               },
             ),
-          )
+          ),
+          Align(
+            alignment: Alignment.center,
+            child: RaisedButton(
+              child: Text('纵向嵌套横向'),
+              onPressed: () => Navigator.of(context).pushNamed('exampleThree'),
+            ),
+          ),
         ],
       ),
     );
