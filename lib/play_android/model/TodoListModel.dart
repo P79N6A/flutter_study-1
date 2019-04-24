@@ -8,12 +8,12 @@ class TodoListModel {
 
   // TodoListModel.fromParams({this.errorCode, this.errorMsg, this.data});
 
-  factory TodoListModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? new TodoListModel.fromJson(json.decode(jsonStr)) : new TodoListModel.fromJson(jsonStr);
+  factory TodoListModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? TodoListModel.fromJson(json.decode(jsonStr)) : TodoListModel.fromJson(jsonStr);
   
   TodoListModel.fromJson(jsonRes) {
     errorCode = jsonRes['errorCode'];
     errorMsg = jsonRes['errorMsg'];
-    data = jsonRes['data'] == null ? null : new TodoListData.fromJson(jsonRes['data']);
+    data = jsonRes['data'] == null ? null : TodoListData.fromJson(jsonRes['data']);
   }
 
   @override
@@ -35,13 +35,13 @@ class TodoListData {
     doneList = jsonRes['doneList'] == null ? null : [];
 
     for (var doneListItem in doneList == null ? [] : jsonRes['doneList']){
-            doneList.add(doneListItem == null ? null : new TodoListDatas.fromJson(doneListItem));
+            doneList.add(doneListItem == null ? null : TodoListDatas.fromJson(doneListItem));
     }
 
     todoList = jsonRes['todoList'] == null ? null : [];
 
     for (var todoListItem in todoList == null ? [] : jsonRes['todoList']){
-            todoList.add(todoListItem == null ? null : new TodoListDatas.fromJson(todoListItem));
+            todoList.add(todoListItem == null ? null : TodoListDatas.fromJson(todoListItem));
     }
   }
 
@@ -63,7 +63,7 @@ class TodoListDatas {
     todoList = jsonRes['todoList'] == null ? null : [];
 
     for (var todoListItem in todoList == null ? [] : jsonRes['todoList']){
-            todoList.add(todoListItem == null ? null : new TodoData.fromJson(todoListItem));
+            todoList.add(todoListItem == null ? null : TodoData.fromJson(todoListItem));
     }
   }
 

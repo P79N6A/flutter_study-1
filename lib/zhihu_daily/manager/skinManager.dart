@@ -90,7 +90,7 @@ class _DynamicTheme extends StatefulWidget {
       : super(key: key);
 
   @override
-  _DynamicThemeState createState() => new _DynamicThemeState();
+  _DynamicThemeState createState() => _DynamicThemeState();
 }
 
 class _DynamicThemeState extends State<_DynamicTheme> {

@@ -8,7 +8,7 @@ class NaviModel {
 
   // NaviModel.fromParams({this.errorCode, this.errorMsg, this.data});
 
-  factory NaviModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? new NaviModel.fromJson(json.decode(jsonStr)) : new NaviModel.fromJson(jsonStr);
+  factory NaviModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? NaviModel.fromJson(json.decode(jsonStr)) : NaviModel.fromJson(jsonStr);
 
   NaviModel.fromJson(jsonRes) {
     errorCode = jsonRes['errorCode'];
@@ -16,7 +16,7 @@ class NaviModel {
     data = jsonRes['data'] == null ? null : [];
 
     for (var dataItem in data == null ? [] : jsonRes['data']){
-      data.add(dataItem == null ? null : new NaviData.fromJson(dataItem));
+      data.add(dataItem == null ? null : NaviData.fromJson(dataItem));
     }
   }
 
@@ -40,7 +40,7 @@ class NaviData {
     articles = jsonRes['articles'] == null ? null : [];
 
     for (var articlesItem in articles == null ? [] : jsonRes['articles']){
-      articles.add(articlesItem == null ? null : new NaviArticle.fromJson(articlesItem));
+      articles.add(articlesItem == null ? null : NaviArticle.fromJson(articlesItem));
     }
   }
 

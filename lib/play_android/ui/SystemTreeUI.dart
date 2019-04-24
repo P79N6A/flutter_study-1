@@ -12,7 +12,7 @@ class SystemTreeUI extends StatefulWidget {
 }
 
 class SystemTreeUIState extends State<SystemTreeUI> {
-  List<SystemTreeData> _datas = new List();
+  List<SystemTreeData> _datas = List();
 
   @override
   void initState() {
@@ -22,9 +22,9 @@ class SystemTreeUIState extends State<SystemTreeUI> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      // appBar: new AppBar(
-      //   title: new Text("知识体系"),
+    return Scaffold(
+      // appBar: AppBar(
+      //   title: Text("知识体系"),
       //   elevation: 0.4,
       // ),
       body: RefreshIndicator(
@@ -45,7 +45,7 @@ class SystemTreeUIState extends State<SystemTreeUI> {
 
   void _onItemClick(SystemTreeData itemData) async {
     await Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
-      return new SystemTreeContentPageUI(new ValueKey(itemData));
+      return SystemTreeContentPageUI(new ValueKey(itemData));
     }));
   }
 
@@ -93,9 +93,9 @@ class SystemTreeUIState extends State<SystemTreeUI> {
     Widget content; //单独一个widget组件，用于返回需要生成的内容widget
     for (var item in children) {
       tiles.add(
-        new Chip(
-          label: new Text(item.name),
-//          avatar: new CircleAvatar(backgroundColor: Colors.blue,child: Text("A"),),
+        Chip(
+          label: Text(item.name),
+//          avatar: CircleAvatar(backgroundColor: Colors.blue,child: Text("A"),),
         ),
       );
     }

@@ -127,7 +127,7 @@ class LoginPageUIState extends State<LoginPageUI> {
 
   void onRegisterClick() async {
     await Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
-      return new RegisterPageUI();
+      return RegisterPageUI();
     }));
   }
 }

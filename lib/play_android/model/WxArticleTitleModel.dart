@@ -8,7 +8,7 @@ class WxArticleTitleModel {
 
   // WxArticleTitleModel.fromParams({this.errorCode, this.errorMsg, this.data});
 
-  factory WxArticleTitleModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? new WxArticleTitleModel.fromJson(json.decode(jsonStr)) : new WxArticleTitleModel.fromJson(jsonStr);
+  factory WxArticleTitleModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? WxArticleTitleModel.fromJson(json.decode(jsonStr)) : WxArticleTitleModel.fromJson(jsonStr);
 
   WxArticleTitleModel.fromJson(jsonRes) {
     errorCode = jsonRes['errorCode'];
@@ -16,7 +16,7 @@ class WxArticleTitleModel {
     data = jsonRes['data'] == null ? null : [];
 
     for (var dataItem in data == null ? [] : jsonRes['data']){
-      data.add(dataItem == null ? null : new WxArticleTitleData.fromJson(dataItem));
+      data.add(dataItem == null ? null : WxArticleTitleData.fromJson(dataItem));
     }
   }
 

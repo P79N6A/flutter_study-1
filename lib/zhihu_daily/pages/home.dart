@@ -11,7 +11,7 @@ import '../dialog/moreMenuDialog.dart';
 class PageHome extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return new _PageState();
+    return _PageState();
   }
 }
 
@@ -39,7 +39,7 @@ class _PageState extends State<PageHome> {
     } else {
       body = ThemeFragment(activatedTheme);
     }
-    return new Scaffold(
+    return Scaffold(
       appBar: _buildAppBar(),
       drawer: _buildDrawer(),
       body: body,
@@ -47,7 +47,7 @@ class _PageState extends State<PageHome> {
   }
 
   Widget _buildDrawer() {
-    return new HomeDrawer(activatedThemeId, themeList, (ThemeModel theme) {
+    return HomeDrawer(activatedThemeId, themeList, (ThemeModel theme) {
       if (theme == null) {
         setState(() {
           activatedThemeId = 0;

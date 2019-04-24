@@ -39,12 +39,12 @@ class SystemTreeContentPageUIState extends State<SystemTreeContentPageUI>
   @override
   Widget build(BuildContext context) {
     _tabController =
-        new TabController(vsync: this, length: _datas.children.length);
-    return new Scaffold(
-      appBar: new AppBar(
+        TabController(vsync: this, length: _datas.children.length);
+    return Scaffold(
+      appBar: AppBar(
         title: Text(_datas.name),
         elevation: 0.4,
-        bottom: new TabBar(
+        bottom: TabBar(
           controller: _tabController,
           tabs: _datas.children.map((SystemTreeChild item) {
             return Tab(
@@ -55,7 +55,7 @@ class SystemTreeContentPageUIState extends State<SystemTreeContentPageUI>
               true, //水平滚动的开关，开启后Tab标签可自适应宽度并可横向拉动，关闭后每个Tab自动压缩为总长符合屏幕宽度的等宽，默认关闭
         ),
       ),
-      body: new TabBarView(
+      body: TabBarView(
         controller: _tabController,
         children: _datas.children.map((item) {
           return NewsList(
@@ -73,11 +73,11 @@ class NewsList extends StatefulWidget {
   @override
   NewsList({Key key, this.id}) : super(key: key);
 
-  _NewsListState createState() => new _NewsListState();
+  _NewsListState createState() => _NewsListState();
 }
 
 class _NewsListState extends State<NewsList> {
-  List<SystemTreeContentChild> _datas = new List();
+  List<SystemTreeContentChild> _datas = List();
   ScrollController _scrollController = ScrollController(); //listview的控制器
   int _page = 0; //加载的页数
 
@@ -117,7 +117,7 @@ class _NewsListState extends State<NewsList> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
       body: RefreshIndicator(
         onRefresh: getData,
         child: ListView.separated(
@@ -156,19 +156,19 @@ class _NewsListState extends State<NewsList> {
 
   //新闻列表单个item
   Widget _newsRow(SystemTreeContentChild item) {
-    return new Column(
+    return Column(
       children: <Widget>[
-        new Container(
+        Container(
             padding: EdgeInsets.fromLTRB(8, 8, 8, 8),
-            child: new Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
                   item.author,
                   style: TextStyle(fontSize: 12, color: Colors.grey),
                 ),
-                new Expanded(
-                  child: new Text(
+                Expanded(
+                  child: Text(
                     TimelineUtil.format(item.publishTime),
                     style: TextStyle(fontSize: 12, color: Colors.grey),
                     textAlign: TextAlign.right,
@@ -196,7 +196,7 @@ class _NewsListState extends State<NewsList> {
                   item.superChapterName,
                   style: TextStyle(fontSize: 12, color: Colors.grey),
                 ),
-                new Text(
+                Text(
                   "/" + item.chapterName,
                   style: TextStyle(fontSize: 12, color: Colors.grey),
                   textAlign: TextAlign.right,

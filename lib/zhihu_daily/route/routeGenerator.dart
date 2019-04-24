@@ -53,8 +53,8 @@ class RouteGenerator {
       },
       transitionsBuilder: (_, Animation<double> animation, __,
           Widget child) {
-        return new SlideTransition(
-            position: new Tween<Offset>(
+        return SlideTransition(
+            position: Tween<Offset>(
               begin: const Offset(1.0, 0.0),
               end: const Offset(0.0, 0.0),
             ).animate(animation),

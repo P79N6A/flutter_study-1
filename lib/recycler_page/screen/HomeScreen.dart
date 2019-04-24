@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
-  HomeScreenState createState() => new HomeScreenState();
+  HomeScreenState createState() => HomeScreenState();
 }
 
 class HomeScreenState extends State<HomeScreen> {
@@ -27,19 +27,19 @@ class HomeScreenState extends State<HomeScreen> {
       });
     }
 
-    return new Scaffold(
+    return Scaffold(
       appBar: AppBar(
         title: const Text("Gallery"),
         actions: <Widget>[
-          new IconButton(
-              icon: new Icon(Icons.search), onPressed: () {}),
-          new IconButton(
-              icon: new Icon(Icons.more_vert), onPressed: () {})
+          IconButton(
+              icon: Icon(Icons.search), onPressed: () {}),
+          IconButton(
+              icon: Icon(Icons.more_vert), onPressed: () {})
         ],
       ),
      body: viewContainer[currentIndex],
-      bottomNavigationBar: new BottomNavigationBar(
-                  onTap: onTabTapped, // new
+      bottomNavigationBar: BottomNavigationBar(
+                  onTap: onTabTapped, //
           currentIndex: currentIndex,
           fixedColor: Colors.red,
           items: [

@@ -32,7 +32,7 @@ class _FragmentState extends State<HomeFragment> {
   @override
   void initState() {
     super.initState();
-    scrollController = new ScrollController();
+    scrollController = ScrollController();
     scrollController.addListener(_onScroll);
     isLoadingMore = false;
     _loadData();

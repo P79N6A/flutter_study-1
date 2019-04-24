@@ -9,7 +9,7 @@ class RowColumnPage extends StatefulWidget implements HasLayoutGroup {
   final VoidCallback onLayoutToggle;
 
   @override
-  _RowColumnPageState createState() => new _RowColumnPageState();
+  _RowColumnPageState createState() => _RowColumnPageState();
 }
 
 class _RowColumnPageState extends State<RowColumnPage> {

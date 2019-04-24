@@ -14,8 +14,8 @@ class SearchPageUI extends StatefulWidget {
 }
 
 class SearchPageState extends State<SearchPageUI> {
-  TextEditingController _searchController = new TextEditingController();
-  FocusNode focusNode1 = new FocusNode();
+  TextEditingController _searchController = TextEditingController();
+  FocusNode focusNode1 = FocusNode();
 
   SearchResultPageUI _searchListPage;
   String searchStr;
@@ -25,7 +25,7 @@ class SearchPageState extends State<SearchPageUI> {
   void initState() {
     super.initState();
 
-    _searchController = new TextEditingController(text: searchStr);
+    _searchController = TextEditingController(text: searchStr);
     changeContent();
   }
 
@@ -33,15 +33,15 @@ class SearchPageState extends State<SearchPageUI> {
     focusNode1.unfocus();
     setState(() {
       _searchListPage =
-          new SearchResultPageUI(new ValueKey(_searchController.text));
+          SearchResultPageUI(new ValueKey(_searchController.text));
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    TextField searchField = new TextField(
+    TextField searchField = TextField(
       autofocus: true,
-      decoration: new InputDecoration(
+      decoration: InputDecoration(
         border: InputBorder.none,
         hintText: '搜索关键词',
       ),
@@ -49,18 +49,18 @@ class SearchPageState extends State<SearchPageUI> {
       controller: _searchController,
     );
 
-    return new Scaffold(
-      appBar: new AppBar(
+    return Scaffold(
+      appBar: AppBar(
         elevation: 0.4,
         title: searchField,
         actions: <Widget>[
-          new IconButton(
-              icon: new Icon(Icons.search),
+          IconButton(
+              icon: Icon(Icons.search),
               onPressed: () {
                 changeContent();
               }),
-          new IconButton(
-              icon: new Icon(Icons.close),
+          IconButton(
+              icon: Icon(Icons.close),
               onPressed: () {
                 setState(() {
                   _searchController.clear();
@@ -69,8 +69,8 @@ class SearchPageState extends State<SearchPageUI> {
         ],
       ),
       body: (_searchController.text == null || _searchController.text.isEmpty)
-          ? new Center(
-              child: new SearchHotPageUI(),
+          ? Center(
+              child: SearchHotPageUI(),
             )
           : _searchListPage,
 //    body: Center(

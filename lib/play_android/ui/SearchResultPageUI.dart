@@ -12,11 +12,11 @@ class SearchResultPageUI extends StatefulWidget {
     this.id = key.value.toString();
   }
 
-  _NewsListState createState() => new _NewsListState();
+  _NewsListState createState() => _NewsListState();
 }
 
 class _NewsListState extends State<SearchResultPageUI> {
-  List<Article> _datas = new List();
+  List<Article> _datas = List();
   ScrollController _scrollController = ScrollController(); //listview的控制器
   int _page = 0; //加载的页数
 
@@ -54,7 +54,7 @@ class _NewsListState extends State<SearchResultPageUI> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
       body: RefreshIndicator(
         onRefresh: _getData,
         child: ListView.separated(
@@ -86,7 +86,7 @@ class _NewsListState extends State<SearchResultPageUI> {
 
   void _onItemClick(Article itemData) async {
     await Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
-      return new WebViewPageUI(
+      return WebViewPageUI(
         title: itemData.title,
         url: itemData.link,
       );
@@ -101,14 +101,14 @@ class _NewsListState extends State<SearchResultPageUI> {
   }
 
   Widget _newsRow(Article item) {
-//    return new Row(
+//    return Row(
 //      children: <Widget>[
 //        Container(
 //            padding: EdgeInsets.fromLTRB(8,16,8,8),
 //            child: Image.network(item.envelopePic,width: 80,height: 120,fit: BoxFit.fill,)
 //        ),
 
-    return new Column(
+    return Column(
       children: <Widget>[
         Container(
             padding: EdgeInsets.fromLTRB(8, 8, 8, 8),
@@ -144,17 +144,17 @@ class _NewsListState extends State<SearchResultPageUI> {
                 ))
               ],
             )),
-        new Container(
+        Container(
             padding: EdgeInsets.fromLTRB(8, 0, 8, 8),
-            child: new Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
                   item.author,
                   style: TextStyle(fontSize: 12),
                 ),
-                new Expanded(
-                  child: new Text(
+                Expanded(
+                  child: Text(
                     TimelineUtil.format(item.publishTime),
                     style: TextStyle(fontSize: 12),
                     textAlign: TextAlign.right,

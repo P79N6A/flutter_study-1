@@ -8,7 +8,7 @@ class ProjectTreeModel {
 
   // ProjectTreeModel.fromParams({this.errorCode, this.errorMsg, this.data});
 
-  factory ProjectTreeModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? new ProjectTreeModel.fromJson(json.decode(jsonStr)) : new ProjectTreeModel.fromJson(jsonStr);
+  factory ProjectTreeModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? ProjectTreeModel.fromJson(json.decode(jsonStr)) : ProjectTreeModel.fromJson(jsonStr);
 
   ProjectTreeModel.fromJson(jsonRes) {
     errorCode = jsonRes['errorCode'];
@@ -16,7 +16,7 @@ class ProjectTreeModel {
     data = jsonRes['data'] == null ? null : [];
 
     for (var dataItem in data == null ? [] : jsonRes['data']){
-      data.add(dataItem == null ? null : new ProjectTreeData.fromJson(dataItem));
+      data.add(dataItem == null ? null : ProjectTreeData.fromJson(dataItem));
     }
   }
 

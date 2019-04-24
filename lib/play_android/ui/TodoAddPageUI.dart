@@ -103,9 +103,9 @@ class TodoAddPageUIState extends State<TodoAddPageUI> {
                         // 调用函数打开
                         showDatePicker(
                           context: context,
-                          initialDate: new DateTime.now(),
-                          firstDate: new DateTime.now(), // 减 30 天
-                          lastDate: new DateTime.now()
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime.now(), // 减 30 天
+                          lastDate: DateTime.now()
                               .add(new Duration(days: 36)), // 加 30 天
                         ).then((DateTime val) {
                           print(val); // 2018-07-12 00:00:00.000

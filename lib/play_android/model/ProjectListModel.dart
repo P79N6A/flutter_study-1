@@ -8,12 +8,12 @@ class ProjectTreeListModel {
 
   // ProjectTreeListModel.fromParams({this.errorCode, this.errorMsg, this.data});
 
-  factory ProjectTreeListModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? new ProjectTreeListModel.fromJson(json.decode(jsonStr)) : new ProjectTreeListModel.fromJson(jsonStr);
+  factory ProjectTreeListModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? ProjectTreeListModel.fromJson(json.decode(jsonStr)) : ProjectTreeListModel.fromJson(jsonStr);
 
   ProjectTreeListModel.fromJson(jsonRes) {
     errorCode = jsonRes['errorCode'];
     errorMsg = jsonRes['errorMsg'];
-    data = jsonRes['data'] == null ? null : new ProjectTreeListData.fromJson(jsonRes['data']);
+    data = jsonRes['data'] == null ? null : ProjectTreeListData.fromJson(jsonRes['data']);
   }
 
   @override
@@ -44,7 +44,7 @@ class ProjectTreeListData {
     datas = jsonRes['datas'] == null ? null : [];
 
     for (var datasItem in datas == null ? [] : jsonRes['datas']){
-      datas.add(datasItem == null ? null : new ProjectTreeListDatas.fromJson(datasItem));
+      datas.add(datasItem == null ? null : ProjectTreeListDatas.fromJson(datasItem));
     }
   }
 
@@ -108,7 +108,7 @@ class ProjectTreeListDatas {
     tags = jsonRes['tags'] == null ? null : [];
 
     for (var tagsItem in tags == null ? [] : jsonRes['tags']){
-      tags.add(tagsItem == null ? null : new ProjectTreeListTag.fromJson(tagsItem));
+      tags.add(tagsItem == null ? null : ProjectTreeListTag.fromJson(tagsItem));
     }
   }
 

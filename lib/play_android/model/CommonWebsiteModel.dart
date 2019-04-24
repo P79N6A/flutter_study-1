@@ -8,7 +8,7 @@ class CommonWebsiteModel {
 
   // CommonWebsiteModel.fromParams({this.errorCode, this.errorMsg, this.data});
 
-  factory CommonWebsiteModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? new CommonWebsiteModel.fromJson(json.decode(jsonStr)) : new CommonWebsiteModel.fromJson(jsonStr);
+  factory CommonWebsiteModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? CommonWebsiteModel.fromJson(json.decode(jsonStr)) : CommonWebsiteModel.fromJson(jsonStr);
 
   CommonWebsiteModel.fromJson(jsonRes) {
     errorCode = jsonRes['errorCode'];
@@ -16,7 +16,7 @@ class CommonWebsiteModel {
     data = jsonRes['data'] == null ? null : [];
 
     for (var dataItem in data == null ? [] : jsonRes['data']){
-      data.add(dataItem == null ? null : new CommonWebsiteData.fromJson(dataItem));
+      data.add(dataItem == null ? null : CommonWebsiteData.fromJson(dataItem));
     }
   }
 

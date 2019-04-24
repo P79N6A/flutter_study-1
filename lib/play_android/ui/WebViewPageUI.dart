@@ -15,14 +15,14 @@ class WebViewPageUI extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    return new WebViewPageUIState();
+    return WebViewPageUIState();
   }
 }
 
 class WebViewPageUIState extends State<WebViewPageUI> {
   bool isLoad = true;
 
-  final flutterWebViewPlugin = new FlutterWebviewPlugin();
+  final flutterWebViewPlugin = FlutterWebviewPlugin();
 
   @override
   void initState() {
@@ -44,16 +44,16 @@ class WebViewPageUIState extends State<WebViewPageUI> {
 
   @override
   Widget build(BuildContext context) {
-    return new WebviewScaffold(
+    return WebviewScaffold(
       url: widget.url,
-      appBar: new AppBar(
+      appBar: AppBar(
         elevation: 0.4,
-        title: new Text(widget.title),
-        bottom: new PreferredSize(
+        title: Text(widget.title),
+        bottom: PreferredSize(
             preferredSize: const Size.fromHeight(1.0),
             child: isLoad
-                ? new LinearProgressIndicator()
-                : new Divider(
+                ? LinearProgressIndicator()
+                : Divider(
                     height: 1.0,
                     color: Theme.of(context).primaryColor,
                   )),

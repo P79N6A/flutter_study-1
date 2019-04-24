@@ -10,18 +10,18 @@ import 'CollectionAddPageUI.dart';
 class MyCollectionPageUI extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
+    return Scaffold(
+      appBar: AppBar(
         title: Text("我的收藏"),
         elevation: 0.4,
       ),
       body: NewsList(),
-      floatingActionButton: new FloatingActionButton(
+      floatingActionButton: FloatingActionButton(
         onPressed: () {
           onCollectionAddClick(context);
         },
         tooltip: '收藏',
-        child: new Icon(Icons.add),
+        child: Icon(Icons.add),
       ),
     );
   }
@@ -29,7 +29,7 @@ class MyCollectionPageUI extends StatelessWidget {
   void onCollectionAddClick(BuildContext context) async {
     await Navigator.of(context).push(new MaterialPageRoute(
       builder: (context) {
-        return new CollectionAddPageUI();
+        return CollectionAddPageUI();
       },
       fullscreenDialog: true,
     ));
@@ -38,11 +38,11 @@ class MyCollectionPageUI extends StatelessWidget {
 
 //知识体系文章列表
 class NewsList extends StatefulWidget {
-  _NewsListState createState() => new _NewsListState();
+  _NewsListState createState() => _NewsListState();
 }
 
 class _NewsListState extends State<NewsList> {
-  List<Collection> _datas = new List();
+  List<Collection> _datas = List();
   ScrollController _scrollController = ScrollController(); //listview的控制器
   int _page = 0; //加载的页数
 
@@ -90,7 +90,7 @@ class _NewsListState extends State<NewsList> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
       body: RefreshIndicator(
         onRefresh: getData,
         child: ListView.separated(
@@ -128,12 +128,12 @@ class _NewsListState extends State<NewsList> {
   }
 
   Widget _slideRow(int index, Collection item) {
-    return new Slidable(
-      delegate: new SlidableDrawerDelegate(),
+    return Slidable(
+      delegate: SlidableDrawerDelegate(),
       actionExtentRatio: 0.25,
       child: _newsRow(item),
       secondaryActions: <Widget>[
-        new IconSlideAction(
+        IconSlideAction(
           caption: '取消收藏',
           color: Colors.red,
           icon: Icons.delete,
@@ -146,19 +146,19 @@ class _NewsListState extends State<NewsList> {
   }
 
   Widget _newsRow(Collection item) {
-    return new Column(
+    return Column(
       children: <Widget>[
-        new Container(
+        Container(
             padding: EdgeInsets.fromLTRB(8, 8, 8, 8),
-            child: new Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
                   "作者：" + item.author,
                   style: TextStyle(fontSize: 12, color: Colors.grey),
                 ),
-                new Expanded(
-                  child: new Text(
+                Expanded(
+                  child: Text(
                     "收藏时间：" + TimelineUtil.format(item.publishTime),
                     style: TextStyle(fontSize: 12, color: Colors.grey),
                     textAlign: TextAlign.right,

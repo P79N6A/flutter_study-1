@@ -8,7 +8,7 @@ class WebsiteCollectionModel {
 
   // WebsiteCollectionModel.fromParams({this.errorCode, this.errorMsg, this.data});
 
-  factory WebsiteCollectionModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? new WebsiteCollectionModel.fromJson(json.decode(jsonStr)) : new WebsiteCollectionModel.fromJson(jsonStr);
+  factory WebsiteCollectionModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? WebsiteCollectionModel.fromJson(json.decode(jsonStr)) : WebsiteCollectionModel.fromJson(jsonStr);
   
   WebsiteCollectionModel.fromJson(jsonRes) {
     errorCode = jsonRes['errorCode'];
@@ -16,7 +16,7 @@ class WebsiteCollectionModel {
     data = jsonRes['data'] == null ? null : [];
 
     for (var dataItem in data == null ? [] : jsonRes['data']){
-            data.add(dataItem == null ? null : new WebsiteCollectionData.fromJson(dataItem));
+            data.add(dataItem == null ? null : WebsiteCollectionData.fromJson(dataItem));
     }
   }
 

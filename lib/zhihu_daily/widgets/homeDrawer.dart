@@ -38,12 +38,12 @@ class _DrawerState extends State<HomeDrawer> {
 
   @override
   Widget build(BuildContext context) {
-    return new Drawer(
+    return Drawer(
       child: Column(children: <Widget>[
         _buildHeader(),
         _buildHomeItem(),
         Expanded(
-          child: new ListView(
+          child: ListView(
             padding: EdgeInsets.only(),
             children: _buildDrawerList(),
           ),
@@ -61,7 +61,7 @@ class _DrawerState extends State<HomeDrawer> {
     return Container(
       color: theme.primaryColor,
       padding: EdgeInsets.fromLTRB(16.0, 16.0 + statusBarHeight, 16.0, 16.0),
-      child: new Column(
+      child: Column(
         children: <Widget>[
           _buildUserInfo(),
           _buildMenu()
@@ -87,14 +87,14 @@ class _DrawerState extends State<HomeDrawer> {
     }
     return GestureDetector(
       onTap: _onTapUsrInfo,
-      child: new Row(
+      child: Row(
         children: <Widget>[
-          new Container(
+          Container(
             width: 32.0, height: 32.0,
             margin: EdgeInsets.only(right: 14.0),
-            child: new CircleImage(avatar),
+            child: CircleImage(avatar),
           ),
-          new Text(usrName, style: new TextStyle(
+          Text(usrName, style: TextStyle(
             fontSize: 16.0,
             color: Colors.white,
           ))
@@ -103,9 +103,9 @@ class _DrawerState extends State<HomeDrawer> {
   }
 
   Widget _buildMenu() {
-    return new Container(
+    return Container(
       margin: EdgeInsets.only(top: 30.0),
-      child: new Row(
+      child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: <Widget>[
           _buildItemCollect(),
@@ -137,7 +137,7 @@ class _DrawerState extends State<HomeDrawer> {
             margin: EdgeInsets.only(right: 20.0),
             child: Icon(icon, color: Colors.white, size: 17.0),
           ),
-          Text(text, style: new TextStyle(
+          Text(text, style: TextStyle(
             fontSize: 14.0,
             fontWeight: FontWeight.bold,
             color: Colors.white,
@@ -211,18 +211,18 @@ class _DrawerState extends State<HomeDrawer> {
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
-        return new AlertDialog(
-          title: new Text('是否退出登录?', style: TextStyle(fontSize: 18.0)),
+        return AlertDialog(
+          title: Text('是否退出登录?', style: TextStyle(fontSize: 18.0)),
           actions: <Widget>[
-            new FlatButton(
-              child: new Text('取消'),
+            FlatButton(
+              child: Text('取消'),
               textColor: Colors.grey,
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
-            new FlatButton(
-              child: new Text('退出'),
+            FlatButton(
+              child: Text('退出'),
               onPressed: () {
                 Navigator.of(context).pop();
                 usrInfoManager.logout();

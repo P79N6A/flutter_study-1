@@ -62,7 +62,7 @@ class _PageState extends State<PageLogin> {
                 width: 230.0,
                 height: 50.0,
                 alignment: Alignment.center,
-                child: new Text('登  录', style: TextStyle(
+                child: Text('登  录', style: TextStyle(
                     fontSize: 20.0, fontWeight: FontWeight.w500)),
               ), _onTapLoginBtn),
         )
@@ -72,9 +72,9 @@ class _PageState extends State<PageLogin> {
 
   Widget _buildInkButton(Widget child, GestureTapCallback onTap) {
     return Material(
-      borderRadius: new BorderRadius.all(new Radius.circular(6.0)),
+      borderRadius: BorderRadius.all(new Radius.circular(6.0)),
       child: Ink(
-        child: new InkWell(
+        child: InkWell(
           onTap: onTap,
           child: child,
         ),

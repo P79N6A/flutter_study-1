@@ -8,12 +8,12 @@ class CollectionModel {
 
   // CollectionModel.fromParams({this.errorCode, this.errorMsg, this.data});
 
-  factory CollectionModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? new CollectionModel.fromJson(json.decode(jsonStr)) : new CollectionModel.fromJson(jsonStr);
+  factory CollectionModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? CollectionModel.fromJson(json.decode(jsonStr)) : CollectionModel.fromJson(jsonStr);
   
   CollectionModel.fromJson(jsonRes) {
     errorCode = jsonRes['errorCode'];
     errorMsg = jsonRes['errorMsg'];
-    data = jsonRes['data'] == null ? null : new CollectionData.fromJson(jsonRes['data']);
+    data = jsonRes['data'] == null ? null : CollectionData.fromJson(jsonRes['data']);
   }
 
   @override
@@ -44,7 +44,7 @@ class CollectionData {
     datas = jsonRes['datas'] == null ? null : [];
 
     for (var datasItem in datas == null ? [] : jsonRes['datas']){
-            datas.add(datasItem == null ? null : new Collection.fromJson(datasItem));
+            datas.add(datasItem == null ? null : Collection.fromJson(datasItem));
     }
   }
 

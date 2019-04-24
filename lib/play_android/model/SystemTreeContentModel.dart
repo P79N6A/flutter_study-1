@@ -8,12 +8,12 @@ class SystemTreeContentModel {
 
   // SystemTreeContentModel.fromParams({this.errorCode, this.errorMsg, this.data});
 
-  factory SystemTreeContentModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? new SystemTreeContentModel.fromJson(json.decode(jsonStr)) : new SystemTreeContentModel.fromJson(jsonStr);
+  factory SystemTreeContentModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? SystemTreeContentModel.fromJson(json.decode(jsonStr)) : SystemTreeContentModel.fromJson(jsonStr);
 
   SystemTreeContentModel.fromJson(jsonRes) {
     errorCode = jsonRes['errorCode'];
     errorMsg = jsonRes['errorMsg'];
-    data = jsonRes['data'] == null ? null : new SystemTreeContentData.fromJson(jsonRes['data']);
+    data = jsonRes['data'] == null ? null : SystemTreeContentData.fromJson(jsonRes['data']);
   }
 
   @override
@@ -44,7 +44,7 @@ class SystemTreeContentData {
     datas = jsonRes['datas'] == null ? null : [];
 
     for (var datasItem in datas == null ? [] : jsonRes['datas']){
-      datas.add(datasItem == null ? null : new SystemTreeContentChild.fromJson(datasItem));
+      datas.add(datasItem == null ? null : SystemTreeContentChild.fromJson(datasItem));
     }
   }
 

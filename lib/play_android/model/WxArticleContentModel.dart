@@ -8,12 +8,12 @@ class WxArticleContentModel {
 
   // WxArticleContentModel.fromParams({this.errorCode, this.errorMsg, this.data});
 
-  factory WxArticleContentModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? new WxArticleContentModel.fromJson(json.decode(jsonStr)) : new WxArticleContentModel.fromJson(jsonStr);
+  factory WxArticleContentModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? WxArticleContentModel.fromJson(json.decode(jsonStr)) : WxArticleContentModel.fromJson(jsonStr);
 
   WxArticleContentModel.fromJson(jsonRes) {
     errorCode = jsonRes['errorCode'];
     errorMsg = jsonRes['errorMsg'];
-    data = jsonRes['data'] == null ? null : new WxArticleContentData.fromJson(jsonRes['data']);
+    data = jsonRes['data'] == null ? null : WxArticleContentData.fromJson(jsonRes['data']);
   }
 
   @override
@@ -44,7 +44,7 @@ class WxArticleContentData {
     datas = jsonRes['datas'] == null ? null : [];
 
     for (var datasItem in datas == null ? [] : jsonRes['datas']){
-      datas.add(datasItem == null ? null : new WxArticleContentDatas.fromJson(datasItem));
+      datas.add(datasItem == null ? null : WxArticleContentDatas.fromJson(datasItem));
     }
   }
 
@@ -108,7 +108,7 @@ class WxArticleContentDatas {
     tags = jsonRes['tags'] == null ? null : [];
 
     for (var tagsItem in tags == null ? [] : jsonRes['tags']){
-      tags.add(tagsItem == null ? null : new WxArticleContentTags.fromJson(tagsItem));
+      tags.add(tagsItem == null ? null : WxArticleContentTags.fromJson(tagsItem));
     }
   }
 

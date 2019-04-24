@@ -15,7 +15,7 @@ class AnimatedLogo extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() {
-    return new _LogoState();
+    return _LogoState();
   }
 }
 
@@ -27,11 +27,11 @@ class _LogoState extends State<AnimatedLogo>
   @override
   void initState() {
     super.initState();
-    controller = new AnimationController(
+    controller = AnimationController(
         duration: const Duration(milliseconds: 1500), vsync: this);
-    Animation curve = new CurvedAnimation(
+    Animation curve = CurvedAnimation(
         parent: controller, curve: Curves.easeOut);
-    animation = new Tween(begin: 0.0, end: 0.75).animate(curve)
+    animation = Tween(begin: 0.0, end: 0.75).animate(curve)
       ..addListener(() {
         setState(() {});
       })
@@ -49,13 +49,13 @@ class _LogoState extends State<AnimatedLogo>
 
   @override
   Widget build(BuildContext context) {
-    return new Container(
+    return Container(
       padding: EdgeInsets.all(8.0),
-      decoration: new BoxDecoration(
-        border: new Border.all(color: _color),
-        borderRadius: new BorderRadius.all(new Radius.circular(6.0)),
+      decoration: BoxDecoration(
+        border: Border.all(color: _color),
+        borderRadius: BorderRadius.all(new Radius.circular(6.0)),
       ),
-      child: new CustomPaint(painter: new _LogoPainter(animation)),
+      child: CustomPaint(painter: _LogoPainter(animation)),
     );
   }
 
@@ -76,14 +76,14 @@ class _LogoPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     if (animation != null) {
-      Paint paint = new Paint()
+      Paint paint = Paint()
         ..color = _color
         ..strokeCap = StrokeCap.round
         ..strokeWidth = 4.5
         ..style = PaintingStyle.stroke;
       int max = (72 * animation.value).toInt();
       double r = size.width / 2;
-      Path path = new Path();
+      Path path = Path();
       path.moveTo(size.width / 2, size.height);
       for (int i = 0; i < max; i++) {
         double radians = (0.5 + i / 36.0) * pi;

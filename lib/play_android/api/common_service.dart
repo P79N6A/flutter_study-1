@@ -120,7 +120,7 @@ class CommonService {
 
   /// 获取搜索结果
   void getSearchResult(Function callback, int _page, String _id) async {
-    FormData formData = new FormData.from({
+    FormData formData = FormData.from({
       "k": _id,
     });
     DioManager.singleton.dio
@@ -134,7 +134,7 @@ class CommonService {
   /// 登录
   void login(Function callback, String _username, String _password) async {
     FormData formData =
-        new FormData.from({"username": _username, "password": _password});
+        FormData.from({"username": _username, "password": _password});
     DioManager.singleton.dio
         .post(API.USER_LOGIN, data: formData, options: _getOptions())
         .then((Response response) {
@@ -144,7 +144,7 @@ class CommonService {
 
   /// 注册
   void register(Function callback, String _username, String _password) async {
-    FormData formData = new FormData.from({
+    FormData formData = FormData.from({
       "username": _username,
       "password": _password,
       "repassword": _password
@@ -167,7 +167,7 @@ class CommonService {
 
   /// 我的收藏-取消收藏
   void cancelCollection(Function callback, int _id, int _originId) async {
-    FormData formData = new FormData.from({"originId": _originId});
+    FormData formData = FormData.from({"originId": _originId});
     DioManager.singleton.dio
         .post(API.CANCEL_COLLECTION + "$_id/json",
             data: formData, options: _getOptions())
@@ -180,7 +180,7 @@ class CommonService {
   void addCollection(
       Function callback, String _title, String _author, String _link) async {
     FormData formData =
-        new FormData.from({"title": _title, "author": _author, "link": _link});
+        FormData.from({"title": _title, "author": _author, "link": _link});
     DioManager.singleton.dio
         .post(API.ADD_COLLECTION, data: formData, options: _getOptions())
         .then((Response response) {
@@ -199,7 +199,7 @@ class CommonService {
 
   /// 取消网站收藏
   void cancelWebsiteCollectionList(Function callback, int _id) async {
-    FormData formData = new FormData.from({
+    FormData formData = FormData.from({
       "id": _id,
     });
     DioManager.singleton.dio
@@ -213,7 +213,7 @@ class CommonService {
   /// 新增网站收藏
   void addWebsiteCollectionList(
       Function callback, String _name, String _link) async {
-    FormData formData = new FormData.from({"name": _name, "link": _link});
+    FormData formData = FormData.from({"name": _name, "link": _link});
     DioManager.singleton.dio
         .post(API.ADD_WEBSITE_COLLECTION,
             data: formData, options: _getOptions())
@@ -226,7 +226,7 @@ class CommonService {
   void editWebsiteCollectionList(
       Function callback, int _id, String _name, String _link) async {
     FormData formData =
-        new FormData.from({"id": _id, "name": _name, "link": _link});
+        FormData.from({"id": _id, "name": _name, "link": _link});
     DioManager.singleton.dio
         .post(API.EDIT_WEBSITE_COLLECTION,
             data: formData, options: _getOptions())
@@ -247,7 +247,7 @@ class CommonService {
   /// 新增todo数据
   void addTodoData(Function callback, String _title, String _content,
       String _date, int _type) async {
-    FormData formData = new FormData.from(
+    FormData formData = FormData.from(
         {"title": _title, "content": _content, "date": _date, "type": _type});
     DioManager.singleton.dio
         .post(API.ADD_TODO, data: formData, options: _getOptions())
@@ -259,7 +259,7 @@ class CommonService {
   /// 更新todo数据
   void updateTodoData(Function callback, int _id, String _title,
       String _content, String _date, int _status, int _type) async {
-    FormData formData = new FormData.from({
+    FormData formData = FormData.from({
       "title": _title,
       "content": _content,
       "date": _date,
@@ -285,7 +285,7 @@ class CommonService {
 
   /// 仅更新todo完成状态
   void doneTodoData(Function callback, int _id, int _status) async {
-    FormData formData = new FormData.from({"status": _status});
+    FormData formData = FormData.from({"status": _status});
     DioManager.singleton.dio
         .post(API.DONE_TODO + "$_id/json",
             data: formData, options: _getOptions())
@@ -295,7 +295,7 @@ class CommonService {
   }
 
   Options _getOptions() {
-    Map<String, String> map = new Map();
+    Map<String, String> map = Map();
     List<String> cookies = User().cookie;
     map["Cookie"] = cookies.toString();
     return Options(headers: map);

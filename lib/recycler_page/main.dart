@@ -14,20 +14,20 @@ main() {
   runApp(new MaterialApp(
     title: 'FluterBottemNavigationView',
     debugShowCheckedModeBanner: false,
-    theme: new ThemeData(
+    theme: ThemeData(
         accentColor: Colors.black,
         indicatorColor: Colors.black,
         highlightColor: Colors.black,
         bottomAppBarColor: Colors.black,
         primaryColor: Color(0xFFffffff),
         primaryColorDark: Color(0xffffff)),
-    home: new SplashScreen(),
+    home: SplashScreen(),
     routes: <String, WidgetBuilder>{
-      home_page: (BuildContext context) => new HomeScreen(),
-      splash_page: (BuildContext context) => new SplashScreen(),
-      photo_page: (BuildContext context) => new PhotoContainerScreen(),
-      video_page: (BuildContext context) => new VideoContainerScreen(),
-      album_page: (BuildContext context) => new AlbumContainerScreen()
+      home_page: (BuildContext context) => HomeScreen(),
+      splash_page: (BuildContext context) => SplashScreen(),
+      photo_page: (BuildContext context) => PhotoContainerScreen(),
+      video_page: (BuildContext context) => VideoContainerScreen(),
+      album_page: (BuildContext context) => AlbumContainerScreen()
     },
   ));
 }

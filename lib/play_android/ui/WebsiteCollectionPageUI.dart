@@ -15,7 +15,7 @@ class WebsiteCollectionPageUI extends StatefulWidget {
 class WebsiteCollectionPageUIState extends State<WebsiteCollectionPageUI> {
   bool editStatus = false;
 
-  List<WebsiteCollectionData> _datas = new List();
+  List<WebsiteCollectionData> _datas = List();
 
   @override
   void initState() {
@@ -57,16 +57,16 @@ class WebsiteCollectionPageUIState extends State<WebsiteCollectionPageUI> {
               ? () {
                   showDialog(
                     context: context,
-                    child: new AlertDialog(
-                      title: new Text('提示'),
-                      content: new Text("确定删除${_item.name}吗？"),
+                    child: AlertDialog(
+                      title: Text('提示'),
+                      content: Text("确定删除${_item.name}吗？"),
                       actions: <Widget>[
-                        new FlatButton(
+                        FlatButton(
                             onPressed: () {
                               Navigator.of(context).pop();
                             },
                             child: const Text('取消')),
-                        new FlatButton(
+                        FlatButton(
                           onPressed: () {
                             _cancelCollect(_item.id, _item);
                             Navigator.of(context).pop();
@@ -103,12 +103,12 @@ class WebsiteCollectionPageUIState extends State<WebsiteCollectionPageUI> {
           ),
         ),
       ),
-      floatingActionButton: new FloatingActionButton(
+      floatingActionButton: FloatingActionButton(
         onPressed: () {
           onWebsiteAddClick(context);
         },
         tooltip: '收藏',
-        child: new Icon(Icons.add),
+        child: Icon(Icons.add),
       ),
     );
   }
@@ -116,7 +116,7 @@ class WebsiteCollectionPageUIState extends State<WebsiteCollectionPageUI> {
   void onWebsiteAddClick(BuildContext context) async {
     await Navigator.of(context).push(new MaterialPageRoute(
       builder: (context) {
-        return new WebsiteCollectionAddPageUI(
+        return WebsiteCollectionAddPageUI(
           website: null,
         );
       },
@@ -128,7 +128,7 @@ class WebsiteCollectionPageUIState extends State<WebsiteCollectionPageUI> {
       BuildContext context, WebsiteCollectionData _item) async {
     await Navigator.of(context).push(new MaterialPageRoute(
       builder: (context) {
-        return new WebsiteCollectionAddPageUI(
+        return WebsiteCollectionAddPageUI(
           website: _item,
         );
       },

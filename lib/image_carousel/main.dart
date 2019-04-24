@@ -21,10 +21,10 @@ class _MyHomePageState extends State<MyHomePage> {
   int photoIndex = 0;
 
   List<String> photos = [
-    'assets/image/burger1.jpg',
-    'assets/image/burger2.jpg',
-    'assets/image/burger3.jpg',
-    'assets/image/burger4.jpg'
+    'asset/image/scene1.png',
+    'asset/image/scene2.png',
+    'asset/image/scene3.png',
+    'asset/image/scene4.png'
   ];
 
   void _previousImage() {

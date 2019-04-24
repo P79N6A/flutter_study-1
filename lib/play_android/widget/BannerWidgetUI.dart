@@ -14,11 +14,11 @@ class BannerWidgetUI extends StatefulWidget {
 
 class BannerWidgetUIState extends State<BannerWidgetUI> {
   Dio _dio;
-  List<BannerData> _bannerList  = new List();
+  List<BannerData> _bannerList  = List();
 
   @override
   void initState() {
-    _dio = new Dio();
+    _dio = Dio();
     _bannerList.add(null);
     _getBanner();
   }
@@ -36,30 +36,30 @@ class BannerWidgetUIState extends State<BannerWidgetUI> {
   @override
   Widget build(BuildContext context) {
     return RefreshSafeArea(
-      child: new Swiper(
+      child: Swiper(
         itemHeight: 100,
         itemBuilder: (BuildContext context,int index){
           if(_bannerList[index] == null || _bannerList[index].imagePath == null){
-            return new Container(color: Colors.grey[100],);
+            return Container(color: Colors.grey[100],);
           }else{
             return buildItemImageWidget(context,index);
           }
         },
         itemCount: _bannerList.length,
         autoplay: true,
-        pagination: new SwiperPagination(),
+        pagination: SwiperPagination(),
       ),
     ) ;
   }
 
 
   Widget buildItemImageWidget(BuildContext context,int index){
-    return new InkWell(
+    return InkWell(
       onTap: () {
         RouteUtil.toWebView(context, _bannerList[index].title, _bannerList[index].url);
       },
-      child: new Container(
-        child: new Image.network(_bannerList[index].imagePath,fit: BoxFit.fill,),
+      child: Container(
+        child: Image.network(_bannerList[index].imagePath,fit: BoxFit.fill,),
       ),
     );
   }

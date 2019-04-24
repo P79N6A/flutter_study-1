@@ -8,7 +8,7 @@ class BannerModel {
 /* 
   BannerModel.fromParams({this.errorCode, this.errorMsg, this.data}); */
 
-  factory BannerModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? new BannerModel.fromJson(json.decode(jsonStr)) : new BannerModel.fromJson(jsonStr);
+  factory BannerModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? BannerModel.fromJson(json.decode(jsonStr)) : BannerModel.fromJson(jsonStr);
 
   BannerModel.fromJson(jsonRes) {
     errorCode = jsonRes['errorCode'];
@@ -16,7 +16,7 @@ class BannerModel {
     data = jsonRes['data'] == null ? null : [];
 
     for (var dataItem in data == null ? [] : jsonRes['data']){
-      data.add(dataItem == null ? null : new BannerData.fromJson(dataItem));
+      data.add(dataItem == null ? null : BannerData.fromJson(dataItem));
     }
   }
 

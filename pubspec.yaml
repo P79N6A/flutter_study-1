@@ -24,34 +24,27 @@ dependencies:
   rxdart:
   flutter_spinkit: 
   font_awesome_flutter:
+  polygon_clipper: 
+  video_player:
+  chewie: 
+  built_value:
+  built_collection:
+  flutter_bloc:
+  kiwi:
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  build_runner:
+  built_value_generator:
 flutter:
   uses-material-design: true
+
   assets:
   # 图片资源
-  - assets/image/logo.png
-  - assets/image/powered_by.png
-  - assets/image/icon_list.png
-  - assets/image/scene1.png
-  - assets/image/scene2.png
-  - assets/image/scene3.png
-  - assets/image/scene4.png
-  - assets/image/scene5.png
-  - assets/image/scene6.png
-  - assets/image/avatar.jpg
-  - assets/image/splash.png
-  - assets/image/avatar.png
-  - assets/image/login.png
-  - assets/image/logo_zhihu.png
+  - asset/image/
+  # 视频资源
+  - asset/video/
   # 2D动画资源
-  - assets/animation/Animals.flr
-  - assets/animation/circular.flr
-  - assets/animation/Filip.flr
-  - assets/animation/Robot.nima
-  - assets/animation/robot.png
-  - assets/animation/OldMan.nima
-  - assets/animation/Hop.nima
+  - asset/animation/
   # Json资源
-  - assets/data/barchart.json
+  - asset/data/

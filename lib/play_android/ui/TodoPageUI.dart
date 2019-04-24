@@ -16,26 +16,26 @@ class TodoPageUI extends StatefulWidget {
 }
 
 class TodoPageUIState extends State<TodoPageUI> {
-  List<TodoListDatas> _doneList = new List();
-  List<TodoListDatas> _todoList = new List();
+  List<TodoListDatas> _doneList = List();
+  List<TodoListDatas> _todoList = List();
 
-  List<TodoDataEntry> datas = new List();
+  List<TodoDataEntry> datas = List();
 
   TodoDataEntry buildTree(List<TodoListDatas> _datas, String _title) {
-    TodoDataEntry groupEntry = new TodoDataEntry();
-    TodoData titleModel = new TodoData();
+    TodoDataEntry groupEntry = TodoDataEntry();
+    TodoData titleModel = TodoData();
     titleModel.title = _title;
     groupEntry.data = titleModel;
     groupEntry.level = 1;
-    List<TodoDataEntry> childrenEntry = new List();
+    List<TodoDataEntry> childrenEntry = List();
     for (TodoListDatas _childModel in _datas) {
-      TodoDataEntry _childTitleEntry = new TodoDataEntry();
+      TodoDataEntry _childTitleEntry = TodoDataEntry();
       _childTitleEntry.level = 2;
       _childTitleEntry.data =
           TodoData.origin(TimelineUtil.format(_childModel.date));
-      List<TodoDataEntry> _childEntry = new List();
+      List<TodoDataEntry> _childEntry = List();
       for (TodoData _childData in _childModel.todoList) {
-        TodoDataEntry _childDataEntry = new TodoDataEntry();
+        TodoDataEntry _childDataEntry = TodoDataEntry();
         _childDataEntry.data = _childData;
         _childDataEntry.level = 3;
         _childDataEntry.children = [];
@@ -99,8 +99,8 @@ datas.add(buildTree(_todoList, "待办清单"));
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
+    return Scaffold(
+      appBar: AppBar(
         title: const Text('TODO'),
         elevation: 0.4,
       ),
@@ -126,21 +126,21 @@ datas.add(buildTree(_todoList, "待办清单"));
                   ]),
           
           Expanded(
-            child: new ListView.builder(
+            child: ListView.builder(
               shrinkWrap: true,
               itemBuilder: (BuildContext context, int index) =>
-                  new EntryItem(context, datas[index]),
+                  EntryItem(context, datas[index]),
               itemCount: datas.length,
             ),
           )
         ],
       ),
-      floatingActionButton: new FloatingActionButton(
+      floatingActionButton: FloatingActionButton(
         onPressed: () {
           onTodoAddClick(context, 0);
         },
         tooltip: '新增',
-        child: new Icon(Icons.add),
+        child: Icon(Icons.add),
       ),
     );
   }
@@ -148,7 +148,7 @@ datas.add(buildTree(_todoList, "待办清单"));
   void onTodoAddClick(BuildContext context, int _type) async {
     await Navigator.of(context).push(new MaterialPageRoute(
       builder: (context) {
-        return new TodoAddPageUI(
+        return TodoAddPageUI(
           data: null,
           type: _type,
         );
@@ -180,20 +180,20 @@ class EntryItem extends StatefulWidget {
 class EntryItemState extends State<EntryItem> {
   Widget _buildTiles(TodoDataEntry root) {
     if (root.children.isEmpty)
-      return new Slidable(
-        delegate: new SlidableDrawerDelegate(),
+      return Slidable(
+        delegate: SlidableDrawerDelegate(),
         actionExtentRatio: 0.25,
         child: InkWell(
           child: Container(
             padding: EdgeInsets.all(16),
             alignment: Alignment.centerLeft,
-            child: new Text(root.data.title),
+            child: Text(root.data.title),
             color: Colors.white,
           ),
           onTap: ()=> onTodoEditClick(context, root.data, 0),
         ),
         actions: <Widget>[
-          new IconSlideAction(
+          IconSlideAction(
             caption: '完成',
             icon: Icons.update,
             color: Colors.blue,
@@ -207,7 +207,7 @@ class EntryItemState extends State<EntryItem> {
           ),
         ],
         secondaryActions: <Widget>[
-          new IconSlideAction(
+          IconSlideAction(
             caption: '删除',
             color: Colors.red,
             icon: Icons.delete,
@@ -217,12 +217,12 @@ class EntryItemState extends State<EntryItem> {
           ),
         ],
       );
-    // return new ListTile(title: new Text(root.data.title));
-    return new ExpansionTile(
+    // return ListTile(title: Text(root.data.title));
+    return ExpansionTile(
       leading: root.level == 1?Icon(Icons.local_post_office):null,
-      key: new PageStorageKey<TodoDataEntry>(root),
+      key: PageStorageKey<TodoDataEntry>(root),
       initiallyExpanded: true,
-      title: new Text(root.data.title),
+      title: Text(root.data.title),
       children: root.children.map(_buildTiles).toList(),
     );
   }
@@ -235,7 +235,7 @@ class EntryItemState extends State<EntryItem> {
   void onTodoEditClick(BuildContext context, TodoData _item, int _type) async {
     await Navigator.of(context).push(new MaterialPageRoute(
       builder: (context) {
-        return new TodoAddPageUI(
+        return TodoAddPageUI(
           data: _item,
           type: _type,
         );

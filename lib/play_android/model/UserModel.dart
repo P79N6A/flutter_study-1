@@ -8,12 +8,12 @@ class UserModel {
 
   // UserModel.fromParams({this.errorCode, this.errorMsg, this.data});
 
-  factory UserModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? new UserModel.fromJson(json.decode(jsonStr)) : new UserModel.fromJson(jsonStr);
+  factory UserModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? UserModel.fromJson(json.decode(jsonStr)) : UserModel.fromJson(jsonStr);
   
   UserModel.fromJson(jsonRes) {
     errorCode = jsonRes['errorCode'];
     errorMsg = jsonRes['errorMsg'];
-    data = jsonRes['data'] == null ? null : new UserData.fromJson(jsonRes['data']);
+    data = jsonRes['data'] == null ? null : UserData.fromJson(jsonRes['data']);
   }
 
   @override

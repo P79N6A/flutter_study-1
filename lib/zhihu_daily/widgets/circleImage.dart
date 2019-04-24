@@ -7,10 +7,10 @@ class CircleImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Container(
-        decoration: new BoxDecoration(
+    return Container(
+        decoration: BoxDecoration(
             shape: BoxShape.circle,
-            image: new DecorationImage(image: image)
+            image: DecorationImage(image: image)
         )
     );
   }

@@ -6,33 +6,33 @@ class AlbumContainerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
       backgroundColor: Color(0xFFeaeaea),
       body: Padding(
         padding: const EdgeInsets.only(top: 2.0),
-        child: new ListView(
+        child: ListView(
           padding: EdgeInsets.all(2.0),
           addRepaintBoundaries: true,
           shrinkWrap: true,
           children: <Widget>[
-            new Card(
+            Card(
                 elevation: 1.0,
                 margin: EdgeInsets.all(3.0),
-                child: new Row(
+                child: Row(
                   children: <Widget>[
-                    new Image.asset(
+                    Image.asset(
                       "assets/image/scene1.png",
                       width: 80.0,
 
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: new Column(
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          new Row(
+                          Row(
                             children: <Widget>[
-                              new Text(
+                              Text(
                                 "Selfies",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(fontWeight:FontWeight.bold),
@@ -41,9 +41,9 @@ class AlbumContainerScreen extends StatelessWidget {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 5.0),
-                            child: new Row(
+                            child: Row(
                               children: <Widget>[
-                                new Text("53", textAlign: TextAlign.left)
+                                Text("53", textAlign: TextAlign.left)
                               ],
                             ),
                           )
@@ -52,23 +52,23 @@ class AlbumContainerScreen extends StatelessWidget {
                     )
                   ],
                 )),
-            new Card(
+            Card(
                 elevation: 1.0,
                 margin: EdgeInsets.all(3.0),
-                child: new Row(
+                child: Row(
                   children: <Widget>[
-                    new Image.asset(
+                    Image.asset(
                       "assets/image/scene2.png",
                       width: 80.0,
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: new Column(
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          new Row(
+                          Row(
                             children: <Widget>[
-                              new Text(
+                              Text(
                                 "Pictures",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(fontWeight:FontWeight.bold),
@@ -77,9 +77,9 @@ class AlbumContainerScreen extends StatelessWidget {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 5.0),
-                            child: new Row(
+                            child: Row(
                               children: <Widget>[
-                                new Text("10", textAlign: TextAlign.left)
+                                Text("10", textAlign: TextAlign.left)
                               ],
                             ),
                           )
@@ -88,23 +88,23 @@ class AlbumContainerScreen extends StatelessWidget {
                     )
                   ],
                 )),
-            new Card(
+            Card(
                 elevation: 1.0,
                 margin: EdgeInsets.all(3.0),
-                child: new Row(
+                child: Row(
                   children: <Widget>[
-                    new Image.asset(
+                    Image.asset(
                       "assets/image/scene3.png",
                       width: 80.0,
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: new Column(
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          new Row(
+                          Row(
                             children: <Widget>[
-                              new Text(
+                              Text(
                                 "WhatsApp image",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(fontWeight:FontWeight.bold),
@@ -113,9 +113,9 @@ class AlbumContainerScreen extends StatelessWidget {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 5.0),
-                            child: new Row(
+                            child: Row(
                               children: <Widget>[
-                                new Text("153", textAlign: TextAlign.left)
+                                Text("153", textAlign: TextAlign.left)
                               ],
                             ),
                           )
@@ -124,23 +124,23 @@ class AlbumContainerScreen extends StatelessWidget {
                     )
                   ],
                 )),
-            new Card(
+            Card(
                 elevation: 1.0,
                 margin: EdgeInsets.all(3.0),
-                child: new Row(
+                child: Row(
                   children: <Widget>[
-                    new Image.asset(
+                    Image.asset(
                       "assets/image/scene4.png",
                       width: 80.0,
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: new Column(
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          new Row(
+                          Row(
                             children: <Widget>[
-                              new Text(
+                              Text(
                                 "Screenshots",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(fontWeight:FontWeight.bold),
@@ -149,9 +149,9 @@ class AlbumContainerScreen extends StatelessWidget {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 5.0),
-                            child: new Row(
+                            child: Row(
                               children: <Widget>[
-                                new Text("15", textAlign: TextAlign.left)
+                                Text("15", textAlign: TextAlign.left)
                               ],
                             ),
                           )
@@ -160,23 +160,23 @@ class AlbumContainerScreen extends StatelessWidget {
                     )
                   ],
                 )),
-            new Card(
+            Card(
                 elevation: 1.0,
                 margin: EdgeInsets.all(3.0),
-                child: new Row(
+                child: Row(
                   children: <Widget>[
-                    new Image.asset(
+                    Image.asset(
                       "assets/image/scene5.png",
                       width: 80.0,
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: new Column(
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          new Row(
+                          Row(
                             children: <Widget>[
-                              new Text(
+                              Text(
                                 "Facebook",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(fontWeight:FontWeight.bold),
@@ -185,9 +185,9 @@ class AlbumContainerScreen extends StatelessWidget {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 5.0),
-                            child: new Row(
+                            child: Row(
                               children: <Widget>[
-                                new Text("1053", textAlign: TextAlign.left)
+                                Text("1053", textAlign: TextAlign.left)
                               ],
                             ),
                           )
@@ -196,23 +196,23 @@ class AlbumContainerScreen extends StatelessWidget {
                     )
                   ],
                 )),
-            new Card(
+            Card(
                 elevation: 1.0,
                 margin: EdgeInsets.all(3.0),
-                child: new Row(
+                child: Row(
                   children: <Widget>[
-                    new Image.asset(
+                    Image.asset(
                       "assets/image/scene6.png",
                       width: 80.0,
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: new Column(
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          new Row(
+                          Row(
                             children: <Widget>[
-                              new Text(
+                              Text(
                                 "Photos",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(fontWeight:FontWeight.bold),
@@ -221,9 +221,9 @@ class AlbumContainerScreen extends StatelessWidget {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 5.0),
-                            child: new Row(
+                            child: Row(
                               children: <Widget>[
-                                new Text("1538", textAlign: TextAlign.left)
+                                Text("1538", textAlign: TextAlign.left)
                               ],
                             ),
                           )
@@ -232,23 +232,23 @@ class AlbumContainerScreen extends StatelessWidget {
                     )
                   ],
                 )),
-            new Card(
+            Card(
                 elevation: 1.0,
                 margin: EdgeInsets.all(3.0),
-                child: new Row(
+                child: Row(
                   children: <Widget>[
-                    new Image.asset(
+                    Image.asset(
                       "assets/image/scene4.png",
                       width: 80.0,
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: new Column(
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          new Row(
+                          Row(
                             children: <Widget>[
-                              new Text(
+                              Text(
                                 "Videos",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(fontWeight:FontWeight.bold),
@@ -257,9 +257,9 @@ class AlbumContainerScreen extends StatelessWidget {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 5.0),
-                            child: new Row(
+                            child: Row(
                               children: <Widget>[
-                                new Text("13", textAlign: TextAlign.left)
+                                Text("13", textAlign: TextAlign.left)
                               ],
                             ),
                           )

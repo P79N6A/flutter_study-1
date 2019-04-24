@@ -196,31 +196,31 @@ class DrawerDemoState extends State<DrawerDemo> {
 
   void onAboutClick() async {
     await Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
-      return new AboutAppPageUI();
+      return AboutAppPageUI();
     }));
   }
 
   void onLoginClick() async {
     await Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
-      return new LoginPageUI();
+      return LoginPageUI();
     }));
   }
 
   void onCollectionClick() async {
     await Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
-      return new MyCollectionPageUI();
+      return MyCollectionPageUI();
     }));
   }
 
   void onWebsiteCollectionClick() async {
     await Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
-      return new WebsiteCollectionPageUI();
+      return WebsiteCollectionPageUI();
     }));
   }
 
   void onTodoClick() async {
     await Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
-      return new TodoPageUI();
+      return TodoPageUI();
     }));
   }
 

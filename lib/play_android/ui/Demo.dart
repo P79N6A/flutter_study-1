@@ -7,24 +7,24 @@ class MyHomePage extends StatefulWidget {
   final String title;
 
   @override
-  _MyHomePageState createState() => new _MyHomePageState();
+  _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text("sdsd"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("sdsd"),
       ),
-      body:  new Swiper(
+      body:  Swiper(
         itemBuilder: (BuildContext context,int index){
-          return new Image.network("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=399944689,1746572361&fm=26&gp=0.jpg",fit: BoxFit.fill,);
+          return Image.network("https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=399944689,1746572361&fm=26&gp=0.jpg",fit: BoxFit.fill,);
         },
         itemCount: 3,
-        pagination: new SwiperPagination(),
-        control: new SwiperControl(),
+        pagination: SwiperPagination(),
+        control: SwiperControl(),
       ),
     );
   }

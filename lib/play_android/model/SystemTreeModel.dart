@@ -8,7 +8,7 @@ class SystemTreeModel {
 
   // SystemTreeModel.fromParams({this.errorCode, this.errorMsg, this.data});
 
-  factory SystemTreeModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? new SystemTreeModel.fromJson(json.decode(jsonStr)) : new SystemTreeModel.fromJson(jsonStr);
+  factory SystemTreeModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? SystemTreeModel.fromJson(json.decode(jsonStr)) : SystemTreeModel.fromJson(jsonStr);
 
   SystemTreeModel.fromJson(jsonRes) {
     errorCode = jsonRes['errorCode'];
@@ -16,7 +16,7 @@ class SystemTreeModel {
     data = jsonRes['data'] == null ? null : [];
 
     for (var dataItem in data == null ? [] : jsonRes['data']){
-      data.add(dataItem == null ? null : new SystemTreeData.fromJson(dataItem));
+      data.add(dataItem == null ? null : SystemTreeData.fromJson(dataItem));
     }
   }
 
@@ -50,7 +50,7 @@ class SystemTreeData {
     children = jsonRes['children'] == null ? null : [];
 
     for (var childrenItem in children == null ? [] : jsonRes['children']){
-      children.add(childrenItem == null ? null : new SystemTreeChild.fromJson(childrenItem));
+      children.add(childrenItem == null ? null : SystemTreeChild.fromJson(childrenItem));
     }
   }
 

@@ -15,7 +15,7 @@ class ProjectTreePageUI extends StatefulWidget {
 class _MyTabbedPageState extends State<ProjectTreePageUI>
     with TickerProviderStateMixin {
 
-  List<ProjectTreeData> _datas = new List();
+  List<ProjectTreeData> _datas = List();
   TabController _tabController;
 
   Future<Null> _getData() async {
@@ -40,11 +40,11 @@ class _MyTabbedPageState extends State<ProjectTreePageUI>
 
   @override
   Widget build(BuildContext context) {
-    _tabController = new TabController(vsync: this, length: _datas.length);
-    return new Scaffold(
-      appBar: new AppBar(
+    _tabController = TabController(vsync: this, length: _datas.length);
+    return Scaffold(
+      appBar: AppBar(
         elevation: 0.4,
-        title: new TabBar(
+        title: TabBar(
           controller: _tabController,
           tabs: _datas.map((ProjectTreeData item) {
             return Tab(
@@ -55,7 +55,7 @@ class _MyTabbedPageState extends State<ProjectTreePageUI>
               true, //水平滚动的开关，开启后Tab标签可自适应宽度并可横向拉动，关闭后每个Tab自动压缩为总长符合屏幕宽度的等宽，默认关闭
         ),
       ),
-      body: new TabBarView(
+      body: TabBarView(
         controller: _tabController,
         children: _datas.map((item) {
           return NewsList(
@@ -72,11 +72,11 @@ class NewsList extends StatefulWidget {
   @override
   NewsList({Key key, this.id}) : super(key: key);
 
-  _NewsListState createState() => new _NewsListState();
+  _NewsListState createState() => _NewsListState();
 }
 
 class _NewsListState extends State<NewsList> {
-  List<ProjectTreeListDatas> _datas = new List();
+  List<ProjectTreeListDatas> _datas = List();
   ScrollController _scrollController = ScrollController(); //listview的控制器
   int _page = 1; //加载的页数
 
@@ -114,7 +114,7 @@ class _NewsListState extends State<NewsList> {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
       body: RefreshIndicator(
         onRefresh: _getData,
         child: ListView.separated(
@@ -146,7 +146,7 @@ class _NewsListState extends State<NewsList> {
 
   void _onItemClick(ProjectTreeListDatas itemData) async {
     await Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
-      return new WebViewPageUI(
+      return WebViewPageUI(
         title: itemData.title,
         url: itemData.link,
       );
@@ -161,7 +161,7 @@ class _NewsListState extends State<NewsList> {
   }
 
   Widget _newsRow(ProjectTreeListDatas item) {
-    return new Row(
+    return Row(
       children: <Widget>[
         Container(
             padding: EdgeInsets.fromLTRB(8, 16, 8, 8),
@@ -172,7 +172,7 @@ class _NewsListState extends State<NewsList> {
               fit: BoxFit.fill,
             )),
         Expanded(
-          child: new Column(
+          child: Column(
             children: <Widget>[
               Container(
                   padding: EdgeInsets.fromLTRB(8, 8, 8, 8),
@@ -200,17 +200,17 @@ class _NewsListState extends State<NewsList> {
                       ))
                     ],
                   )),
-              new Container(
+              Container(
                   padding: EdgeInsets.fromLTRB(8, 0, 8, 8),
-                  child: new Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Text(
                         item.author,
                         style: TextStyle(fontSize: 12, color: Colors.grey),
                       ),
-                      new Expanded(
-                        child: new Text(
+                      Expanded(
+                        child: Text(
                           TimelineUtil.format(item.publishTime),
                           style: TextStyle(fontSize: 12, color: Colors.grey),
                           textAlign: TextAlign.right,

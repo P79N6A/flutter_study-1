@@ -10,12 +10,12 @@ void main() => runApp(new MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new MaterialApp(
+    return MaterialApp(
       title: 'Custom Painter Demo',
-      theme: new ThemeData(
+      theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: new HomePage(),
+      home: HomePage(),
     );
   }
 }
@@ -23,18 +23,18 @@ class MyApp extends StatelessWidget {
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
+    return Scaffold(
+      appBar: AppBar(
         title: const Text('Custom Painter Demo'),
       ),
-      body: new BarChart(),
+      body: BarChart(),
     );
   }
 }
 
 class BarChart extends StatefulWidget {
   @override
-  createState() => new BarChartState();
+  createState() => BarChartState();
 }
 
 class BarChartState extends State<BarChart> {
@@ -58,9 +58,9 @@ class BarChartState extends State<BarChart> {
 
   @override
   Widget build(BuildContext context) {
-    return new Center(
-        child: new CustomPaint(
-      painter: new BarChartPainter(barHeights),
+    return Center(
+        child: CustomPaint(
+      painter: BarChartPainter(barHeights),
     ));
   }
 }
@@ -72,14 +72,14 @@ class BarChartPainter extends CustomPainter {
 
   @override
   paint(Canvas canvas, Size size) {
-    final paint = new Paint()
+    final paint = Paint()
       ..color = Colors.blue
       ..style = PaintingStyle.fill;
 
     var pos = 0.0;
     barHeights.forEach((barHeight) {
       canvas.drawRect(
-        new Rect.fromLTWH(pos, 10.0, 10.0, -barHeight.toDouble()),
+        Rect.fromLTWH(pos, 10.0, 10.0, -barHeight.toDouble()),
         paint, 
       );
       pos += 12;

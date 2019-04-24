@@ -5,7 +5,7 @@ import '../constant.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
-  SplashScreenState createState() => new SplashScreenState();
+  SplashScreenState createState() => SplashScreenState();
 }
 
 class SplashScreenState extends State<SplashScreen>
@@ -16,8 +16,8 @@ class SplashScreenState extends State<SplashScreen>
   Animation<double> animation;
 
   startTime() async {
-    var _duration = new Duration(seconds: 3);
-    return new Timer(_duration, navigationPage);
+    var _duration = Duration(seconds: 3);
+    return Timer(_duration, navigationPage);
   }
 
   void navigationPage() {
@@ -27,10 +27,10 @@ class SplashScreenState extends State<SplashScreen>
   @override
   void initState() {
     super.initState();
-    animationController = new AnimationController(
-        vsync: this, duration: new Duration(seconds: 2));
+    animationController = AnimationController(
+        vsync: this, duration: Duration(seconds: 2));
     animation =
-        new CurvedAnimation(parent: animationController, curve: Curves.easeOut);
+        CurvedAnimation(parent: animationController, curve: Curves.easeOut);
 
     animation.addListener(() => this.setState(() {}));
     animationController.forward();
@@ -47,23 +47,23 @@ class SplashScreenState extends State<SplashScreen>
       body: Stack(
         fit: StackFit.expand,
         children: <Widget>[
-          new Column(
+          Column(
             mainAxisAlignment: MainAxisAlignment.end,
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
               Padding(
                   padding: EdgeInsets.only(bottom: 30.0),
-                  child: new Image.asset(
+                  child: Image.asset(
                     'assets/image/powered_by.png',
                     height: 25.0,
                     fit: BoxFit.scaleDown,
                   ))
             ],
           ),
-          new Column(
+          Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              new Image.asset(
+              Image.asset(
                 'assets/image/logo.png',
                 width: animation.value * 250,
                 height: animation.value * 250,

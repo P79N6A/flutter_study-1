@@ -13,11 +13,11 @@ class GlobalConfig {
 
   static ThemeData themeData = getThemeData(dark);
 
-  static ThemeData themeDataLight = new ThemeData(
+  static ThemeData themeDataLight = ThemeData(
     primarySwatch: Colors.blue,
     primaryColor: Colors.grey[100],
     primaryColorBrightness: Brightness.light,
   );
 
-  static ThemeData themeDataDark = new ThemeData.dark();
+  static ThemeData themeDataDark = ThemeData.dark();
 }

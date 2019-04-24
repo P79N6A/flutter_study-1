@@ -6,32 +6,32 @@ class VideoContainerScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return new Scaffold(
+    return Scaffold(
       backgroundColor: Color(0xFFeaeaea),
       body: Padding(
         padding: const EdgeInsets.only(top: 2.0),
-        child: new ListView(
+        child: ListView(
           padding: EdgeInsets.all(2.0),
           addRepaintBoundaries: true,
           shrinkWrap: true,
           children: <Widget>[
-            new Card(
+            Card(
                 elevation: 1.0,
                 margin: EdgeInsets.all(3.0),
-                child: new Row(
+                child: Row(
                   children: <Widget>[
-                    new Image.asset(
+                    Image.asset(
                       "assets/image/icon_list.png",
                       width: 140.0,
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: new Column(
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          new Row(
+                          Row(
                             children: <Widget>[
-                              new Text(
+                              Text(
                                 "Big Buck Bunny",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(fontWeight: FontWeight.bold),
@@ -40,9 +40,9 @@ class VideoContainerScreen extends StatelessWidget {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 5.0),
-                            child: new Row(
+                            child: Row(
                               children: <Widget>[
-                                new Text("10:53", textAlign: TextAlign.left)
+                                Text("10:53", textAlign: TextAlign.left)
                               ],
                             ),
                           )
@@ -51,23 +51,23 @@ class VideoContainerScreen extends StatelessWidget {
                     )
                   ],
                 )),
-            new Card(
+            Card(
                 elevation: 1.0,
                 margin: EdgeInsets.all(3.0),
-                child: new Row(
+                child: Row(
                   children: <Widget>[
-                    new Image.asset(
+                    Image.asset(
                       "assets/image/icon_list.png",
                       width: 140.0,
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: new Column(
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          new Row(
+                          Row(
                             children: <Widget>[
-                              new Text(
+                              Text(
                                 "Big Buck Bunny",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(fontWeight: FontWeight.bold),
@@ -76,9 +76,9 @@ class VideoContainerScreen extends StatelessWidget {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 5.0),
-                            child: new Row(
+                            child: Row(
                               children: <Widget>[
-                                new Text("10:53", textAlign: TextAlign.left)
+                                Text("10:53", textAlign: TextAlign.left)
                               ],
                             ),
                           )
@@ -87,23 +87,23 @@ class VideoContainerScreen extends StatelessWidget {
                     )
                   ],
                 )),
-            new Card(
+            Card(
                 elevation: 1.0,
                 margin: EdgeInsets.all(3.0),
-                child: new Row(
+                child: Row(
                   children: <Widget>[
-                    new Image.asset(
+                    Image.asset(
                       "assets/image/icon_list.png",
                       width: 140.0,
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: new Column(
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          new Row(
+                          Row(
                             children: <Widget>[
-                              new Text(
+                              Text(
                                 "Big Buck Bunny",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(fontWeight: FontWeight.bold),
@@ -112,9 +112,9 @@ class VideoContainerScreen extends StatelessWidget {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 5.0),
-                            child: new Row(
+                            child: Row(
                               children: <Widget>[
-                                new Text("10:53", textAlign: TextAlign.left)
+                                Text("10:53", textAlign: TextAlign.left)
                               ],
                             ),
                           )
@@ -123,23 +123,23 @@ class VideoContainerScreen extends StatelessWidget {
                     )
                   ],
                 )),
-            new Card(
+            Card(
                 elevation: 1.0,
                 margin: EdgeInsets.all(3.0),
-                child: new Row(
+                child: Row(
                   children: <Widget>[
-                    new Image.asset(
+                    Image.asset(
                       "assets/image/icon_list.png",
                       width: 140.0,
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: new Column(
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          new Row(
+                          Row(
                             children: <Widget>[
-                              new Text(
+                              Text(
                                 "Big Buck Bunny",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(fontWeight: FontWeight.bold),
@@ -148,9 +148,9 @@ class VideoContainerScreen extends StatelessWidget {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 5.0),
-                            child: new Row(
+                            child: Row(
                               children: <Widget>[
-                                new Text("10:53", textAlign: TextAlign.left)
+                                Text("10:53", textAlign: TextAlign.left)
                               ],
                             ),
                           )
@@ -159,23 +159,23 @@ class VideoContainerScreen extends StatelessWidget {
                     )
                   ],
                 )),
-            new Card(
+            Card(
                 elevation: 1.0,
                 margin: EdgeInsets.all(3.0),
-                child: new Row(
+                child: Row(
                   children: <Widget>[
-                    new Image.asset(
+                    Image.asset(
                       "assets/image/icon_list.png",
                       width: 140.0,
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: new Column(
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          new Row(
+                          Row(
                             children: <Widget>[
-                              new Text(
+                              Text(
                                 "Big Buck Bunny",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(fontWeight: FontWeight.bold),
@@ -184,9 +184,9 @@ class VideoContainerScreen extends StatelessWidget {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 5.0),
-                            child: new Row(
+                            child: Row(
                               children: <Widget>[
-                                new Text("10:53", textAlign: TextAlign.left)
+                                Text("10:53", textAlign: TextAlign.left)
                               ],
                             ),
                           )
@@ -195,23 +195,23 @@ class VideoContainerScreen extends StatelessWidget {
                     )
                   ],
                 )),
-            new Card(
+            Card(
                 elevation: 1.0,
                 margin: EdgeInsets.all(3.0),
-                child: new Row(
+                child: Row(
                   children: <Widget>[
-                    new Image.asset(
+                    Image.asset(
                       "assets/image/icon_list.png",
                       width: 140.0,
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: new Column(
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          new Row(
+                          Row(
                             children: <Widget>[
-                              new Text(
+                              Text(
                                 "Big Buck Bunny",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(fontWeight: FontWeight.bold),
@@ -220,9 +220,9 @@ class VideoContainerScreen extends StatelessWidget {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 5.0),
-                            child: new Row(
+                            child: Row(
                               children: <Widget>[
-                                new Text("10:53", textAlign: TextAlign.left)
+                                Text("10:53", textAlign: TextAlign.left)
                               ],
                             ),
                           )
@@ -231,23 +231,23 @@ class VideoContainerScreen extends StatelessWidget {
                     )
                   ],
                 )),
-            new Card(
+            Card(
                 elevation: 1.0,
                 margin: EdgeInsets.all(3.0),
-                child: new Row(
+                child: Row(
                   children: <Widget>[
-                    new Image.asset(
+                    Image.asset(
                       "assets/image/icon_list.png",
                       width: 140.0,
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: new Column(
+                      child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          new Row(
+                          Row(
                             children: <Widget>[
-                              new Text(
+                              Text(
                                 "Big Buck Bunny",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(fontWeight: FontWeight.bold),
@@ -256,9 +256,9 @@ class VideoContainerScreen extends StatelessWidget {
                           ),
                           Padding(
                             padding: const EdgeInsets.only(top: 5.0),
-                            child: new Row(
+                            child: Row(
                               children: <Widget>[
-                                new Text("10:53", textAlign: TextAlign.left)
+                                Text("10:53", textAlign: TextAlign.left)
                               ],
                             ),
                           )

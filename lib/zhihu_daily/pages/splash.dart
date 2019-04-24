@@ -7,7 +7,7 @@ import '../widgets/animatedLogo.dart';
 class PageSplash extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return new _PageState();
+    return _PageState();
   }
 }
 
@@ -20,11 +20,11 @@ class _PageState extends State<PageSplash> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    controller = new AnimationController(
+    controller = AnimationController(
         duration: const Duration(milliseconds: 1000), vsync: this);
-    Animation curve = new CurvedAnimation(
+    Animation curve = CurvedAnimation(
         parent: controller, curve: Curves.easeOut);
-    animation = new Tween(begin: 84.0, end: 0.0).animate(curve)
+    animation = Tween(begin: 84.0, end: 0.0).animate(curve)
       ..addListener(() {
         setState(() {});
       })
@@ -66,7 +66,7 @@ class _PageState extends State<PageSplash> with SingleTickerProviderStateMixin {
       return FadeInImage(
           width: 360.0,
           placeholder: MemoryImage(kTransparentImage),
-          image: AssetImage('assets/image/splash.png'),
+          image: AssetImage('asset/image/splash.png'),
           fit: BoxFit.fill,
           fadeInDuration: Duration(milliseconds: 400));
     } else {
@@ -75,9 +75,9 @@ class _PageState extends State<PageSplash> with SingleTickerProviderStateMixin {
   }
 
   Widget _buildLogoAndSlogan(BuildContext context) {
-    return new Container(
+    return Container(
       padding: EdgeInsets.only(top: animation.value),
-      child: new Row(
+      child: Row(
         children: <Widget>[
           _buildLogo(context),
           _buildSlogan()
@@ -87,11 +87,11 @@ class _PageState extends State<PageSplash> with SingleTickerProviderStateMixin {
   }
 
   Widget _buildLogo(BuildContext context) {
-    return new Container(
+    return Container(
       width: 45.0,
       height: 45.0,
       margin: EdgeInsets.only(left: 25.5, right: 12.5),
-      child: new AnimatedLogo(
+      child: AnimatedLogo(
           showAnimation: showLogoAnimation,
           callback: (status) {
             if (status == AnimationStatus.completed) {
@@ -107,22 +107,22 @@ class _PageState extends State<PageSplash> with SingleTickerProviderStateMixin {
   }
 
   Widget _buildSlogan() {
-    return new Column(
+    return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
-        new Text(
+        Text(
           '知乎日报',
-          style: new TextStyle(
+          style: TextStyle(
             fontSize: 20.0,
-            color: new Color(0xffced2d9),
+            color: Color(0xffced2d9),
           ),
         ),
-        new Text(
+        Text(
           '每天三次，每次七分钟',
-          style: new TextStyle(
+          style: TextStyle(
             fontSize: 14.0,
-            color: new Color(0xff85888c),
+            color: Color(0xff85888c),
           ),
         )
       ],

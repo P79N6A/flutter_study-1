@@ -8,7 +8,7 @@ class HotWordModel {
 
   // HotWordModel.fromParams({this.errorCode, this.errorMsg, this.data});
 
-  factory HotWordModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? new HotWordModel.fromJson(json.decode(jsonStr)) : new HotWordModel.fromJson(jsonStr);
+  factory HotWordModel(jsonStr) => jsonStr == null ? null : jsonStr is String ? HotWordModel.fromJson(json.decode(jsonStr)) : HotWordModel.fromJson(jsonStr);
 
   HotWordModel.fromJson(jsonRes) {
     errorCode = jsonRes['errorCode'];
@@ -16,7 +16,7 @@ class HotWordModel {
     data = jsonRes['data'] == null ? null : [];
 
     for (var dataItem in data == null ? [] : jsonRes['data']){
-      data.add(dataItem == null ? null : new HotWordData.fromJson(dataItem));
+      data.add(dataItem == null ? null : HotWordData.fromJson(dataItem));
     }
   }
 
