@@ -114,7 +114,7 @@ class WebsiteCollectionPageUIState extends State<WebsiteCollectionPageUI> {
   }
 
   void onWebsiteAddClick(BuildContext context) async {
-    await Navigator.of(context).push(new MaterialPageRoute(
+    await Navigator.of(context).push(MaterialPageRoute(
       builder: (context) {
         return WebsiteCollectionAddPageUI(
           website: null,
@@ -126,7 +126,7 @@ class WebsiteCollectionPageUIState extends State<WebsiteCollectionPageUI> {
 
   void onWebsiteEditClick(
       BuildContext context, WebsiteCollectionData _item) async {
-    await Navigator.of(context).push(new MaterialPageRoute(
+    await Navigator.of(context).push(MaterialPageRoute(
       builder: (context) {
         return WebsiteCollectionAddPageUI(
           website: _item,

@@ -146,7 +146,7 @@ datas.add(buildTree(_todoList, "待办清单"));
   }
 
   void onTodoAddClick(BuildContext context, int _type) async {
-    await Navigator.of(context).push(new MaterialPageRoute(
+    await Navigator.of(context).push(MaterialPageRoute(
       builder: (context) {
         return TodoAddPageUI(
           data: null,
@@ -233,7 +233,7 @@ class EntryItemState extends State<EntryItem> {
   }
 
   void onTodoEditClick(BuildContext context, TodoData _item, int _type) async {
-    await Navigator.of(context).push(new MaterialPageRoute(
+    await Navigator.of(context).push(MaterialPageRoute(
       builder: (context) {
         return TodoAddPageUI(
           data: _item,
@@ -248,7 +248,7 @@ class EntryItemState extends State<EntryItem> {
     CommonService().deleteTodoData((BaseModel _baseModel) {
       if (_baseModel.errorCode == 0) {}
       setState(() {
-         Application.eventBus.fire(new TodoChangeEvent());
+         Application.eventBus.fire(TodoChangeEvent());
       });
     }, _id);
   }
@@ -257,7 +257,7 @@ class EntryItemState extends State<EntryItem> {
     CommonService().doneTodoData((BaseModel _baseModel) {
       if (_baseModel.errorCode == 0) {}
       setState(() {
-        Application.eventBus.fire(new TodoChangeEvent());
+        Application.eventBus.fire(TodoChangeEvent());
       });
 
     }, _id, _status);

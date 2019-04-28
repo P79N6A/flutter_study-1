@@ -195,31 +195,31 @@ class DrawerDemoState extends State<DrawerDemo> {
   }
 
   void onAboutClick() async {
-    await Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
+    await Navigator.of(context).push(MaterialPageRoute(builder: (context) {
       return AboutAppPageUI();
     }));
   }
 
   void onLoginClick() async {
-    await Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
+    await Navigator.of(context).push(MaterialPageRoute(builder: (context) {
       return LoginPageUI();
     }));
   }
 
   void onCollectionClick() async {
-    await Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
+    await Navigator.of(context).push(MaterialPageRoute(builder: (context) {
       return MyCollectionPageUI();
     }));
   }
 
   void onWebsiteCollectionClick() async {
-    await Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
+    await Navigator.of(context).push(MaterialPageRoute(builder: (context) {
       return WebsiteCollectionPageUI();
     }));
   }
 
   void onTodoClick() async {
-    await Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
+    await Navigator.of(context).push(MaterialPageRoute(builder: (context) {
       return TodoPageUI();
     }));
   }
@@ -227,6 +227,6 @@ class DrawerDemoState extends State<DrawerDemo> {
   changeTheme() async {
     SharedPreferences sp = await SharedPreferences.getInstance();
     sp.setBool("themeIndex", GlobalConfig.dark);
-    Application.eventBus.fire(new ThemeChangeEvent(GlobalConfig.dark));
+    Application.eventBus.fire(ThemeChangeEvent(GlobalConfig.dark));
   }
 }

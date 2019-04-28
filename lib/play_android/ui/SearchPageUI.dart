@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'SearchHotPageUI.dart';
 import 'SearchResultPageUI.dart';
-
 class SearchPageUI extends StatefulWidget {
   String searchStr;
 
@@ -33,7 +32,7 @@ class SearchPageState extends State<SearchPageUI> {
     focusNode1.unfocus();
     setState(() {
       _searchListPage =
-          SearchResultPageUI(new ValueKey(_searchController.text));
+          SearchResultPageUI(ValueKey(_searchController.text));
     });
   }
 

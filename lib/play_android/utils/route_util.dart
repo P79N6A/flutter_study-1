@@ -6,7 +6,7 @@ class RouteUtil{
 
   ///跳转到webview打开
   static void toWebView(BuildContext context,String title,String link) async {
-    await Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
+    await Navigator.of(context).push(MaterialPageRoute(builder: (context) {
       return WebViewPageUI(
         title: title,
         url: link,

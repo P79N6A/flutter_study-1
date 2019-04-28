@@ -53,7 +53,7 @@ class _LogoState extends State<AnimatedLogo>
       padding: EdgeInsets.all(8.0),
       decoration: BoxDecoration(
         border: Border.all(color: _color),
-        borderRadius: BorderRadius.all(new Radius.circular(6.0)),
+        borderRadius: BorderRadius.all(Radius.circular(6.0)),
       ),
       child: CustomPaint(painter: _LogoPainter(animation)),
     );

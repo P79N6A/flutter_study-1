@@ -44,8 +44,8 @@ class SystemTreeUIState extends State<SystemTreeUI> {
   }
 
   void _onItemClick(SystemTreeData itemData) async {
-    await Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
-      return SystemTreeContentPageUI(new ValueKey(itemData));
+    await Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+      return SystemTreeContentPageUI(ValueKey(itemData));
     }));
   }
 

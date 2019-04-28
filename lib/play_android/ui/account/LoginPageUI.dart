@@ -25,7 +25,7 @@ class LoginPageUIState extends State<LoginPageUI> {
     CommonService().login((UserModel _userModel,Response response) {
       if (_userModel != null) {
         User().saveUserInfo(_userModel, response);
-        Application.eventBus.fire(new LoginEvent());
+        Application.eventBus.fire(LoginEvent());
         if (_userModel.errorCode == 0) {
           Fluttertoast.showToast(msg: "登录成功！");
           Navigator.of(context).pop();
@@ -126,7 +126,7 @@ class LoginPageUIState extends State<LoginPageUI> {
   }
 
   void onRegisterClick() async {
-    await Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
+    await Navigator.of(context).push(MaterialPageRoute(builder: (context) {
       return RegisterPageUI();
     }));
   }

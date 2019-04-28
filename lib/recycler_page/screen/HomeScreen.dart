@@ -44,15 +44,15 @@ class HomeScreenState extends State<HomeScreen> {
           fixedColor: Colors.red,
           items: [
             BottomNavigationBarItem(
-          icon:new Icon(Icons.photo),
+          icon:Icon(Icons.photo),
           title: Text("Photo"),
         ),
         BottomNavigationBarItem(
-          icon:new Icon(Icons.video_library),
+          icon:Icon(Icons.video_library),
           title: Text("Video"),
         ),
         BottomNavigationBarItem(
-            icon:new Icon(Icons.photo_library),
+            icon:Icon(Icons.photo_library),
           title: Text("Album"),
         )
       ]),

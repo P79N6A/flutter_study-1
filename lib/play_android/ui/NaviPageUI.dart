@@ -32,13 +32,13 @@ class NaviPageUIState extends State<NaviPageUI> {
       ),
     );
   }
-
+/* 
   Widget _leftListView(BuildContext context) {
     return ListView.builder(
       itemBuilder: _renderRow,
       itemCount: _naviTitles.length,
     );
-  }
+  } */
 
   Widget _rightListView(BuildContext context) {
     return ListView.builder(
@@ -47,14 +47,14 @@ class NaviPageUIState extends State<NaviPageUI> {
     );
   }
 
-  Widget _renderRow(BuildContext context, int index) {
+ /*  Widget _renderRow(BuildContext context, int index) {
     return Container(
       alignment: Alignment.center,
       height: 50,
       child: Text(_naviTitles[index].name),
     );
   }
-
+ */
   Widget _renderContent(BuildContext context, int index) {
     return Container(
         child: Container(

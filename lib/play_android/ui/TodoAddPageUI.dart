@@ -106,7 +106,7 @@ class TodoAddPageUIState extends State<TodoAddPageUI> {
                           initialDate: DateTime.now(),
                           firstDate: DateTime.now(), // 减 30 天
                           lastDate: DateTime.now()
-                              .add(new Duration(days: 36)), // 加 30 天
+                              .add(Duration(days: 36)), // 加 30 天
                         ).then((DateTime val) {
                           print(val); // 2018-07-12 00:00:00.000
                         }).catchError((err) {

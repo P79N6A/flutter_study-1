@@ -72,7 +72,7 @@ class _PageState extends State<PageLogin> {
 
   Widget _buildInkButton(Widget child, GestureTapCallback onTap) {
     return Material(
-      borderRadius: BorderRadius.all(new Radius.circular(6.0)),
+      borderRadius: BorderRadius.all(Radius.circular(6.0)),
       child: Ink(
         child: InkWell(
           onTap: onTap,

@@ -11,7 +11,7 @@ main() {
       photo_page = '/PhotoContainerScreen',
       video_page = '/VideoContainerScreen',
       album_page = '/AlbumContainerScreen';
-  runApp(new MaterialApp(
+  runApp(MaterialApp(
     title: 'FluterBottemNavigationView',
     debugShowCheckedModeBanner: false,
     theme: ThemeData(

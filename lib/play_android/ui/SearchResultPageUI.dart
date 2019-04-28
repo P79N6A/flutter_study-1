@@ -85,7 +85,7 @@ class _NewsListState extends State<SearchResultPageUI> {
   }
 
   void _onItemClick(Article itemData) async {
-    await Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
+    await Navigator.of(context).push(MaterialPageRoute(builder: (context) {
       return WebViewPageUI(
         title: itemData.title,
         url: itemData.link,

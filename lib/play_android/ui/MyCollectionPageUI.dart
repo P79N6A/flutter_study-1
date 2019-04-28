@@ -27,7 +27,7 @@ class MyCollectionPageUI extends StatelessWidget {
   }
 
   void onCollectionAddClick(BuildContext context) async {
-    await Navigator.of(context).push(new MaterialPageRoute(
+    await Navigator.of(context).push(MaterialPageRoute(
       builder: (context) {
         return CollectionAddPageUI();
       },
@@ -81,7 +81,7 @@ class _NewsListState extends State<NewsList> {
       if (_baseModel.errorCode == 0) {
         _datas.removeAt(_position);
       }
-      Scaffold.of(context).showSnackBar(new SnackBar(
+      Scaffold.of(context).showSnackBar(SnackBar(
         content: Text("移除成功！"),
       ));
       setState(() {});

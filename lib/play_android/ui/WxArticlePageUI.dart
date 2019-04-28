@@ -154,7 +154,7 @@ class _NewsListState extends State<NewsList>{
 
             Container(
                 padding: EdgeInsets.fromLTRB(16,0,16,8),
-                child:new Row(
+                child:Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                     Expanded(

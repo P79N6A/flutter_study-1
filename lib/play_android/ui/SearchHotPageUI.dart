@@ -50,7 +50,7 @@ class HotPageState extends State<SearchHotPageUI> {
               ),
               onPressed: () {
                 Navigator.of(context)
-                    .pushReplacement(new MaterialPageRoute(builder: (context) {
+                    .pushReplacement(MaterialPageRoute(builder: (context) {
                   return SearchPageUI(value.name);
                 }));
               });
