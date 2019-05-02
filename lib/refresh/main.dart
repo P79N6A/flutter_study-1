@@ -1,60 +1,46 @@
-import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import './demo/animation.dart';
+import './demo/load_more.dart';
 
-main() => runApp(DemoApp());
+void main() => runApp(MyApp());
 
-class DemoApp extends StatelessWidget {
+class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
   @override
-  build(context) =>
-      MaterialApp(debugShowCheckedModeBanner: false, home: HomePage());
+   build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+          primarySwatch: Colors.blue,
+          scaffoldBackgroundColor: Colors.grey[200]),
+      home: MainPage(),
+    );
+  }
 }
 
-class HomePage extends StatefulWidget {
-  @override
-  createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  int _pageCode = 1;
-  var titles = [];
-  bool loading = false;
-
-  @override
-  build(context) {
-    var length = titles?.length ?? 0;
-    return Scaffold(body: Container(
-      child: ListView.builder(
-        itemBuilder: (context, index) {
-          if (index == length) {
-            _load();
-            return Center(child: RefreshProgressIndicator());
-          } else if (index > length) {
-            return null;
-          }
-          return Image.network(titles[index]);
-        },
-      ),
-    ));
+class MainPage extends StatelessWidget {
+  void _push(BuildContext context, Widget widget) {
+    Navigator.push(context, MaterialPageRoute(builder: (BuildContext context) {
+      return widget;
+    }));
   }
 
-  _load() async {
-    if (loading) {
-      return null;
-    }
-    loading = true;
-    try {
-      var resp = await http
-          .get('https://www.cmtzz.cn/api/v1/interviews?page=$_pageCode');
-      var sList = json.decode(resp.body)['data']['list'];
-      setState(() {
-        print(_pageCode);
-        _pageCode++;
-        sList.forEach((dynamic e) => titles.add(e['cover']));
-        loading = false;
-      });
-    } catch (e) {
-      print(e.toString());
-    }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.grey[200],
+      appBar: AppBar(title: Text('加载更多示例')),
+      body: ListView(
+        padding: EdgeInsets.all(8),
+        children:[
+          RaisedButton(
+              child: Text("加载更多"),
+              onPressed: () => _push(context, LoaderMoreDemo(1))),
+          RaisedButton(
+              child: Text("动画"),
+              onPressed: () => _push(context, AnimationPage())),
+        ],
+      ),
+    );
   }
 }

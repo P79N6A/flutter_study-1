@@ -14,12 +14,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   build(context) => Scaffold(
-        body: Center(
-          child: Text(
-            _lastSelected,
-            style: TextStyle(fontSize: 32.0),
-          ),
-        ),
+        body: Text('xxx'),
         bottomNavigationBar: FABBottomAppBar(
           centerItemText: 'A',
           color: Colors.grey,
