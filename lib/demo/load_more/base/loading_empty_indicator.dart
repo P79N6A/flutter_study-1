@@ -12,16 +12,14 @@ class LoadingEmptyIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     if (dataLoader != null && !dataLoader.hasData) {
       if (dataLoader.pageState == PageState.Loading) {
-        return Container(
-          child: Center(child:  Text('Loading...')),
-        );
+        return Container(child: Center(child: Text('Loading...')));
       }
 
       if (dataLoader.pageState == PageState.LoadingException) {
         return Material(
           child: InkWell(
             onTap: () => dataLoader.obtainData(false),
-            child: Center(child:  Text('网络异常...')),
+            child: Center(child: Text('网络异常...')),
           ),
         );
       }
@@ -30,7 +28,7 @@ class LoadingEmptyIndicator extends StatelessWidget {
         return Material(
           child: InkWell(
             onTap: () => dataLoader.obtainData(false),
-            child: Center(child:  Text('业务逻辑错误...')),
+            child: Center(child: Text('业务逻辑错误...')),
           ),
         );
       }
@@ -38,12 +36,12 @@ class LoadingEmptyIndicator extends StatelessWidget {
       return Material(
         child: InkWell(
           onTap: () => dataLoader.obtainData(false),
-          child: Center(child:  Text('暂无数据...')),
+          child: Center(child: Text('暂无数据...')),
         ),
       );
     }
     return Container(
-      child: Center(child:  Text('欢迎光临...')),
+      child: Center(child: Text('欢迎光临...')),
     );
   }
 }

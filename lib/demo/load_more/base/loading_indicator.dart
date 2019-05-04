@@ -6,7 +6,7 @@ class LoadingIndicator extends StatelessWidget {
   final DataLoadMoreBase dataLoader;
 
   /// [dataLoader] 类型为[DataLoadMoreBase]
-  const LoadingIndicator({Key key, this.dataLoader}) : super(key: key);
+  const LoadingIndicator({this.dataLoader});
 
   @override
   Widget build(BuildContext context) {
@@ -14,16 +14,12 @@ class LoadingIndicator extends StatelessWidget {
     if (dataLoader.isLoading) {
       _indicator = Text("正在加载中...");
     } else if (dataLoader.hasException) {
-      // 网络异常
       _indicator = Text("网络异常...");
     } else if (dataLoader.hasError) {
-      // 出错了
       _indicator = Text("出错了...");
     } else if (!dataLoader.hasMore()) {
-      // 没有更多
       _indicator = Text("没有更多...");
     } else if (dataLoader.hasMore()) {
-      // 还有更多
       _indicator = Text("还有更多...");
     } else {
       _indicator = Text("...");

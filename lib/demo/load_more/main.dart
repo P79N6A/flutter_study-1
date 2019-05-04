@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_study/demo/load_more/base/loading_empty_indicator.dart';
 import 'package:flutter_study/demo/load_more/base/loading_indicator.dart';
 import 'package:flutter_study/demo/load_more/base/loading_more_base.dart';
-import 'package:flutter_study/demo/load_more/bean/Model.dart';
+import 'package:flutter_study/demo/load_more/bean/model.dart';
 
 main() =>
     runApp(MaterialApp(debugShowCheckedModeBanner: false, home: HomePage()));
@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
 /// 上拉加载更多
 class LoaderMoreDemo extends StatefulWidget {
   final int _id;
-  LoaderMoreDemo(this._id, {Key key}) : super(key: key);
+  LoaderMoreDemo(this._id);
   @override
   createState() => _LoaderMoreDemoState();
 }
@@ -46,40 +46,36 @@ class _LoaderMoreDemoState extends State<LoaderMoreDemo>
     super.dispose();
   }
 
-  build(context) {
-    return Scaffold(
-      backgroundColor: Colors.grey[200],
-      body: StreamBuilder<DataLoadMoreBase<Article, Model>>(
-          stream: _loader.stream,
-          builder: (context, snapshot) {
-            /// 监听滑动结束广播
-            return NotificationListener<ScrollEndNotification>(
-                onNotification: (notification) {
-                  if (notification.depth != 0) return false;
-                  if (notification.metrics.axisDirection != AxisDirection.down)
+  build(context) => Scaffold(
+        backgroundColor: Colors.grey[200],
+        body: StreamBuilder<DataLoadMoreBase<Article, Model>>(
+            stream: _loader.stream,
+            builder: (context, snapshot) {
+              /// 监听滑动结束广播
+              return NotificationListener<ScrollEndNotification>(
+                  onNotification: (notification) {
+                    if (notification.depth != 0) return false;
+                    if (notification.metrics.axisDirection !=
+                        AxisDirection.down) return false;
+                    if (notification.metrics.pixels <
+                        notification.metrics.maxScrollExtent) return false;
+
+                    /// 如果没有更多, 服务返回错误信息, 网络异常,那么不允许上拉加载更多
+                    if (snapshot.data == null ||
+                        !snapshot.data.hasMore() ||
+                        snapshot.data.hasError ||
+                        snapshot.data.hasException) return false;
+                    _loader.obtainData(false); // 加载更多
                     return false;
-                  if (notification.metrics.pixels <
-                      notification.metrics.maxScrollExtent) return false;
+                  },
 
-                  /// 如果没有更多, 服务返回错误信息, 网络异常,那么不允许上拉加载更多
-                  if (snapshot.data == null ||
-                      !snapshot.data.hasMore() ||
-                      snapshot.data.hasError ||
-                      snapshot.data.hasException) return false;
-
-                  // 加载更多
-                  _loader.obtainData(false);
-                  return false;
-                },
-
-                /// 下拉刷新
-                child: RefreshIndicator(
-                  child: _buildList(snapshot.data),
-                  onRefresh: () => _loader.obtainData(true),
-                ));
-          }),
-    );
-  }
+                  /// 下拉刷新
+                  child: RefreshIndicator(
+                    child: _buildList(snapshot.data),
+                    onRefresh: () => _loader.obtainData(true),
+                  ));
+            }),
+      );
 
   _buildList(DataLoadMoreBase<Article, Model> dataLoader) {
     /// 初始化时显示的View
@@ -98,7 +94,7 @@ class _LoaderMoreDemoState extends State<LoaderMoreDemo>
     return ListView(
       shrinkWrap: true,
       physics: BouncingScrollPhysics(),
-      children: <Widget>[
+      children: [
         ListView.separated(
           shrinkWrap: true,
           itemCount: dataLoader.length + 1,
@@ -131,11 +127,8 @@ class _LoaderMoreDemoState extends State<LoaderMoreDemo>
 /// 数据业务逻辑处理
 class _DataLoader extends DataLoadMoreBase<Article, Model> {
   bool _hasMore = true;
-
   int _id; // 请求时的参数
-
   _DataLoader(this._id);
-
   @override
   Future<Model> getRequest(
       bool isRefresh, int currentPage, int pageSize) async {
@@ -161,7 +154,6 @@ class _DataLoader extends DataLoadMoreBase<Article, Model> {
 
     if (isRefresh) clear();
 
-    // todo 实际使用时这里需要修改
     addAll((model.data as List<dynamic>).map((d) {
       return d as Article;
     }));

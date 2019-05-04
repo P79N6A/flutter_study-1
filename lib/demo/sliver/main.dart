@@ -10,39 +10,40 @@ class SliversPage extends StatelessWidget {
   @override
   build(context) => Scaffold(
         body: CustomScrollView(
+          physics: BouncingScrollPhysics(),
           slivers: [
             SliverAppBar(
               pinned: true,
-              expandedHeight: 120.0,
-              flexibleSpace: FlexibleSpaceBar(title: Text('裂片')),
+              flexibleSpace: FlexibleSpaceBar(
+                collapseMode: CollapseMode.parallax,
+              ),
             ),
             SliverGrid(
               gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 200.0,
-                mainAxisSpacing: 10.0,
-                crossAxisSpacing: 10.0,
-                childAspectRatio: 4.0,
-              ),
+                  maxCrossAxisExtent: 100.0,
+                  mainAxisSpacing: 1.0,
+                  crossAxisSpacing: 2.0,
+                  childAspectRatio: 1.0),
               delegate: SliverChildBuilderDelegate(
                 (context, index) => Container(
-                      alignment: Alignment.center,
-                      color: Colors.teal[100 * (index % 9)],
-                      child: Text('grid item $index'),
-                    ),
+                    alignment: Alignment.center,
+                    color: Colors.teal[100 * (index % 8 + 1)],
+                    child: Text('grid item $index')),
                 childCount: 20,
               ),
             ),
             SliverFixedExtentList(
               itemExtent: 50.0,
               delegate: SliverChildBuilderDelegate(
-                (context, index) => Container(
-                      alignment: Alignment.center,
-                      color: Colors.lightBlue[100 * (index % 9)],
-                      child: Text('list item $index'),
-                    ),
-              ),
+                  (context, index) => Container(
+                        alignment: Alignment.center,
+                        color: Colors.lightBlue[100 * (index % 8 + 1)],
+                        child: Text('list item $index'),
+                      ),
+                  childCount: 20),
             ),
           ],
         ),
       );
 }
+
