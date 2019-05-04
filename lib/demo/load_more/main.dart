@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import './bean/Model.dart';
-import './base/loading_empty_indicator.dart';
-import './base/loading_indicator.dart';
-import './base/loading_more_base.dart';
+import 'package:flutter_study/demo/load_more/base/loading_empty_indicator.dart';
+import 'package:flutter_study/demo/load_more/base/loading_indicator.dart';
+import 'package:flutter_study/demo/load_more/base/loading_more_base.dart';
+import 'package:flutter_study/demo/load_more/bean/Model.dart';
 
 main() =>
     runApp(MaterialApp(debugShowCheckedModeBanner: false, home: HomePage()));
@@ -20,11 +20,9 @@ class _HomePageState extends State<HomePage> {
 /// 上拉加载更多
 class LoaderMoreDemo extends StatefulWidget {
   final int _id;
-
-  const LoaderMoreDemo(this._id, {Key key}) : super(key: key);
-
+  LoaderMoreDemo(this._id, {Key key}) : super(key: key);
   @override
-  _LoaderMoreDemoState createState() => _LoaderMoreDemoState();
+  createState() => _LoaderMoreDemoState();
 }
 
 class _LoaderMoreDemoState extends State<LoaderMoreDemo>
@@ -36,24 +34,21 @@ class _LoaderMoreDemoState extends State<LoaderMoreDemo>
   bool get wantKeepAlive => true;
 
   @override
-  void initState() {
+  initState() {
     _loader = _DataLoader(widget._id);
     _loader.obtainData(false);
     super.initState();
   }
 
   @override
-  void dispose() {
+  dispose() {
     _loader.dispose();
     super.dispose();
   }
 
-  Widget build(BuildContext context) {
+  build(context) {
     return Scaffold(
       backgroundColor: Colors.grey[200],
-      appBar: AppBar(
-        title: Text('加载更多示例'),
-      ),
       body: StreamBuilder<DataLoadMoreBase<Article, Model>>(
           stream: _loader.stream,
           builder: (context, snapshot) {
@@ -86,7 +81,7 @@ class _LoaderMoreDemoState extends State<LoaderMoreDemo>
     );
   }
 
-  Widget _buildList(DataLoadMoreBase<Article, Model> dataLoader) {
+  _buildList(DataLoadMoreBase<Article, Model> dataLoader) {
     /// 初始化时显示的View
     if (dataLoader == null) {
       return Container(
@@ -104,10 +99,13 @@ class _LoaderMoreDemoState extends State<LoaderMoreDemo>
       shrinkWrap: true,
       physics: BouncingScrollPhysics(),
       children: <Widget>[
-        ListView.builder(
+        ListView.separated(
           shrinkWrap: true,
           itemCount: dataLoader.length + 1,
           physics: BouncingScrollPhysics(),
+          separatorBuilder: (content, index) {
+            return Container(height: 0.5, color: Colors.grey);
+          },
           itemBuilder: (context, index) {
             if (index == dataLoader.length) {
               return LoadingIndicator(dataLoader: dataLoader);
@@ -143,7 +141,7 @@ class _DataLoader extends DataLoadMoreBase<Article, Model> {
       bool isRefresh, int currentPage, int pageSize) async {
     // 这里模拟网络请求
     var list = List();
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 20; i++) {
       var article = Article(title: "Article$currentPage $_id $i");
       list.add(article);
     }
@@ -168,7 +166,7 @@ class _DataLoader extends DataLoadMoreBase<Article, Model> {
       return d as Article;
     }));
 
-    _hasMore = length < 20;
+    _hasMore = length < 100;
 
     return true;
   }
