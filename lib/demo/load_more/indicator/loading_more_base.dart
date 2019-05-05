@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'dart:collection';
 import 'package:flutter/foundation.dart';
 import 'package:rxdart/rxdart.dart';
@@ -67,7 +65,7 @@ abstract class DataLoadBase<DATA, MODEL>
   Future<bool> handlerData(MODEL model, bool isRefresh);
 }
 
-/// [DATA] 列表中的数据的数据类型
+/// [DATA] 列表中数据的类型
 /// [MODEL] 服务返回的数据结构对应的数据类
 abstract class DataLoadMoreBase<DATA, MODEL> extends ListBase<DATA> {
   /// 使用 BehaviorSubject 会保留最后一次的值,所有监听是会受到回调
@@ -81,31 +79,22 @@ abstract class DataLoadMoreBase<DATA, MODEL> extends ListBase<DATA> {
   }
 
   dispose() => _streamController.close();
-
-  final _mData = <DATA>[];
-
-  @override
-  DATA operator [](int index) => _mData[index];
-
-  @override
-  operator []=(int index, DATA value) => _mData[index] = value;
-
-  @override
-  int get length => _mData.length;
-
-  @override
-  set length(int newLength) => _mData.length = newLength;
+  final _data = <DATA>[];
+  DATA operator [](index) => _data[index];
+  operator []=(index, DATA value) => _data[index] = value;
+  get length => _data.length;
+  set length(newLen) => _data.length = newLen;
   final _pageSize = 20;
-  int _currentPage = 1;
-  PageState _pageState = PageState.None; // 页面状态
-  bool get hasData => this.length > 0; // 是否有数据
-  bool get hasError => _pageState == PageState.LoadingError; // 是否有业务错误
-  bool get hasException => _pageState == PageState.LoadingException; //是否有网络异常
-  bool get isLoading => _pageState == PageState.Loading; // 是否加载中
-  PageState get pageState => _pageState; // 页面状态
+  var _currentPage = 0;
+  var _pageState = PageState.None; // 页面状态
+  get hasData => this.length > 0; // 是否有数据
+  get hasError => _pageState == PageState.LoadingError; // 是否有业务错误
+  get hasException => _pageState == PageState.LoadingException; //是否有网络异常
+  get isLoading => _pageState == PageState.Loading; // 是否加载中
+  get pageState => _pageState; // 页面状态
   ///拉取数据, [isRefresh] 判断是否清空原来的数据
   @mustCallSuper
-  Future<bool> obtainData([bool isRefresh = false]) async {
+   obtainData([isRefresh = false]) async {
     if (isLoading) return true;
     _pageState = PageState.Loading;
     onStateChanged(this);
@@ -125,33 +114,33 @@ abstract class DataLoadMoreBase<DATA, MODEL> extends ListBase<DATA> {
   }
 
   /// 加载数据[isRefresh] 判断是否清空原来的数据
-  Future<bool> _loadData([bool isRefresh = false]) async {
-    int currentPage = isRefresh ? 1 : _currentPage + 1;
+   _loadData([isRefresh = false]) async {
+    var currentPage = isRefresh ? 1 : _currentPage + 1;
     MODEL model = await getRequest(isRefresh, currentPage, _pageSize);
     bool success = await handlerData(model, isRefresh);
     if (success) _currentPage = currentPage;
     return success;
   }
 
-  bool hasMore(); // 是否还有更多数据
+  hasMore(); // 是否还有更多数据
 
   /// 构造请求
   /// [isRefresh] 是否清空原来的数据
   /// [currentPage] 将要请求的页码
   /// [pageSize] 每页多少数据
   @protected
-  Future<MODEL> getRequest(bool isRefresh, int currentPage, int pageSize);
+  Future<MODEL> getRequest(isRefresh, currentPage, pageSize);
 
   /// 重载这个方法,必须在这个方法将数据添加到列表中
   /// [model] 本次请求回来的数据
   /// [isRefresh] 是否清空原来的数据
   @protected
-  Future<bool> handlerData(MODEL model, bool isRefresh);
+  Future<bool> handlerData(model, isRefresh);
 }
 
-/// 数据加载Bloc
+// 数据加载Bloc
 class _DataLoadBloc<T> {
-  /// 使用 BehaviorSubject 会保留最后一次的值,监听会受到回调
+  // 使用 BehaviorSubject 会保留最后一次的值,监听会被回调
   final _streamController = BehaviorSubject<T>();
   Stream<T> get stream => _streamController.stream;
   onStateChanged(T source) {

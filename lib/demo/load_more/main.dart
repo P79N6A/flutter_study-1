@@ -122,7 +122,7 @@ class _DataLoader extends DataLoadMoreBase<Article, Model> {
   }
 
   @override
-  Future<bool> handlerData(Model model, bool isRefresh) async {
+  Future<bool> handlerData( model,  isRefresh) async {
     // 1. 判断是否有业务错误,
     // 2. 将数据存入列表, 如果是刷新清空数据
     // 3. 判断是否有更多数据
