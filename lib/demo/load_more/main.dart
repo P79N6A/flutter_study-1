@@ -3,23 +3,14 @@ import 'package:flutter_study/demo/load_more/base/loading_empty_indicator.dart';
 import 'package:flutter_study/demo/load_more/base/loading_indicator.dart';
 import 'package:flutter_study/demo/load_more/base/loading_more_base.dart';
 import 'package:flutter_study/demo/load_more/bean/model.dart';
+import 'package:flutter_study/demo/load_more/util/api.dart';
 
-main() =>
-    runApp(MaterialApp(debugShowCheckedModeBanner: false, home: HomePage()));
-
-class HomePage extends StatefulWidget {
-  @override
-  createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  build(context) => Scaffold(body: LoaderMoreDemo(1));
-}
+main() => runApp(
+    MaterialApp(debugShowCheckedModeBanner: false, home: LoaderMoreDemo(1)));
 
 /// 上拉加载更多
 class LoaderMoreDemo extends StatefulWidget {
-  final int _id;
+  final _id;
   LoaderMoreDemo(this._id);
   @override
   createState() => _LoaderMoreDemoState();
@@ -29,7 +20,6 @@ class _LoaderMoreDemoState extends State<LoaderMoreDemo>
     with AutomaticKeepAliveClientMixin {
   /// 数据加载类
   _DataLoader _loader;
-
   @override
   bool get wantKeepAlive => true;
 
@@ -92,42 +82,61 @@ class _LoaderMoreDemoState extends State<LoaderMoreDemo>
 
     /// 渲染数据 ,这里数据+1 1表示最后一项,用于显示加载状态
     return ListView(
-      shrinkWrap: true,
       physics: BouncingScrollPhysics(),
       children: [
-        ListView.separated(
+        SizedBox(
+          height: 100.0,
+          child: ListView.builder(
+            shrinkWrap: true,
+            scrollDirection: Axis.horizontal,
+            itemCount: 20,
+            itemBuilder: (context, index) => Container(
+                  height: 32.0,
+                  width: 72.0,
+                  decoration: BoxDecoration(
+                      color: Colors.teal[100 * (index % 9 + 1)],
+                      shape: BoxShape.circle),
+                ),
+          ),
+        ),
+        ListView.builder(
           shrinkWrap: true,
           itemCount: dataLoader.length + 1,
           physics: BouncingScrollPhysics(),
-          separatorBuilder: (content, index) {
-            return Container(height: 0.5, color: Colors.grey);
-          },
           itemBuilder: (context, index) {
             if (index == dataLoader.length) {
               return LoadingIndicator(dataLoader: dataLoader);
             } else {
-              return Material(
-                color: Colors.white,
-                child: InkWell(
-                  child: Padding(
-                    padding: EdgeInsets.all(32),
-                    child: Text(dataLoader[index].title),
-                  ),
-                  onTap: () {},
-                ),
-              );
+              return Container(
+                  margin: EdgeInsets.only(top: 32.0),
+                  child: Center(child: Text(dataLoader[index].title)));
             }
           },
         ),
       ],
     );
   }
+
+  /* Future<void> _fetchData() async {
+    _interviews.clear();
+    _pageCount = 0;
+    CommonService().fetchInterView(
+        ((model) => setState(() {
+              _topArticle = model.data.topArticle;
+              _interviews = model.data.interviewList;
+            })),
+        _pageCount);
+  } */
 }
 
 /// 数据业务逻辑处理
 class _DataLoader extends DataLoadMoreBase<Article, Model> {
   bool _hasMore = true;
   int _id; // 请求时的参数
+
+  var _interviews = [];
+  var _topArticle;
+  var _pageCount = 0;
   _DataLoader(this._id);
   @override
   Future<Model> getRequest(
@@ -135,11 +144,17 @@ class _DataLoader extends DataLoadMoreBase<Article, Model> {
     // 这里模拟网络请求
     var list = List();
     for (var i = 0; i < 20; i++) {
-      var article = Article(title: "Article$currentPage $_id $i");
+      var article = Article(title: "测试标题$i 页码:$currentPage");
       list.add(article);
     }
-    await Future.delayed(Duration(seconds: 2));
+    _interviews.clear();
+    _pageCount = 0;
+    CommonService().fetchInterView((model) {
+      _topArticle = model.data.topArticle;
+      _interviews = model.data.interviewList;
+    }, _pageCount);
 
+    await Future.delayed(Duration(seconds: 2));
     return Model(data: list, message: "加载成功", code: 0);
   }
 

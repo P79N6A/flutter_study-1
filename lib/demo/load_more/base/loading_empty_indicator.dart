@@ -6,10 +6,10 @@ class LoadingEmptyIndicator extends StatelessWidget {
   final DataLoadMoreBase dataLoader;
 
   /// [dataLoader] 类型为[DataLoadMoreBase]
-  const LoadingEmptyIndicator({Key key, this.dataLoader}) : super(key: key);
+  LoadingEmptyIndicator({Key key, this.dataLoader}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  build(context) {
     if (dataLoader != null && !dataLoader.hasData) {
       if (dataLoader.pageState == PageState.Loading) {
         return Container(child: Center(child: Text('Loading...')));
