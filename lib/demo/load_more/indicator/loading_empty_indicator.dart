@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../base/loading_more_base.dart';
+import '../indicator/loading_more_base.dart';
 
 /// 加载更多 没有数据时, 用于显示当前的状态
 class LoadingEmptyIndicator extends StatelessWidget {
@@ -12,7 +12,7 @@ class LoadingEmptyIndicator extends StatelessWidget {
   build(context) {
     if (dataLoader != null && !dataLoader.hasData) {
       if (dataLoader.pageState == PageState.Loading) {
-        return Center(child: Text('Loading...'));
+        return Center(child: Text('正在加载中...'));
       }
 
       if (dataLoader.pageState == PageState.LoadingException) {

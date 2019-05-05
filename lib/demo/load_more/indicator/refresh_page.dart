@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../base/loading_more_base.dart';
+import 'package:flutter_study/demo/load_more/indicator/loading_more_base.dart';
 
 /// 构造内容
 typedef RefreshPageContentBuilder = Function(
