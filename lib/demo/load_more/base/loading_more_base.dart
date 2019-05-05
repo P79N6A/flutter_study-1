@@ -80,21 +80,15 @@ abstract class DataLoadMoreBase<DATA, MODEL> extends ListBase<DATA> {
     if (!_streamController.isClosed) _streamController.add(source);
   }
 
-  dispose() {
-    _streamController.close();
-  }
+  dispose() => _streamController.close();
 
   final _mData = <DATA>[];
 
   @override
-  DATA operator [](int index) {
-    return _mData[index];
-  }
+  DATA operator [](int index) => _mData[index];
 
   @override
-  operator []=(int index, DATA value) {
-    _mData[index] = value;
-  }
+  operator []=(int index, DATA value) => _mData[index] = value;
 
   @override
   int get length => _mData.length;
@@ -119,15 +113,12 @@ abstract class DataLoadMoreBase<DATA, MODEL> extends ListBase<DATA> {
     try {
       success = await _loadData(isRefresh);
       if (success) {
-        // 加载数据成功
-        _pageState = PageState.None;
+        _pageState = PageState.None; // 加载数据成功
       } else {
-        // 加载数据业务逻辑错误
-        _pageState = PageState.LoadingError;
+        _pageState = PageState.LoadingError; // 加载数据业务逻辑错误
       }
     } catch (e) {
-      // 网络异常
-      _pageState = PageState.LoadingException;
+      _pageState = PageState.LoadingException; // 网络异常
     }
     onStateChanged(this);
     return success;

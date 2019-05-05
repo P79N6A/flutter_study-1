@@ -6,12 +6,10 @@ import 'package:flutter_study/demo/load_more/bean/model.dart';
 import 'package:flutter_study/demo/load_more/util/api.dart';
 
 main() => runApp(
-    MaterialApp(debugShowCheckedModeBanner: false, home: LoaderMoreDemo(1)));
+    MaterialApp(debugShowCheckedModeBanner: false, home: LoaderMoreDemo()));
 
 /// 上拉加载更多
 class LoaderMoreDemo extends StatefulWidget {
-  final _id;
-  LoaderMoreDemo(this._id);
   @override
   createState() => _LoaderMoreDemoState();
 }
@@ -25,7 +23,7 @@ class _LoaderMoreDemoState extends State<LoaderMoreDemo>
 
   @override
   initState() {
-    _loader = _DataLoader(widget._id);
+    _loader = _DataLoader();
     _loader.obtainData(false);
     super.initState();
   }
@@ -69,16 +67,11 @@ class _LoaderMoreDemoState extends State<LoaderMoreDemo>
 
   _buildList(DataLoadMoreBase<Article, Model> dataLoader) {
     /// 初始化时显示的View
-    if (dataLoader == null) {
-      return Container(
-        child: Center(child: Text('欢迎光临...')),
-      );
-    }
+    if (dataLoader == null) return Center(child: Text('欢迎光临...'));
 
     /// 没有数据时候显示的View构建
-    if (!dataLoader.hasData) {
+    if (!dataLoader.hasData)
       return LoadingEmptyIndicator(dataLoader: dataLoader);
-    }
 
     /// 渲染数据 ,这里数据+1 1表示最后一项,用于显示加载状态
     return ListView(
@@ -116,28 +109,11 @@ class _LoaderMoreDemoState extends State<LoaderMoreDemo>
       ],
     );
   }
-
-  /* Future<void> _fetchData() async {
-    _interviews.clear();
-    _pageCount = 0;
-    CommonService().fetchInterView(
-        ((model) => setState(() {
-              _topArticle = model.data.topArticle;
-              _interviews = model.data.interviewList;
-            })),
-        _pageCount);
-  } */
 }
 
 /// 数据业务逻辑处理
 class _DataLoader extends DataLoadMoreBase<Article, Model> {
   bool _hasMore = true;
-  int _id; // 请求时的参数
-
-  var _interviews = [];
-  var _topArticle;
-  var _pageCount = 0;
-  _DataLoader(this._id);
   @override
   Future<Model> getRequest(
       bool isRefresh, int currentPage, int pageSize) async {
@@ -147,13 +123,6 @@ class _DataLoader extends DataLoadMoreBase<Article, Model> {
       var article = Article(title: "测试标题$i 页码:$currentPage");
       list.add(article);
     }
-    _interviews.clear();
-    _pageCount = 0;
-    CommonService().fetchInterView((model) {
-      _topArticle = model.data.topArticle;
-      _interviews = model.data.interviewList;
-    }, _pageCount);
-
     await Future.delayed(Duration(seconds: 2));
     return Model(data: list, message: "加载成功", code: 0);
   }
