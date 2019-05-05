@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 part 'model.g.dart';
 
 @JsonSerializable()
-class Model extends Object {
+class Model  {
   int code;
   String message;
   dynamic data;
