@@ -1,5 +1,4 @@
 import 'dart:collection';
-import 'package:flutter/foundation.dart';
 import 'package:rxdart/rxdart.dart';
 
 enum PageState {
@@ -13,20 +12,19 @@ enum PageState {
 /// [MODEL] 服务返回的数据结构对应的数据类
 abstract class DataLoadBase<DATA, MODEL>
     extends _DataLoadBloc<DataLoadBase<DATA, MODEL>> {
-  DATA mData;
-  bool get hasError => _pageState == PageState.LoadingError; // 是否有业务错误
-  bool get hasException => _pageState == PageState.LoadingException; // 是否有网络异常
-  bool get isLoading => _pageState == PageState.Loading; // 是否加载中
-  PageState get pageState => _pageState; // 页面状态
-  PageState _pageState = PageState.None; // 页面状态
-  bool get hasData {
-    if (mData == null) return false;
-    if (mData is List) return (mData as List).length > 0;
+  var _data;
+  var _pageState = PageState.None; // 页面状态
+  get hasError => _pageState == PageState.LoadingError; // 是否有业务逻辑错误
+  get hasException => _pageState == PageState.LoadingException; // 是否有网络异常
+  get isLoading => _pageState == PageState.Loading; // 是否正在加载
+  get pageState => _pageState; // 获取当前页面状态
+  get hasData {
+    if (_data == null) return false;
+    if (_data is List) return (_data as List).length > 0;
     return true;
   }
 
-  @mustCallSuper
-  Future<bool> obtainData([bool isRefresh = false]) async {
+  obtainData([isRefresh = false]) async {
     if (isLoading) return true;
     _pageState = PageState.Loading;
     onStateChanged(this);
@@ -34,35 +32,30 @@ abstract class DataLoadBase<DATA, MODEL>
     try {
       success = await _loadData(isRefresh);
       if (success) {
-        // 加载数据成功
-        _pageState = PageState.None;
+        _pageState = PageState.None; // 加载数据成功
       } else {
-        // 加载数据业务逻辑错误
-        _pageState = PageState.LoadingError;
+        _pageState = PageState.LoadingError; // 加载数据业务逻辑错误
       }
     } catch (e) {
-      // 网络异常
-      _pageState = PageState.LoadingException;
+      _pageState = PageState.LoadingException; // 网络异常
     }
     onStateChanged(this);
     return success;
   }
 
-  Future<bool> _loadData([bool isRefresh = false]) async {
-    // 加载数据
-    MODEL model = await getRequest(isRefresh);
-    bool success = await handlerData(model, isRefresh);
+  // 加载数据
+  _loadData([isRefresh = false]) async {
+    var model = await getRequest(isRefresh);
+    var success = await handleData(model, isRefresh);
     return success;
   }
 
-  @protected
-  Future<MODEL> getRequest(bool isRefresh);
+  getRequest(isRefresh);
 
   /// 重载这个方法,必须在这个方法将数据添加到列表中
   /// [model] 本次请求回来的数据
   /// [isRefresh] 是否清空原来的数据
-  @protected
-  Future<bool> handlerData(MODEL model, bool isRefresh);
+  handleData(model, isRefresh);
 }
 
 /// [DATA] 列表中数据的类型
@@ -112,7 +105,7 @@ abstract class DataLoadMoreBase<DATA, MODEL> extends ListBase<DATA> {
     return success;
   }
 
-  /// 加载数据[isRefresh] 判断是否刷新数据
+  /// 加载数据[isRefresh] 判断是否刷新并清空原来的数据
   _loadData([isRefresh = false]) async {
     var currentPage = isRefresh ? 0 : _currentPage + 1;
     var model = await getRequest(isRefresh, currentPage, _pageSize);
@@ -129,6 +122,9 @@ abstract class DataLoadMoreBase<DATA, MODEL> extends ListBase<DATA> {
   /// [pageSize] 每页多少数据
   getRequest(isRefresh, currentPage, pageSize);
 
+  /// 1.判断是否有业务错误
+  /// 2.将数据存入列表,如果是刷新则清空数据
+  /// 3.判断是否有更多数据
   /// 重载这个方法,必须在这个方法的数据添加到列表中
   /// [model] 本次请求回来的数据
   /// [isRefresh] 是否刷新并清空原来的数据
@@ -143,5 +139,6 @@ class _DataLoadBloc<T> {
   onStateChanged(T source) {
     if (!_streamController.isClosed) _streamController.add(source);
   }
+
   dispose() => _streamController.close();
 }

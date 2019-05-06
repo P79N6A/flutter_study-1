@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import '../indicator/loading_more_base.dart';
 export 'loading_empty_indicator.dart';
 export 'loading_more_base.dart';
 
 // 加载更多 列表的最后一项, 用于显示当前的状态
 class LoadingIndicator extends StatelessWidget {
-  final DataLoadMoreBase dataLoader;
+  /// [dataLoader]is[DataLoadMoreBase]
+  final dataLoader;
   const LoadingIndicator({this.dataLoader});
   @override
   build(context) {

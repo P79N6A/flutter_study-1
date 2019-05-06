@@ -7,20 +7,17 @@ part of 'model.dart';
 // **************************************************************************
 
 Model _$ModelFromJson(Map<String, dynamic> json) {
-  return Model(
-      code: json['code'] as int,
-      message: json['message'] as String,
-      data: json['data']);
+  return Model(code: json['code'], msg: json['msg'], data: json['data']);
 }
 
 Map<String, dynamic> _$ModelToJson(Model instance) => <String, dynamic>{
       'code': instance.code,
-      'message': instance.message,
+      'msg': instance.msg,
       'data': instance.data
     };
 
 Article _$ArticleFromJson(Map<String, dynamic> json) {
-  return Article(title: json['title'] as String);
+  return Article(title: json['title']);
 }
 
 Map<String, dynamic> _$ArticleToJson(Article instance) =>

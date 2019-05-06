@@ -13,10 +13,10 @@ class LoaderMoreDemo extends StatefulWidget {
 
 class _LoaderMoreDemoState extends State<LoaderMoreDemo>
     with AutomaticKeepAliveClientMixin {
-  // 数据加载类
-  _DataLoader _loader;
+  /// 数据加载类[_loader]is[_DataLoader]
+  var _loader;
   @override
-  bool get wantKeepAlive => true;
+  get wantKeepAlive => true;
 
   @override
   initState() {
@@ -56,7 +56,7 @@ class _LoaderMoreDemoState extends State<LoaderMoreDemo>
                     ))),
       );
 
-  _buildList(DataLoadMoreBase<Article, Model> dataLoader) {
+  _buildList(dataLoader) {
     // 初始化时显示的View
     if (dataLoader == null) return Center(child: Text('欢迎光临...'));
     // 没有数据时候显示的View构建
@@ -108,9 +108,9 @@ class _LoaderMoreDemoState extends State<LoaderMoreDemo>
 
 // 数据业务逻辑处理
 class _DataLoader extends DataLoadMoreBase<Article, Model> {
-  bool _hasMore = true;
+  var _hasMore = true;
   @override
-  Future<Model> getRequest(isRefresh, currentPage, pageSize) async {
+  getRequest(isRefresh, currentPage, pageSize) async {
     // 这里模拟网络请求
     var list = List();
     for (var i = 0; i < 20; i++) {
@@ -118,14 +118,11 @@ class _DataLoader extends DataLoadMoreBase<Article, Model> {
       list.add(article);
     }
     await Future.delayed(Duration(seconds: 2));
-    return Model(data: list, message: "加载成功", code: 0);
+    return Model(data: list);
   }
 
   @override
-  Future<bool> handlerData( model,  isRefresh) async {
-    // 1. 判断是否有业务错误,
-    // 2. 将数据存入列表, 如果是刷新清空数据
-    // 3. 判断是否有更多数据
+  handlerData(model, isRefresh) {
     if (model == null || model.isError()) return false;
     if (isRefresh) clear();
     addAll((model.data as List<dynamic>).map((d) => d as Article));
@@ -134,5 +131,5 @@ class _DataLoader extends DataLoadMoreBase<Article, Model> {
   }
 
   @override
-  bool hasMore() => _hasMore;
+  hasMore() => _hasMore;
 }
