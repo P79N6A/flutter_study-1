@@ -118,7 +118,7 @@ class _DataLoader extends DataLoadMoreBase<Article, Model> {
       list.add(article);
     }
     await Future.delayed(Duration(seconds: 2));
-    return Model(data: list);
+    return Model(data: list, code: 0);
   }
 
   @override

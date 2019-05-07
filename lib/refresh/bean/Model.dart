@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'Model.g.dart';
+part 'model.g.dart';
 
 @JsonSerializable()
 class Model extends Object {

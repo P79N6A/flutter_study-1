@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import '../base/loading_empty_indicator.dart';
 import '../base/loading_indicator.dart';
 import '../base/loading_more_base.dart';
-import '../bean/Model.dart';
+import '../bean/model.dart';
 
 /// 上拉加载更多
 class LoaderMoreDemo extends StatefulWidget {
