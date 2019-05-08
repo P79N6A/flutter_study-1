@@ -32,7 +32,7 @@ class _LoaderMoreDemoState extends State<LoaderMoreDemo>
   }
 
   build(context) => Scaffold(
-        body: StreamBuilder<DataLoadMoreBase<Article, Model>>(
+        body: StreamBuilder<DataLoadMoreBase<Data, Model>>(
             stream: _loader.stream,
             builder: (context, snapshot) => // 监听滑动结束广播
                 NotificationListener<ScrollEndNotification>(
@@ -56,7 +56,7 @@ class _LoaderMoreDemoState extends State<LoaderMoreDemo>
                     ))),
       );
 
-  _buildList(dataLoader) {
+  _buildList(_DataLoader dataLoader) {
     // 初始化时显示的View
     if (dataLoader == null) return Center(child: Text('欢迎光临...'));
     // 没有数据时候显示的View构建
@@ -97,7 +97,11 @@ class _LoaderMoreDemoState extends State<LoaderMoreDemo>
             } else {
               return Container(
                   margin: EdgeInsets.all(16.0),
-                  child: Center(child: Text(dataLoader[index].title)));
+                  child: Column(
+                    children: [
+                      Text(dataLoader[index].list[index].cover),
+                    ],
+                  ));
             }
           },
         ),
@@ -107,25 +111,25 @@ class _LoaderMoreDemoState extends State<LoaderMoreDemo>
 }
 
 // 数据业务逻辑处理
-class _DataLoader extends DataLoadMoreBase<Article, Model> {
+class _DataLoader extends DataLoadMoreBase<Data, Model> {
   var _hasMore = true;
   @override
   getRequest(isRefresh, currentPage, pageSize) async {
     // 这里模拟网络请求
     var list = List();
     for (var i = 0; i < 20; i++) {
-      var article = Article(title: "测试标题$i 页码:$currentPage");
+      var article = Data(topArticle: null);
       list.add(article);
     }
     await Future.delayed(Duration(seconds: 2));
-    return Model(data: list, code: 0);
+    return Model(data: Data(list: null, topArticle: null), code: 0);
   }
 
   @override
   handlerData(model, isRefresh) {
     if (model == null || model.isError()) return false;
     if (isRefresh) clear();
-    addAll((model.data as List<dynamic>).map((d) => d as Article));
+    addAll((model.data as List<dynamic>).map((d) => d as Data));
     _hasMore = length < 100;
     return true;
   }

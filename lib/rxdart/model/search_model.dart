@@ -1,28 +1,30 @@
 class SearchModel {
-  final totalCount;
-  final incompleteResults;
-  final items;
-
+  int totalCount;
+  bool incompleteResults;
+  List<ItemModel> items;
   SearchModel({this.totalCount, this.incompleteResults, this.items});
 
-  static fromJson(json) => SearchModel(
+  static SearchModel fromJson(Map<String, dynamic> json) {
+    List list = json['items'];
+    return SearchModel(
       totalCount: json['total_count'],
       incompleteResults: json['incomplete_results'],
-      items: json['items'].map((i) => ItemModel.fromJson(i)).toList());
+      items: list.map((i) => ItemModel.fromJson(i)).toList(),
+    );
+  }
 }
-
 class ItemModel {
-  final id;
-  final name;
-  final fullName;
-  final private;
-  final url;
-  final description;
-  final size;
-  final language;
-  final forks;
-  final stargazersCount;
-  final watchers;
+  int id;
+  String name;
+  String fullName;
+  bool private;
+  String url;
+  String description;
+  int size;
+  String language;
+  int forks;
+  int stargazersCount;
+  int watchers;
 
   ItemModel(
       {this.id,
@@ -36,7 +38,7 @@ class ItemModel {
       this.forks,
       this.stargazersCount,
       this.watchers});
-  static fromJson(json) => ItemModel(
+  static ItemModel fromJson(json) => ItemModel(
       id: json['id'],
       name: json['name'],
       fullName: json['full_name'],

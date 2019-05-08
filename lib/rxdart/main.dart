@@ -2,30 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:flutter_study/rxdart/api/api_provider.dart';
 import 'package:flutter_study/rxdart/model/search_model.dart';
 
-main() =>
+void main() =>
     runApp(MaterialApp(debugShowCheckedModeBanner: false, home: HomePage()));
 
 class HomePage extends StatefulWidget {
   @override
-  createState() => HomePageState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class HomePageState extends State<HomePage> {
-  var _blocProvider = ApiProvider.instance();
+class _HomePageState extends State<HomePage> {
+  final _blocProvider = ApiProvider.instance();
   @override
-  initState() {
+  void initState() {
     super.initState();
-    _blocProvider.fetchRankList(SEARCH_URL);
+    _blocProvider.fetchRankList();
   }
 
   @override
-  dispose() {
+  void dispose() {
     _blocProvider.dispose();
     super.dispose();
   }
 
   @override
-  build(context) => Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(title: Text('Business Logic Component')),
       body: _blocProvider.streamBuilder<SearchModel>(
           success: (data) => buildList(data),
@@ -34,7 +34,7 @@ class HomePageState extends State<HomePage> {
           loading: () => Center(child: CircularProgressIndicator()),
           finished: () {}));
 
-  buildList(data) => ListView.builder(
+  void buildList(data) => ListView.builder(
         physics: BouncingScrollPhysics(),
         itemCount: data.items.length,
         itemBuilder: (context, index) {

@@ -33,6 +33,7 @@ dependencies:
   flutter_bloc:
   kiwi:
   json_annotation:
+  photo_view:
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -7,11 +7,10 @@ import 'package:dio/dio.dart';
 const SEARCH_URL = 'https://api.github.com/search/repositories?q=flutter';
 
 class ApiProvider {
-  final _fetcher;
-  ApiProvider(this._fetcher); // 实体类获取器
+  final _fetcher = PublishSubject<SearchModel>();
 
-  fetchRankList(url) async => _fetchUrl(
-      url,
+  void fetchRankList() async => _fetchUrl(
+      SEARCH_URL,
       (map) => _fetcher.sink.add(SearchModel.fromJson(map)),
       (errorMsg) => _fetcher.sink.addError(errorMsg, null),
       () => _fetcher.sink.addError('_empty_'));
@@ -22,11 +21,20 @@ class ApiProvider {
   /// [empty] 请求为空函数
   /// [loading] 请求加载函数
   /// [finished] 请求完成函数
-  streamBuilder<T>({T initalData, success, error, empty, loading, finished}) =>
+
+  Widget streamBuilder<T>({
+    T initalData,
+    Function success,
+    Function error,
+    Function empty,
+    Function loading,
+    Function finished,
+  }) =>
       StreamBuilder(
-          stream: stream(),
+          stream: stream,
           initialData: initalData,
           builder: (context, snapshot) {
+            finished();
             if (snapshot.hasData) {
               return success(snapshot.data);
             } else if (snapshot.hasError) {
@@ -39,11 +47,12 @@ class ApiProvider {
               return loading();
             }
           });
-  _fetchUrl(url, success, error, empty) async {
-    var response = await Dio().get(url);
-    var code = response.statusCode;
+  _fetchUrl(
+      String url, Function success, Function error, Function empty) async {
+    Response response = await Dio().get(url);
+    int code = response.statusCode;
     if (code >= 200 && code <= 300) {
-      var data = response.data;
+      Map<String, dynamic> data = response.data;
       if (data != null) {
         success(data);
       } else {
@@ -54,7 +63,7 @@ class ApiProvider {
     }
   }
 
-  static instance() => ApiProvider(PublishSubject<SearchModel>());
-  stream() => _fetcher.stream;
-  dispose() => _fetcher.close();
+  static ApiProvider instance() => ApiProvider();
+  get stream => _fetcher.stream;
+  void dispose() => _fetcher.close();
 }
