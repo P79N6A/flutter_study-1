@@ -5,7 +5,7 @@ part 'model.g.dart';
 @JsonSerializable()
 class Model extends Object {
   int code;
-  String message;
+  String msg;
   dynamic data;
 
   bool isSuccess() {
@@ -16,7 +16,7 @@ class Model extends Object {
     return !isSuccess();
   }
 
-  Model({this.code, this.message, this.data});
+  Model({this.code, this.msg, this.data});
 
   factory Model.fromJson(Map<String, dynamic> json) => _$ModelFromJson(json);
 

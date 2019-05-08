@@ -13,26 +13,25 @@ class LoaderMoreDemo extends StatefulWidget {
 
 class _LoaderMoreDemoState extends State<LoaderMoreDemo>
     with AutomaticKeepAliveClientMixin {
-  /// 数据加载类[_loader]is[_DataLoader]
-  var _loader;
+  _DataLoader _loader;
   @override
   get wantKeepAlive => true;
 
   @override
-  initState() {
+  void initState() {
     _loader = _DataLoader();
     _loader.obtainData(false);
     super.initState();
   }
 
   @override
-  dispose() {
+  void dispose() {
     _loader.dispose();
     super.dispose();
   }
 
   build(context) => Scaffold(
-        body: StreamBuilder<DataLoadMoreBase<Data, Model>>(
+        body: StreamBuilder<DataLoadMoreBase<Article, Model>>(
             stream: _loader.stream,
             builder: (context, snapshot) => // 监听滑动结束广播
                 NotificationListener<ScrollEndNotification>(
@@ -99,7 +98,7 @@ class _LoaderMoreDemoState extends State<LoaderMoreDemo>
                   margin: EdgeInsets.all(16.0),
                   child: Column(
                     children: [
-                      Text(dataLoader[index].list[index].cover),
+                      Text(dataLoader[index].title),
                     ],
                   ));
             }
@@ -111,25 +110,20 @@ class _LoaderMoreDemoState extends State<LoaderMoreDemo>
 }
 
 // 数据业务逻辑处理
-class _DataLoader extends DataLoadMoreBase<Data, Model> {
+class _DataLoader extends DataLoadMoreBase<Article, Model> {
   var _hasMore = true;
   @override
   getRequest(isRefresh, currentPage, pageSize) async {
     // 这里模拟网络请求
-    var list = List();
-    for (var i = 0; i < 20; i++) {
-      var article = Data(topArticle: null);
-      list.add(article);
-    }
-    await Future.delayed(Duration(seconds: 2));
-    return Model(data: Data(list: null, topArticle: null), code: 0);
+    List<Article> list = List<Article>();
+    list.forEach((item) => Article(title: 'title$item'));
+    return Model(data: list, code: 0, msg: 'safsfda');
   }
 
-  @override
   handlerData(model, isRefresh) {
     if (model == null || model.isError()) return false;
     if (isRefresh) clear();
-    addAll((model.data as List<dynamic>).map((d) => d as Data));
+    addAll((model.data as List<Article>).map((e) => e));
     _hasMore = length < 100;
     return true;
   }

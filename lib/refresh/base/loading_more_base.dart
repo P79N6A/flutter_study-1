@@ -179,7 +179,7 @@ abstract class DataLoadMoreBase<DATA, MODEL> extends ListBase<DATA> {
   }
 
   /// 是否还有更多数据
-  @protected
+
   bool hasMore();
 
   /// 构造请求

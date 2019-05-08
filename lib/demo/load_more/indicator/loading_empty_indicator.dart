@@ -3,12 +3,11 @@ import '../indicator/loading_more_base.dart';
 
 // 没有数据时的当前加载状态指示器
 class LoadingEmptyIndicator extends StatelessWidget {
-  /// [dataLoader] 类型为[DataLoadMoreBase]
-  final dataLoader;
+  final DataLoadMoreBase dataLoader;
   LoadingEmptyIndicator({this.dataLoader});
 
   @override
-  build(context) {
+  Widget build(BuildContext context) {
     if (dataLoader != null && !dataLoader.hasData) {
       if (dataLoader.pageState == PageState.Loading) {
         return Center(child: Text('正在加载中...'));

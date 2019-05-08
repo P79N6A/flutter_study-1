@@ -47,7 +47,7 @@ class ApiProvider {
               return loading();
             }
           });
-  _fetchUrl(
+  void _fetchUrl(
       String url, Function success, Function error, Function empty) async {
     Response response = await Dio().get(url);
     int code = response.statusCode;

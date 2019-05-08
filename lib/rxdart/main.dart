@@ -34,11 +34,11 @@ class _HomePageState extends State<HomePage> {
           loading: () => Center(child: CircularProgressIndicator()),
           finished: () {}));
 
-  void buildList(data) => ListView.builder(
+  void buildList(SearchModel data) => ListView.builder(
         physics: BouncingScrollPhysics(),
         itemCount: data.items.length,
         itemBuilder: (context, index) {
-          var item = data.items[index];
+          ItemModel item = data.items[index];
           return Card(
             child: Container(
               padding: EdgeInsets.all(16.0),

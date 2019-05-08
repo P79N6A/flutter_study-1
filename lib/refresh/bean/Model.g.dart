@@ -9,13 +9,13 @@ part of 'model.dart';
 Model _$ModelFromJson(Map<String, dynamic> json) {
   return Model(
       code: json['code'] as int,
-      message: json['message'] as String,
+      msg: json['msg'] as String,
       data: json['data']);
 }
 
 Map<String, dynamic> _$ModelToJson(Model instance) => <String, dynamic>{
       'code': instance.code,
-      'message': instance.message,
+      'msg': instance.msg,
       'data': instance.data
     };
 

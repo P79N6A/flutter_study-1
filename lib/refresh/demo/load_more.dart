@@ -132,14 +132,13 @@ class _DataLoader extends DataLoadMoreBase<Article, Model> {
   Future<Model> getRequest(
       bool isRefresh, int currentPage, int pageSize) async {
     // 这里模拟网络请求
-    var list = List();
+    var list = List<Article>();
     for (var i = 0; i < 10; i++) {
-      var article = Article(title: "Article$currentPage $_id $i");
+      var article = Article(title:'sssss');
       list.add(article);
     }
     await Future.delayed(Duration(seconds: 2));
-
-    return Model(data: list, message: "加载成功", code: 0);
+    return Model(data: list, msg: "加载成功", code: 0);
   }
 
   @override
@@ -159,7 +158,6 @@ class _DataLoader extends DataLoadMoreBase<Article, Model> {
     }));
 
     _hasMore = length < 100;
-
     return true;
   }
 

@@ -1,4 +1,5 @@
 import 'dart:collection';
+import 'package:flutter/foundation.dart';
 import 'package:rxdart/rxdart.dart';
 
 enum PageState {
@@ -128,7 +129,8 @@ abstract class DataLoadMoreBase<DATA, MODEL> extends ListBase<DATA> {
   /// 重载这个方法,必须在这个方法的数据添加到列表中
   /// [model] 本次请求回来的数据
   /// [isRefresh] 是否刷新并清空原来的数据
-  handlerData(model, isRefresh);
+
+  handlerData( model,  isRefresh);
 }
 
 // 数据加载Bloc
