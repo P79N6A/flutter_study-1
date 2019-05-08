@@ -45,13 +45,13 @@ class _HomePageState extends State<HomePage>
   Widget build(BuildContext context) => Scaffold(
           body: ListView(
         children: <Widget>[
-          Text('全局弹窗'),
           CupertinoButton(
             child: Text('再弹一次'),
             onPressed: () {
               return key.currentState.showAlertDialog(context);
             },
           ),
+          Center(child: Text('全局弹窗')),
           DisclaimerMsg(key: key, pWidget: this)
         ],
       ));
