@@ -43,8 +43,16 @@ class _HomePageState extends State<HomePage>
 
   @override
   Widget build(BuildContext context) => Scaffold(
-      appBar: AppBar(),
-      body: Column(
-        children: <Widget>[DisclaimerMsg(key: key, pWidget: this)],
+          body: ListView(
+        children: <Widget>[
+          Text('全局弹窗'),
+          CupertinoButton(
+            child: Text('再弹一次'),
+            onPressed: () {
+              return key.currentState.showAlertDialog(context);
+            },
+          ),
+          DisclaimerMsg(key: key, pWidget: this)
+        ],
       ));
 }
