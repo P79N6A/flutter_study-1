@@ -34,6 +34,8 @@ dependencies:
   kiwi:
   json_annotation:
   photo_view:
+  fluwx:
+  webview_flutter:
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-void main() =>
+main() =>
     runApp(MaterialApp(debugShowCheckedModeBanner: false, home: HomePage()));
 
 class HomePage extends StatefulWidget {
